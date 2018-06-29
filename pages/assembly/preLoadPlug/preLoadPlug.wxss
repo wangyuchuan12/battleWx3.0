@@ -1,0 +1,56 @@
+.preLoad{
+  width:100%;
+  height: 100vh;
+  background: rgba(6,49,58,1);
+  text-align: center;
+  position: fixed;
+  z-index: 10000000000000000000000;
+}
+
+.preLoadMoon{
+  width:200px;
+  height: 200px;
+  background:url("http://p8h24zryz.bkt.clouddn.com/2f92864aa33d1749b9fb5b8a3d37a0d7.png");
+  background-size:100% 100%;
+  position: relative;
+  left:50%;
+  margin-left:-100px;
+
+}
+
+.preButton{
+  width:140px;
+  height: 70px;
+  background:rgba(93,97,109,0.5);
+  background-size: 100% 100%;
+  left:50%;
+  top:30vh;
+  margin-left:-70px;
+  position: relative;
+  color: white;
+  line-height: 70px;
+  font-weight: bolder;
+}
+
+.preButton:active{
+  width:168px;
+  height: 84px;
+  background:rgba(93,97,109,0.5);
+  background-size: 100% 100%;
+  left:50%;
+  top:30vh;
+  margin-left:-84px;
+  position: relative;
+  color: white;
+  line-height: 85px;
+  font-size:20px;
+  font-weight: bolder;
+}
+
+.preLoadProgress{
+  width:50%;
+  position: fixed;
+  top:85vh;
+  left:50%;
+  margin-left:-25%; 
+}

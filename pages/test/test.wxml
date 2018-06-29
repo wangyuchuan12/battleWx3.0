@@ -1,0 +1,4 @@
+<import src="../assembly/progressScorePlug/progressScorePlug.wxml"/>
+<view style="position:absolute;width:100%;height:100%;">
+  <template is="progressScorePlug" data="{{...progressScoreData}}"></template>
+</view>

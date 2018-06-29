@@ -1,0 +1,54 @@
+<view class="stageRest" wx:if="{{isShow}}">
+  <view class="stageRestMembers">
+    <block wx:for="{{members}}" wx:for-item="member">
+      <view class="stageRestMember"  wx:if="{{member.isOnline==1&&member.status!=2&&member.loveResidule}}">
+          <image src="{{member.imgUrl}}" class="stageRestMemberImg"></image>
+          <view class="stageRestMemberContent">
+            <view class="stageRestMemberContentRank">第{{index+1}}名</view>
+            <view class="stageRestMemberContentSocre">
+              <span style="font-size:20px;">{{member.process}}米</span>
+            </view>
+            <view class="stageRestMemberContentSocre">
+              第{{member.stageIndex}}关 +{{member.thisProcess}}米
+            </view>
+          </view>
+
+          <view class="stageRestMemberLoves">
+            <view class="stageRestMemberLove" wx:for="{{member.loveResidule}}"></view>
+            <view class="stageRestMemberHollowLove" wx:for="{{member.loveCount-member.loveResidule}}"></view>
+          </view>
+          
+          <view class="stageRestMemberStatus" wx:if="{{member.loveResidule<=0}}">已阵亡</view>
+
+          <view class="stageRestMemberStatus" wx:else>战斗中</view>
+          
+      </view>
+
+
+
+      <view class="stageRestMember gray"  wx:else>
+          <image src="{{member.imgUrl}}" class="stageRestMemberImg"></image>
+          <view class="stageRestMemberContent">
+            <view class="stageRestMemberContentRank">第{{index+1}}名</view>
+            <view class="stageRestMemberContentSocre">
+              <span style="font-size:20px;">{{member.process}}米</span>
+            </view>
+            <view class="stageRestMemberContentSocre">
+              第{{member.stageIndex}}关 +{{member.thisProcess}}米
+            </view>
+          </view>
+
+          <view class="stageRestMemberLoves">
+            <view class="stageRestMemberLove" wx:for="{{member.loveResidule}}"></view>
+            <view class="stageRestMemberHollowLove" wx:for="{{member.loveCount-member.loveResidule}}"></view>
+          </view>
+          <view class="stageRestMemberStatus" wx:if="{{member.loveResidule<=0}}">已阵亡</view>
+          <view class="stageRestMemberStatus" wx:else>已退出</view>
+      </view>
+    
+  </block>
+ </view>
+  <view class="stageReady" bindtap='stageRestReady' wx:if="{{isReadyButtonShow==1}}">下一关</view>
+
+  <view class="stageReady" bindtap='back' wx:if="{{isBackButtonShow==1}}">返回</view>
+</view>

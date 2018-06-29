@@ -1,0 +1,16 @@
+{
+  "pages": [
+    "pages/progressScore/progressScore",
+    "pages/test/test",    
+    "pages/takeoutMoney/takeoutMoney",
+    "pages/mall/mall"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom",
+    "disableScroll": true
+  }
+}

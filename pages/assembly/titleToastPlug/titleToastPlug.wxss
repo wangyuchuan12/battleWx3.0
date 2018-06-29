@@ -1,0 +1,20 @@
+.titleToast{
+  text-align: center;
+  z-index: 10000000000000000000000;
+  position: fixed;
+  width: 100%;
+  top:10vh;
+}
+.titleToastTitle{
+  color: rgba(131,45,113,1);
+  text-shadow: white 3px 3px 3px;
+  text-align: center;
+  font-weight: bolder;
+}
+
+.titleToastSubtitle{
+  color: rgba(131,45,113,1);
+  text-shadow: white 3px 3px 3px;
+  text-align: center;
+  font-weight: bolder;
+}

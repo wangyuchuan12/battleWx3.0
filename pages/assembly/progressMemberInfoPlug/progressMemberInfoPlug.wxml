@@ -1,0 +1,48 @@
+<view class="progressMemberInfoPlug">
+    <view class="progressScoreContainerHeader" >
+        
+          <view class="progressScoreContainerHeaderScore">
+            <view class="progressScoreContainerHeaderAllScore">
+                <view class="progressScoreContainerHeaderAllScoreTag">目标</view>
+                <view class="progressScoreContainerHeaderAllScoreContent" id="allScoreDiv"><span id="allScore">{{memberInfo.processGogal}}</span>米</view>
+            </view>
+            
+            <view class="progressScoreContainerHeaderAllScore" style="margin-left: 10px;">
+                <view class="progressScoreContainerHeaderAllScoreTag">进度</view>
+                <view class="progressScoreContainerHeaderAllScoreContent" id="thisScoreDiv"><span id="thisScore">{{memberInfo.process}}</span>米</view>
+            </view>
+          </view>
+          <view class="progressScoreContainerHeaderLoveLife">
+              <view class="personalAttrDataHeaderBig personalAttrDataHeaderLoveBig" wx:for="{{memberInfo.loveResidule}}" wx:for-item="loveItem"></view>
+              <view class="personalAttrDataHeaderBig personalAttrDataHeaderLoveHollowBig"  wx:for="{{memberInfo.loveCount-memberInfo.loveResidule}}" wx:for-item="loveItem"></view>
+          </view>
+          <view wx:if="{{loveCooling.status==1&&memberInfo.isIncrease==1}}" style="position:relative;top:-10px;">
+            <view class="progressScoreContainerHeaderCooling" style="display:inline-block">
+                <view class="progressScoreContainerHeaderCoolingLabel" style="width:{{loveCooling.schedule/loveCooling.upperLimit*100}}%;"></view>
+                <view class="progressScoreContainerHeaderCoolingContent">
+                  <view class="progressScoreContainerHeaderCoolingContent1">第<font style="color:red;font-weight:bolder;font-size:15px;">{{loveCooling.coolLoveSeq}}</font>颗 ❤️ 正在恢复中</view>
+                  <view class="progressScoreContainerHeaderCoolingContent2">
+                    剩余时间：{{loveCooling.hour}}时{{loveCooling.min}}分{{loveCooling.second}}秒
+                  </view>
+                </view>
+            </view>
+            <!--
+              <view style="width:70px;;background:RGBA(114,80,113,1);vertical-align: top;display:inline-block;color:white;vertical-align:top;border-radius:5px;font-size:10px; padding-top:5px;" bindtap='speedCoolClick'>
+                加速{{loveCooling.speedCoolSecond}}秒钟
+                <view>
+                  <view class="personalAttrDataHeader personalAttrDataHeaderBean" style=""></view>
+                  <span style="vertical-align: top;font-size:15px;">×{{loveCooling.speedCoolBean}}</span>
+                </view>
+              </view>
+
+              <view style="width:70px;;background:RGBA(114,80,113,1);vertical-align: top;display:inline-block;color:white;vertical-align:top;border-radius:5px;font-size:10px; padding-top:5px;margin-left:1px;" bindtap='supplyLoveClick'>
+                补充爱心
+                <view>
+                  <view class="personalAttrDataHeader personalAttrDataHeaderLove" style=""></view>
+                  <span style="vertical-align: top;font-size:15px;">×1</span>
+                </view>
+              </view>
+              -->
+          </view>
+    </view>
+</view>

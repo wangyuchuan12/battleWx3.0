@@ -1,0 +1,85 @@
+.rewardToastList{
+  position: fixed;
+  z-index: 10000000000000000;
+  width:100%;
+  top:100px;
+}
+
+.gray { 
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+    
+    filter: grayscale(100%);
+	
+    filter: gray;
+}
+
+.rewardToastPlug{
+  width:220px;
+  height: 60px;
+  background: rgba(52,60,75,0.9);
+  left:50%;
+  top:0px;
+  margin-left:-110px;
+  position: relative;
+  border-radius: 20px;
+}
+
+.rewardToastPlugHeadImg{
+  height:50px;
+  width:50px;
+  top:5px;
+  left:5px;
+  position: relative;
+  border-radius: 50px;
+  display: inline-block;
+}
+
+.rewardToastPlugContent{
+  display: inline-block;
+  color: white;
+  font-size: 25px;
+  vertical-align: top;
+  position: relative;
+  top:10px;
+  left:15px;
+  font-weight: bolder;
+  
+}
+
+.rewardToastPlugLove{
+  display: inline-block;
+  width:50px;
+  height: 50px;
+  /*background:url('http://7xugu1.com1.z0.glb.clouddn.com/lifeLoveSolid.png');*/
+  background:url("http://otsnwem87.bkt.clouddn.com/bean.png");
+  background-size: 100% 100%;
+  left:20px;
+  top:5px;
+  position: relative;
+  
+}
+
+.rewardToastPlugLoveB{
+  display: inline-block;
+  width:40px;
+  height:40px;
+  /*background:url('http://p5ihbm53g.bkt.clouddn.com/loveB.png');*/
+  background:url("http://otsnwem87.bkt.clouddn.com/bean.png");
+  background-size: 100% 100%;
+  left:20px;
+  top:0px;
+  position: relative;
+}
+
+.rewardToastPlugNum{
+  display:inline-block;
+  font-size: 20px;
+  font-weight: bolder;
+  position: relative;
+  vertical-align: top;
+  left:30px;
+  top:15px;
+}

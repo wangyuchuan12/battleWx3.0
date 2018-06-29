@@ -1,0 +1,7 @@
+<menuController id="menuController" bind:toStart="toStart" style="display:{{mode==0? 'block':'none'}}"bind:flushAttr="flushAttr"></menuController>
+<questionController id="questionController"  style="display:{{mode==1? 'block':'none'}}"  bind:questionComplete="questionComplete" bind:answerResultHandle="answerResultHandle"></questionController>
+<stageRest id="stageRest" style="display:{{mode==3? 'block':'none'}}"bind:stageRestReady="stageRestReady"></stageRest>
+
+<stageResult id="stageResult" style="display:{{mode==3? 'block':'none'}}"></stageResult>
+
+<rewardToast id="rewardToast"></rewardToast>

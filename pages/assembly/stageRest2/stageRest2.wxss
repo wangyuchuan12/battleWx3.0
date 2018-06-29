@@ -1,0 +1,186 @@
+.stageRest{
+  padding-top:50px;
+  position: fixed;
+  z-index: 900000000;
+  width:100%;
+  padding-bottom: 50px;
+  top:20vh;
+}
+
+.stageRestItemRank{
+  position: absolute;
+  color: white;
+  top:0px;
+}
+
+.stageRestContent{
+  width:100%;
+  max-height: 60vh;
+  position: relative;
+  border-radius:0px 0px 10px 10px;
+  padding-top:20px;
+}
+
+.stageRestItem{
+  padding-left:15px;
+  padding-top:5px;
+  width:100%;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.stageRestItemImg{
+  width:50px;
+  height: 50px;
+  border-radius: 50px;
+  display: inline-block;
+}
+
+.stageRestItemInfo{
+  display: inline-block;
+  vertical-align: top;
+  padding-left:10px;
+  width:200px;
+}
+
+.stageRestItemInfo1{
+  color: white;
+  font-size: 10px;
+  display: inline-block;
+  width:50px;
+  text-align: center;
+}
+
+.stageRestItemInfo2{
+  color: black;
+  font-size: 15px;
+  width:80px;
+  height: 20px;
+  background:rgba(255,221,51,1);
+  text-align: center;
+  border-radius: 5px;
+  margin-top:5px;
+  border:1px solid black;
+  display: inline-block;
+}
+
+.stageRestItemScore{
+  position: absolute;
+  right:20px;
+  top:10px;
+  font-size: 25px;
+  font-weight: bolder;
+  color: white;
+}
+
+.stageRestItemDivide{
+  width:80%;
+  height: 1px;
+  background: rgba(183,184,169,1);
+  position: relative;
+  left:10%;
+  margin-top:10px;
+}
+
+.stageReady{
+  color: white;
+  background:url('http://onluguho9.bkt.clouddn.com/btn-red2.png');
+  background-size:100% 100%;
+  padding-top:10px;
+  padding-bottom: 10px;
+  width:150px;
+  display: inline-block;
+  position: fixed;
+  bottom:50px;
+  z-index: 1000000000;
+  left:50%;
+  margin-left:-75px;
+  border-radius:50px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+.stageRestTabs{
+  width:90%;
+  background:rgba(152,153,141,0.4);
+  position: relative;
+  left:50%;
+  margin-left:-45%;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.stageRestTab{
+  display: inline-block;
+  font-size: 15px;
+  text-align: center;
+  width: 50%;
+  padding-top:10px;
+  padding-bottom: 10px;
+  font-weight: bolder;
+  background:rgba(213,201,149,1);
+  color: rgba(162,122,77,1);
+}
+
+.stageRestTabActive{
+  color: white;
+  background:rgba(225,131,25,1);
+}
+
+.stageRestContentTitle{
+  padding-left:10px;
+  padding-bottom:10px;
+  border-radius: 10px;
+}
+
+.stageRestContentTitleImg{
+  width:50px;
+  height: 50px;
+  display: inline-block;
+  border-radius: 5px;
+}
+
+.stageRestContentTitleInfo1{
+  display: inline-block;
+  vertical-align: top;
+  padding-left:10px;
+}
+
+.stageRestContentTitleInfo1Score{
+  color: rgba(120,97,81,1);
+  font-size: 15px;
+}
+
+.stageRestContentTitleInfo1Score1Num{
+  color: rgba(207,119,69,1);
+}
+
+.stageRestContentRanks{
+  text-align: left;
+}
+
+.stageRestContentRank{
+  width:20%;
+  display: inline-block;
+  border-radius: 20px;
+  background:rgba(174,218,71,1);
+  margin: 1.1%;
+  border:4px solid white;
+  text-align: center;
+  padding-top:10px;
+  padding-bottom:10px;
+  font-size: 25px;
+  font-weight: bolder;
+  color: white;
+}
+
+.gray { 
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+    
+    filter: grayscale(100%);
+	
+    filter: gray;
+}

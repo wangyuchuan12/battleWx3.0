@@ -1,0 +1,18 @@
+{
+  "deviceOrientation": "landscape",
+  "usingComponents": {
+    "stageRest": "../assembly/stageRest2/stageRest2",
+    "loginPlug": "../assembly/loginPlug/loginPlug",
+    "questionSelector": "../assembly/questionSelector/questionSelector",
+    "progressMemberInfo": "../assembly/progressMemberInfoPlug/progressMemberInfoPlug",
+    "rewardToast": "../assembly/rewardToastPlug/rewardToastPlug",
+    "preLoad": "../assembly/preLoadPlug/preLoadPlug",
+    "titleToast": "../assembly/titleToastPlug/titleToastPlug",
+    "waitRoom": "../assembly/waitRoomPlug/waitRoomPlug",
+    "waitRoomOptionSelect": "../assembly/waitRoomOptionSelect/waitRoomOptionSelect",
+    "multiple-rate": "../assembly/multiple-rate/multiple-rate",
+    "stageResult": "../assembly/stageResult/stageResult",
+    "menuController": "../assembly/controller/menuController/menuController",
+    "questionInput": "../assembly/questionInputPlug2/questionInputPlug"
+  }
+}

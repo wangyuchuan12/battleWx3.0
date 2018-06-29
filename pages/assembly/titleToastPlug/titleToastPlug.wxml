@@ -1,0 +1,5 @@
+<view class="titleToast" animation="{{animation}}" wx:if="{{isShow}}">
+  <view class="titleToastTitle" style="font-size:{{fontSize*2}}px">{{title}}</view>
+  <view class="titleToastSubtitle" style="font-size:{{fontSize}}px">{{subtitle}}</view>
+
+</view>

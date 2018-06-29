@@ -1,0 +1,58 @@
+.stageResult{
+  width:100%;
+  height: 100vh;
+  background:rgba(11,20,19,0.1);
+  position: fixed;
+  z-index: 900000001;
+}
+
+.stageResultHeader{
+  padding-top: 20vh;
+
+}
+.stageResultTitle{
+  text-align: center;
+  color: rgba(169,236,254,1);
+  font-size: 50px;
+  font-weight: bolder;
+  text-shadow: white 3px 3px 3px;
+}
+
+.stageResultTitle2{
+  text-align: center;
+  color: white;
+  font-size: 30px;
+  text-shadow: black 3px 3px 3px;
+}
+
+.stageResultButton{
+  width:120px;
+  height: 40px;
+  background:url('http://onluguho9.bkt.clouddn.com/btn-violet.png');
+  background-size: 100% 100%;
+  color: white;
+  text-align: center;
+  font-weight: bolder;
+  font-size: 15px;
+  text-shadow: black 3px 3px 3px;
+  position: relative;
+  margin: 0 auto;
+  margin-top:150px;
+  line-height: 30px;
+}
+
+.stageResultButton:active{
+  width:140px;
+  height: 60px;
+  background:url('http://onluguho9.bkt.clouddn.com/btn-violet.png');
+  background-size: 100% 100%;
+  color: white;
+  text-align: center;
+  font-weight: bolder;
+  font-size: 24px;
+  text-shadow: black 3px 3px 3px;
+  position: relative;
+  margin: 0 auto;
+  margin-top:150px;
+  line-height: 50px;
+}

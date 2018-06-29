@@ -1,0 +1,29 @@
+.waitRoomOptionSelect{
+  padding-top:40vh;
+  position: fixed;
+  z-index: 10000000000;
+  background:green;
+  width:100%;
+  height: 100vh;
+}
+.waitRoomOptionItem{
+  padding-left:20px;
+  padding-bottom: 20px;
+}
+.waitRoomOptionItemName{
+  color: rgba(210,127,80,1);
+}
+
+.waitRoomOptionButton{
+  width:100px;
+  height: 50px;
+  background:url("http://onluguho9.bkt.clouddn.com/btn-brown2.png");
+  background-size: 100% 100%;
+  left:50%;
+  margin-left:-50px;
+  text-align: center;
+  position: relative;
+  color: white;
+  line-height: 50px;
+  font-weight: bolder;
+}

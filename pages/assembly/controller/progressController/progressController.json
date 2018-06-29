@@ -1,0 +1,10 @@
+{
+  "component": true,
+  "usingComponents": {
+    "menuController": "../menuController/menuController",
+    "questionController":"../questionController/questionController",
+    "stageRest": "../../stageRest2/stageRest2",
+    "stageResult": "../../stageResult/stageResult",
+    "rewardToast": "../../rewardToastPlug/rewardToastPlug"
+  }
+}

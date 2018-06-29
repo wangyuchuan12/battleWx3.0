@@ -1,0 +1,56 @@
+<view class="stageRest">
+  <scroll-view class="stageRestContent" scroll-y wx:if="{{mode==0}}">
+    <view class="stageRestContentTitle">
+      <image class="stageRestContentTitleImg" src="{{memberInfo.imgUrl}}"></image>
+      <view class="stageRestContentTitleInfo1">
+        <view class="stageRestContentTitleInfo1Nickname">{{memberInfo.nickname}}</view>
+
+        <view class="stageRestContentTitleInfo1Score">
+          <span class="stageRestContentTitleInfo1Score1">
+            
+            <span class="stageRestContentTitleInfo1Score1Num">
+              {{memberInfo.stageIndex}}关  
+              {{memberInfo.process}}米
+            </span>
+          </span>
+        </view>
+      </view>
+    </view>
+    <scroll-view class="stageRestContent" scroll-y>
+            <view class="stageRestItems" wx:for="{{members}}" wx:for-item="member">
+              <view class="stageRestItem">
+                <view class="stageRestItemRank">{{index+1}}</view>
+                <image class="stageRestItemImg" src="{{member.imgUrl}}"></image>
+                <view class="stageRestItemInfo">
+                  <view class="stageRestItemInfo1">{{member.nickname}}
+                  
+                  </view>
+                  
+                  <multiple-rate count="{{member.limitLove}}" rate="{{member.remainLove}}" icon="heart" disabled="true"></multiple-rate>
+                </view>
+
+                <view class="stageRestItemScore">
+                  {{member.process}}米
+                </view>
+
+                <view class="stageRestItemDivide"></view>
+              </view>
+            </view>
+    </scroll-view>
+  </scroll-view>
+  <!--
+  <view 
+    class="stageReady" 
+    bindtap='stageRestReady' 
+    wx:if="{{isReadyButtonShow==1}}">
+    下一关
+  </view>
+
+  <view 
+    class="stageReady" 
+    bindtap='back' 
+    wx:if="{{isBackButtonShow==1}}">
+    返回
+  </view>
+  -->
+</view>

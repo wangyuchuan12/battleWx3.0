@@ -1,0 +1,41 @@
+<view class="waitRoomOptionSelect">
+  
+  <view class="waitRoomOptionItem">
+    <view class="waitRoomOptionItemName">目标：</view>
+    <radio-group  bindchange='processChange'>
+
+      <block wx:for="{{processItems}}" wx:for-item="processItem" >
+        <label wx:if="{{processItem.process==process}}">
+          <radio value="{{processItem.process}}" checked="true" ></radio>
+          {{processItem.name}}
+        </label>
+
+        <label  wx:else>
+          <radio value="{{processItem.process}}"></radio>
+          {{processItem.name}}
+        </label>
+      </block>
+    </radio-group>
+  </view>
+
+  <view class="waitRoomOptionItem">
+    <view class="waitRoomOptionItemName">题库：</view>
+
+    <radio-group  bindchange="battleChange">
+
+      <block wx:for="{{options}}" wx:for-item="option" >
+        <label wx:if="{{option.battleId==battleId}}">
+          <radio value="{{option.id}}" checked="true" ></radio>
+          {{option.name}}
+        </label>
+
+        <label  wx:else>
+          <radio value="{{option.id}}"></radio>
+          {{option.name}}
+        </label>
+      </block>
+    </radio-group>
+  </view>
+
+  <view class="waitRoomOptionButton" bindtap='buttonClick'>确定</view>
+</view>

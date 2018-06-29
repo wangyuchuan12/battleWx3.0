@@ -1,0 +1,10 @@
+{
+  "component": true,
+  "usingComponents": {
+    "timeSecond": "../../roundProgress/roundProgress",
+    "questionInput":"../../questionInputPlug2/questionInputPlug",
+    "questionSelector": "../../questionSelector/questionSelector",
+    "questionAnswerResult": "../../questionAnswerResult/questionAnswerResult",
+    "titleToast": "../../titleToastPlug/titleToastPlug"
+  }
+}

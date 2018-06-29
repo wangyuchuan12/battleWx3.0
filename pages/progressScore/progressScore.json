@@ -1,0 +1,13 @@
+{
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#2f405d",
+  "navigationBarTitleText": "比赛进行中",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "preLoadPlug": "../assembly/preLoadPlug/preLoadPlug",
+    "progressController": "../assembly/controller/progressController/progressController",
+    "alertPlug": "../assembly/alertPlug2/alertPlug",
+    "loginPlug": "../assembly/loginPlug/loginPlug",
+    "progressMemberInfo": "../assembly/progressMemberInfoPlug/progressMemberInfoPlug"
+  }
+}

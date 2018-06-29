@@ -1,0 +1,10 @@
+<view class="stageResult" wx:if="{{isShow}}">
+
+  <view class="stageResultHeader">
+    <view class="stageResultTitle">第{{stageIndex}}关</view>
+    <view class="stageResultTitle2" wx:if="{{isPass}}">通过</view>
+    <view class="stageResultTitle2" wx:else>失败</view>
+  </view>
+
+  <view class="stageResultButton" bindtap='confirmClick'>确定</view>
+</view>

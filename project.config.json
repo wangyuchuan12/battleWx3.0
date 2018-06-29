@@ -1,0 +1,43 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "1.7.0",
+	"appid": "touristappid",
+	"projectname": "dati",
+	"isGameTourist": true,
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": 0,
+					"name": "pkRoom",
+					"pathName": "pages/progressScore/progressScore",
+					"query": "role=0&id=311575ee-0032-4fc7-9114-a312b2da64c5&skipType=2"
+				}
+			]
+		}
+	}
+}

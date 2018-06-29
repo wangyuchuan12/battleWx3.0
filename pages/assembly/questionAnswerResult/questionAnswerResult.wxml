@@ -1,0 +1,11 @@
+<view class="questionAnswerResult">
+
+  <view class="questionAnswerResultStage">第一关</view>
+  <view class="questionAnswerResultRightAnswer">正确答案：火影忍者</view>
+  <scroll-view class="questionAnswerResultItems">
+    <view class="questionAnswerResultItem" wx:for="{{items}}" wx:for-item="item">
+      <image src="{{item.imgUrl}}" class="questionAnswerResultItemImg"></image>
+      <view class="questionAnswerResultItemAnswer">{{item.nickname}}：{{item.answer}}</view>
+    </view>
+  </scroll-view>
+</view>

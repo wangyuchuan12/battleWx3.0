@@ -1,0 +1,14 @@
+{
+  "component": true,
+  "usingComponents": {
+    "pk": "../../pkPlug/pkPlug",
+    "waitRoom": "../../waitRoomPlug/waitRoomPlug",
+    "danList":"../../danListPlug/danListPlug",
+    "luckDraw":"../../luckDrawPlug/luckDrawPlug",
+    "memberWait":"../../memberWaitPlug/memberWaitPlug",
+    "questionController":"../questionController/questionController",
+    "homeMenu": "../../homeMenu/homeMenu",
+    "background": "../../backgroundPlug/backgroundPlug",
+    "mall": "../../mallPlug/mallPlug"
+  }
+}
