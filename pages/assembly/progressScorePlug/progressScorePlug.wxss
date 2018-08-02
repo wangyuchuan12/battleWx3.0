@@ -130,7 +130,7 @@
 	-webkit-overflow:auto;*/
 	width: 100%;
 	height: 2000px;
-	background: url("http://onluguho9.bkt.clouddn.com/progressScoreBackground.png");
+/*	background: url("http://onluguho9.bkt.clouddn.com/progressScoreBackground.png");*/
 	background-size:104% 104%;
 	background-position:-5px -70px;
 }

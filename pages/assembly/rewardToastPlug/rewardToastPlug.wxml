@@ -4,13 +4,27 @@
       <image class="rewardToastPlugHeadImg" src="{{toast.imgUrl}}"></image>
 
       <block wx:if="{{toast.type==0}}">
-        <view class="rewardToastPlugContent">正确</view>
+        <view class="rewardToastPlugContent">
+          <block wx:if="{{toast.content}}">
+            {{toast.content}}
+          </block>
+          <block wx:else>
+            正确
+          </block>
+        </view>
         <view class="rewardToastPlugLove"></view>
         <view class="rewardToastPlugNum"> + {{toast.num}}</view>
       </block>
 
       <block wx:if="{{toast.type==1}}">
-        <view class="rewardToastPlugContent">错误</view>
+        <view class="rewardToastPlugContent">
+          <block wx:if="{{toast.content}}">
+            {{toast.content}}
+          </block>
+          <block wx:else>
+            错误
+          </block>
+        </view>
         <view class="rewardToastPlugLoveB gray"></view>
         <view class="rewardToastPlugNum"> - {{toast.num}}</view>
       </block>

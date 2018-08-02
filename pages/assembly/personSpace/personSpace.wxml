@@ -1,0 +1,126 @@
+<view style="position:fixed;width:100%;height:100vh;z-index:2;" wx:if="{{mode==1}}">
+  <createRank id="createRank" bind:selectConfirm="selectConfirm"></createRank>
+</view>
+
+<view class="personSpace" style="position:fixed;width:100%;height:100vh;z-index:1;" wx:if="{{mode==0}}">
+  <view class="personSpaceMenus">
+    <view class="personSpaceMenu" style="background:rgba(255,153,156,1);margin:2.5%;">
+      <view class="personSpaceMenuIcon" style="width:60px;height:60px;background:url('{{invitationImg}}');background-size:100% 100%;top:15px;position:relative;left:10px;"></view>
+      <view class="personSpaceMenuContent">
+        <view class="personSpaceMenuContentName1">邀请好友</view>
+        <view class="personSpaceMenuContentName2"></view>
+      </view>
+        
+    </view>
+
+     <view class="personSpaceMenu" style="background:rgba(128,102,255,1);margin:2.5%;" bindtap='createSpaceClick'>
+      <view class="personSpaceMenuIcon" style="width:60px;height:60px;background:url('{{createImg}}');background-size:100% 100%;top:15px;position:relative;left:10px;"></view>
+      <view class="personSpaceMenuContent" >
+        <view class="personSpaceMenuContentName1">创建空间</view>
+        <view class="personSpaceMenuContentName2"></view>
+      </view>
+    </view>
+  </view>
+
+  <scroll-view class="personSpaceItems" scroll-y>
+      <view class="personSpaceItem" wx:for="{{items}}" wx:for-item="item" id="{{item.id}}" bindtap='itemClick'>
+      
+        <view class="personSpaceItemImg" wx:if="{{item.imgNum==1}}">
+          <image src="{{item.img1}}" style="width:100%;height:100%;"></image>
+        </view>
+      
+     
+        <view class="personSpaceItemImg" wx:if="{{item.imgNum==2}}">
+          <image src="{{item.img1}}" style="width:50%;height:50%;"></image>
+
+          <image src="{{item.img2}}" style="width:50%;height:50%;top:50%;position:relative;"></image>
+        </view>
+
+      <view class="personSpaceItemImg" wx:if="{{item.imgNum==3}}">
+          <image src="{{item.img1}}" style="width:33%;height:33%;"></image>
+
+          <image src="{{item.img2}}" style="width:33%;height:33%;top:33%;position:relative;"></image>
+
+          <image src="{{item.img3}}" style="width:33%;height:33%;top:66%;position:relative;"></image>
+      </view>
+      
+      <view class="personSpaceItemImg" wx:if="{{item.imgNum==4}}">
+          <image src="{{item.img1}}" style="width:50%;height:50%;"></image>
+          <image src="{{item.img2}}" style="width:50%;height:50%;"></image>
+          <image src="{{item.img3}}" style="width:50%;height:50%;"></image>
+          <image src="{{item.img4}}" style="width:50%;height:50%;"></image>
+      
+      </view>
+      
+      <view class="personSpaceItemImg" wx:if="{{item.imgNum==5}}">
+          <image src="{{item.img1}}" style="width:33%;height:33%;position:relative;top:5px;"></image>
+          <image src="{{item.img2}}" style="width:33%;height:33%;position:relative;top:5px;"></image>
+          <view sytle="display:block"></view>
+          <image src="{{item.img3}}" style="width:33%;height:33%;position:relative;top:5px;"></image>
+          
+          <image src="{{item.img4}}" style="width:33%;height:33%;position:relative;top:5px;"></image>
+          <image src="{{item.img5}}" style="width:33%;height:33%;position:relative;top:5px;"></image>
+      </view>
+
+
+      <view class="personSpaceItemImg"  wx:if="{{item.imgNum==6}}">
+          <image src="{{item.img1}}" style="width:33%;height:33%;position:relative;top:5px;"></image>
+          <image src="{{item.img2}}" style="width:33%;height:33%;position:relative;top:5px;"></image>
+          <image src="{{item.img3}}" style="width:33%;height:33%;position:relative;top:5px;"></image>
+          <image src="{{item.img4}}" style="width:33%;height:33%;position:relative;top:5px;"></image>
+          
+          <image src="{{item.img5}}" style="width:33%;height:33%;position:relative;top:5px;"></image>
+          <image src="{{item.img6}}" style="width:33%;height:33%;position:relative;top:5px;"></image>
+      </view>
+  
+      <view class="personSpaceItemImg" wx:if="{{item.imgNum==7}}">
+          <image src="{{item.img1}}" style="width:33%;height:33%;position:relative;"></image>
+          <image src="{{item.img2}}" style="width:33%;height:33%;position:relative;"></image>
+          <image src="{{item.img3}}" style="width:33%;height:33%;position:relative;"></image>
+          <view style="width:33%;height:33%;position:relative;display:inline-block"></view>
+          <image src="{{item.img4}}" style="width:33%;height:33%;position:relative;"></image>
+          
+          <view style="width:33%;height:33%;position:relative;display:inline-block"></view>
+          <image src="{{item.img5}}" style="width:33%;height:33%;position:relative;"></image>
+          <image src="{{item.img6}}" style="width:33%;height:33%;position:relative;"></image>
+          <image src="{{item.img7}}" style="width:33%;height:33%;position:relative;"></image>
+      </view>
+      
+      <view class="personSpaceItemImg" wx:if="{{item.imgNum==8}}">
+          <image src="{{item.img1}}" style="width:33%;height:33%;position:relative;"></image>
+          <image src="{{item.img2}}" style="width:33%;height:33%;position:relative;"></image>
+          <image src="{{item.img3}}" style="width:33%;height:33%;position:relative;"></image>
+          <image src="{{item.img4}}" style="width:33%;height:33%;position:relative;"></image>
+          <view style="width:33%;height:33%;position:relative;display:inline-block"></view>
+          
+          <image src="{{item.img5}}" style="width:33%;height:33%;position:relative;"></image>
+          <image src="{{item.img6}}" style="width:33%;height:33%;position:relative;"></image>
+          <image src="{{item.img7}}" style="width:33%;height:33%;position:relative;"></image>
+          <image src="{{item.img8}}" style="width:33%;height:33%;position:relative;"></image>
+      </view>
+      
+      
+      <view class="personSpaceItemImg" wx:if="{{item.imgNum==9}}">
+          <image src="{{item.img1}}" style="width:33%;height:33%;position:relative;"></image>
+          <image src="{{item.img2}}" style="width:33%;height:33%;position:relative;"></image>
+          <image src="{{item.img3}}" style="width:33%;height:33%;position:relative;"></image>
+          <image src="{{item.img4}}" style="width:33%;height:33%;position:relative;"></image>
+         <image src="{{item.img5}}" style="width:33%;height:33%;position:relative;"></image>
+          
+          <image src="{{item.img6}}" style="width:33%;height:33%;position:relative;"></image>
+          <image src="{{item.img7}}" style="width:33%;height:33%;position:relative;"></image>
+          <image src="{{item.img8}}" style="width:33%;height:33%;position:relative;"></image>
+          <image src="{{item.img9}}" style="width:33%;height:33%;position:relative;"></image>
+      </view>
+      
+
+        <view class="personSpaceItemContent">
+          <view class="personSpaceItemContentName">
+            {{item.name}}
+          </view>
+          <view class="personSpaceItemContentName2" wx:if="{{item.detail}}">{{item.detail}}</view>
+        </view>
+
+      </view>
+  </scroll-view>
+</view>

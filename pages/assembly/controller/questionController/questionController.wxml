@@ -1,10 +1,10 @@
 <view class="questionController">
   <questionInput id="questionInput" wx:if="{{mode==0}}" bind:selectSubmit="selectSubmit" bind:fillSubmit="fillSubmit" bind:inputSubmit="inputSubmit"></questionInput>
-  <view style="width:100%;height:50px;position:fixed;z-index:100000000000000" style="display:{{mode==0?'block':'none'}}" >
-    <timeSecond id="timeSecond"></timeSecond>
-  </view>
   <questionSelector id="questionSelector" bind:selectComplete="selectComplete" wx:if="{{mode==1}}" bind:selectSubject="selectSubject"></questionSelector>
 
   <titleToast id="titleToast"></titleToast>
+  <view style="width:100%;height:50px;position:absolute;z-index:1000000001" style="display:{{mode==0?'block':'none'}}" >
+    <timeSecond id="timeSecond"></timeSecond>
+  </view>
 
 </view>

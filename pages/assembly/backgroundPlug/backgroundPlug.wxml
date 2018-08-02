@@ -1,30 +1,30 @@
 <view style="position:fixed;z-index:2;width:100vh;height:100vh;">
-  <scroll-view class="backgroundPlug" scroll-into-view="{{currentBackgroundId}}" style="white-space:nowrap;display:flex;" decelerationRate="0.1" bindscrolltolower="lower" scroll-with-animation="true" id="backgroundPlug"   scroll-x>
-      <scroll-view id="danList" class="backgroundPlugItems" style="white-space:nowrap;position:fixed;" disable-scroll="true" scroll-left="{{scrollLeft}}"  bindscrolltolower="lower" scroll-with-animation="true"  scroll-x>
+  <view class="backgroundPlug" scroll-into-view="{{currentBackgroundId}}" style="white-space:nowrap;display:flex;" decelerationRate="0.1" bindscrolltolower="lower" scroll-with-animation="true" id="backgroundPlug"   scroll-x>
+      <view id="danList" class="backgroundPlugItems" style="white-space:nowrap;position:fixed;" disable-scroll="true" scroll-left="{{scrollLeft}}"  bindscrolltolower="lower" scroll-with-animation="true" wx:if="{{currentBackgroundId=='danList'}}" scroll-x>
       <block wx:for="{{danItems}}" wx:for-item="danItem">
         <view class="backgroundPlugItem" style="background:url('{{danItem.imgUrl}}');background-size:auto 100%;" wx:if="{{index%2==0}}">
         </view>
         <view class="backgroundPlugItem reversal" style="background:url('{{danItem.imgUrl}}');background-size:auto 100%;" wx:if="{{index%2==1}}">
         </view>
       </block>
-    </scroll-view>
+    </view>
 
-    <scroll-view id="home" class="backgroundPlugItems" style="white-space:nowrap;" scroll-with-animation="true" scroll-left="{{scrollLeft}}"  bindscrolltolower="lower"  scroll-x>
+    <view id="home" class="backgroundPlugItems" style="white-space:nowrap;" scroll-with-animation="true" scroll-left="{{scrollLeft}}"  bindscrolltolower="lower" wx:if="{{currentBackgroundId=='home'}}"  scroll-x>
       <block wx:for="{{homeItems}}" wx:for-item="homeItem">
         <view class="backgroundPlugItem" style="background:url('{{homeItem.imgUrl}}');background-size:auto 100%;" wx:if="{{index%2==0}}">
         </view>
         <view class="backgroundPlugItem reversal" style="background:url('{{homeItem.imgUrl}}');background-size:auto 100%;" wx:if="{{index%2==1}}">
         </view>
       </block>
-    </scroll-view>
+    </view>
 
-    <scroll-view id="pk" class="backgroundPlugItems"  style="white-space:nowrap;" scroll-left="{{scrollLeft}}"  scroll-with-animation="true" bindscrolltolower="lower"  scroll-x>
+    <view id="pk" class="backgroundPlugItems"  style="white-space:nowrap;" scroll-left="{{scrollLeft}}" wx:if="{{currentBackgroundId=='pk'}}" scroll-with-animation="true" bindscrolltolower="lower"  scroll-x>
     <block wx:for="{{pkItems}}" wx:for-item="pkItem">
         <view class="backgroundPlugItem" style="background:url('{{pkItem.imgUrl}}');background-size:auto 100%;" wx:if="{{index%2==0}}">
         </view>
         <view class="backgroundPlugItem reversal" style="background:url('{{pkItem.imgUrl}}');background-size:auto 100%;" wx:if="{{index%2==1}}">
         </view>
     </block>
-    </scroll-view>
-  </scroll-view>
+    </view>
+  </view>
 </view>

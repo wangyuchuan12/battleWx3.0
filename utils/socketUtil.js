@@ -1,5 +1,6 @@
 //var domain = "wss://www.chengxihome.com";
-var domain = "ws://192.168.0.133";
+//var domain = "ws://www.chengxihome.com";
+var domain = "ws://172.20.10.2";
 var request = require("request.js");
 var token;
 var callbacks = new Array();
@@ -44,6 +45,7 @@ function removeCallback(code){
 }
 
 wx.onSocketMessage(function (resp) {
+  
   data = resp.data;
   data = data.replace(" ", "");
   if (typeof data != 'object') {
@@ -54,6 +56,9 @@ wx.onSocketMessage(function (resp) {
     var callback = callbacks[i];
     if (callback.code == data.code) {
       callback.callback.call(data.data);
+      if (callback.code == "publishRest") {
+        console.log("啦啦啦啦啦啦啦啦啦");
+      }
     }
   }
 });
@@ -64,7 +69,9 @@ function openSocket(callback){
     success: function (u) {
       userInfo = u;
       token = userInfo.token;
-      var url = "/socket";
+      var url = domain + url + "?token=" + token;
+      doOpenSocket();
+      /*
       wx.closeSocket({
         url: domain + url + "?token=" + token,
         data: {
@@ -82,7 +89,7 @@ function openSocket(callback){
         fail: function (err) {
           doOpenSocket();
         }
-      });
+      });*/
     },
     fail:function(){
     }

@@ -6,7 +6,7 @@
     <view class="waitYuanquan" animation="{{animationData2}}">  
     </view>  
 
-  <view class="waitReadyButton" bindtap='ready' wx:if="{{waitUser.status==1}}">准备222</view>
+  <view class="waitReadyButton" bindtap='ready' wx:if="{{waitUser.status==1}}">准备</view>
   <!--
     <view class="waitCancelButton">取消</view>
   -->

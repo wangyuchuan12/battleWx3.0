@@ -13,7 +13,7 @@
 <view style="position:fixed;z-index:90000000000;background:green;">
   <template is="baseLayerout" data="{{...baseData}}"/>
 </view>
-<view style="position:absolute;z-index:30000000000">
+<view style="position:absolute;z-index:100">
   <template is="attrPlug" data="{{...attrPlugData}}"/>
 </view>
 
@@ -34,8 +34,10 @@
 
 <progressController id="progressController" 
  bind:initMembers="initMembers" bind:initMemberInfo="initMemberInfo"     bind:toProgress="toProgress" bind:progressChange="progressChange"
-bind:battleEnd="battleEnd" bind:stageRest="stageRest" bind:flushAttr="flushAttr" bind:back="back" bind:showMemberInfo="showMemberInfo" bind:hideMemberInfo="hideMemberInfo"></progressController>
-<loginPlug id="loginPlug"></loginPlug>
+bind:battleEnd="battleEnd" bind:stageRest="stageRest" bind:flushAttr="flushAttr" bind:back="back" bind:showMemberInfo="showMemberInfo" bind:hideMemberInfo="hideMemberInfo" bind:showFullAlert="showFullAlert2"></progressController>
+<loginPlug id="loginPlug" bind:loginSuccess="loginSuccess"></loginPlug>
 <progressMemberInfo id="progressMemberInfo" wx:if="{{isShowMemberInfo==1}}"></progressMemberInfo>
 
 <preLoadPlug id="preLoadPlug"></preLoadPlug>
+
+

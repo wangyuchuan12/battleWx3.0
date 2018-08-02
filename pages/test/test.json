@@ -13,6 +13,17 @@
     "multiple-rate": "../assembly/multiple-rate/multiple-rate",
     "stageResult": "../assembly/stageResult/stageResult",
     "menuController": "../assembly/controller/menuController/menuController",
-    "questionInput": "../assembly/questionInputPlug2/questionInputPlug"
+    "questionInput": "../assembly/questionInputPlug2/questionInputPlug",
+    "diePlug": "../assembly/diePlug/diePlug",
+    "danList": "../assembly/danListPlug/danListPlug",
+    "battleQuickRoom": "../assembly/battleQuickRoom/battleQuickRoom",
+    "battleRank": "../assembly/battleRank/battleRank",
+    "loveCool": "../assembly/loveCoolPlug/loveCoolPlug",
+    "buttonPlug": "../assembly/buttonPlug/buttonPlug",
+    "rewardGood": "../assembly/rewardGood/rewardGood",
+    "personSpace": "../assembly/personSpace/personSpace",
+    "battleList": "../assembly/battleListPlug/battleListPlug",
+    "battleSubjectList": "../assembly/battleSubjectListPlug/battleSubjectListPlug",
+    "createRankPlug": "../assembly/createRankPlug/createRankPlug"
   }
 }

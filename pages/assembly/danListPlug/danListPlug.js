@@ -7,6 +7,8 @@ var takepartRequest = require("../../../utils/takepartRequest.js");
 
 var request = require("../../../utils/request.js");
 
+var domain = request.getDomain();
+
 Component({
   /**
    * 组件的属性列表
@@ -25,16 +27,17 @@ Component({
     exp: 0,
     currentDanId: "",
     scrollTop: 0,
-    dans: [/*{
+    dans: [{
       id:0,
       status:0,
       danName:"原始人",
       danId:"",
       imgUrl:""
-    }*/],
+    }],
     thisDan: null,
     alertDan: null,
-    isDanAlert: 0
+    isDanAlert: 0,
+    questionImgUrl:""
   },
 
   /**
@@ -116,7 +119,13 @@ Component({
     },
 
     initBattleDans: function () {
-      console.log(".......initBattleDans");
+      var questionImgUrl = domain + "/imgs/question.png";
+
+      var lockImgUrl = domain + "/imgs/lock.png";
+      this.setData({
+        questionImgUrl: questionImgUrl,
+        lockImgUrl: lockImgUrl
+      });
       var outThis = this;
       battleDanRequest.listRequest({
         success: function (dans) {

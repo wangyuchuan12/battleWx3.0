@@ -1,0 +1,21 @@
+<view class="loveCoolPlug">
+  <view class="loveCoolPlugLoves">
+    <view class="loveCoolPlugLoveContext" wx:for="{{loveCooling.loveCount}}" style="width:{{loveSize}}px;height:{{loveSize}}px;">
+      <view class="loveCoolPlugLove"></view>
+    </view>
+    <view class="loveCoolPlugLoveContext" wx:for="{{loveCooling.loveLimit-loveCooling.loveCount}}" style="width:{{loveSize}}px;height:{{loveSize}}px;">
+     <view class="loveCoolPlugLoveHollow" ></view>
+    </view>
+  </view>
+
+  <view class="loveCoolContainerHeaderCooling" style="display:inline-block" wx:if="{{loveCooling.status==1}}">
+          <view class="loveCoolContainerHeaderCoolingLabel" style="width:{{loveCooling.schedule/loveCooling.upperLimit*100}}%;">
+          </view>
+          <view class="loveCoolContainerHeaderCoolingContent">
+            <view class="loveCoolContainerHeaderCoolingContent1">第<font style="color:red;font-weight:bolder;font-size:15px;">{{loveCooling.coolLoveSeq}}</font>颗 ❤️ 正在恢复中</view>
+            <view class="loveCoolContainerHeaderCoolingContent2">
+              剩余时间：{{loveCooling.hour}}时{{loveCooling.min}}分{{loveCooling.second}}秒
+            </view>
+          </view>
+  </view>
+</view>

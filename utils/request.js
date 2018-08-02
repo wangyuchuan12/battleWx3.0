@@ -1,7 +1,7 @@
 //var domain = "http://www.vlingquan.com";
 //var domain = "https://www.chengxihome.com";
 //var domain = "http://www.fisherman7.com";
-var domain = "http://192.168.0.133";
+var domain = "http://172.20.10.2";
 //根据code登陆用户bbin
 var loginByJsCodeUrl = domain + "/api/common/login/loginByJsCode";
 var registerUserByJsCode = domain + "/api/common/login/registerUserByJsCode";
@@ -87,7 +87,9 @@ function request(url, params, callback, data) {
     }
   }
 
-  //token = "8fd6cdf2-c041-4156-8fb8-68cee02d61b9";
+  //token = "229bb9d5-eda5-4af5-8914-823203341afc";
+  //token = "73d0fd6f-2d23-4e4f-85eb-773b70ee1474";
+  //token = "6513c982-f411-4bb9-b1d8-c781a622d60e";
   params.token = token;
   wx.request({
     url: url,

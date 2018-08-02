@@ -1,0 +1,40 @@
+<scroll-view class="battleQuickRoom" scroll-y>
+  <view class="battleQuickRoomItems" wx:for="{{rooms}}" wx:for-item="room">
+    <view class="battleQuickRoomItem">
+      <view class="battleQuickRoomItemHead" id="{{room.id}}" bindtap='takepartClick'>
+
+        <image class="battleQuickRoomItemHeadImg" src="{{room.imgUrl}}"></image>
+        <view class="battleQuickRoomItemHeadCotent">
+          <view class="battleQuickRoomItemHeadCotentName">{{room.name}}</view>
+          <view class="battleQuickRoomItemHeadCotentStatus" style="color:green;"
+          wx:if="{{room.status==1}}">
+            进行中
+          </view>
+
+          <view class="battleQuickRoomItemHeadCotentStatus" 
+          wx:if="{{room.status==0}}">
+            暂停
+          </view>
+        </view>
+
+        <view class="battleQuickRoomItemHeadButton" wx:if="{{room.status==1}}">参加</view>
+        
+      </view>
+
+      <view class="battleQuickRoomItemDetail">{{room.detail}}</view>
+
+      <scroll-view class="battleQuickRoomItemImgs" wx:if="{{room.imgs.length>0}}" scroll-x>
+        <image class="battleQuickRoomItemImg" wx:for="{{room.imgs}}" wx:for-item="img" src="{{img}}"></image>
+      </scroll-view>
+
+      <scroll-view class="battleQuickRoomItemRanks" style="display:none;">
+        <view class="battleQuickRoomItemRankButton">查看排名</view>
+
+        <view class="battleQuickRoomItemRank" wx:for="{{room.members}}" wx:for-item="member">
+          <view class="battleQuickRoomItemRankNum">{{index+1}}</view>
+          <image class="battleQuickRoomItemRankImg" src="{{member.imgUrl}}"></image>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+</scroll-view>

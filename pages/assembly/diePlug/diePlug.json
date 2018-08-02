@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "mall": "../mallPlug/mallPlug",
+    "buttonPlug": "../buttonPlug/buttonPlug"
+  }
+}

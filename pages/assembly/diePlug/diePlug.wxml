@@ -1,0 +1,29 @@
+<view style="position:fixed;bottom:0px;z-index:100000000;width:100%;" wx:if="{{isAd}}">
+  <ad unit-id="adunit-d8aafdc858444de9" ></ad>
+</view>
+<view class="diePlug" wx:if="{{type==0&&!isMall}}">
+  <image src="{{beanImgUrl}}" class="cryImg"></image>
+  <view class="diePlugContent">智慧豆不足</view>
+
+    <view class="dieButtons">
+      <buttonPlug id="buttonPlug"></buttonPlug>
+    </view>
+
+  
+</view>
+
+<view class="diePlug" wx:if="{{type==1&&!isMall}}">
+  <image src="{{loveImgUrl}}" class="cryImg"></image>
+  <view class="diePlugContent">爱心不足</view>
+
+
+
+   <view class="dieButtons">
+      <buttonPlug id="buttonPlug"></buttonPlug>
+  </view>
+  
+
+ 
+</view>
+
+<mall id="mall" wx:if="{{isMall}}" bind:paySuccess="paySuccess"></mall>

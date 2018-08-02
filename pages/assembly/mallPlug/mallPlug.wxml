@@ -1,4 +1,4 @@
-<view class="mall" wx:if="{{platform=='android'}}">
+<view class="mall">
   <view class="mallContent">
     <view class="mallTabList">
       <view class="mallTabItem" wx:if="{{type==1}}" 
@@ -43,6 +43,8 @@
   </view>
 </view>
 
+<!--
 <view class="mallText" wx:else>
   <image src="http://ovqk5bop3.bkt.clouddn.com/pay.png" class="mallTextImg"></image>
 </view>
+-->

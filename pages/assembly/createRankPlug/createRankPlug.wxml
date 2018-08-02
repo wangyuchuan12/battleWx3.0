@@ -1,0 +1,28 @@
+<view class="personSpace">
+  <view class="personSpaceMenus">
+
+     <view class="personSpaceMenu" style="background:rgba(128,102,255,1);left:50%;"  bindtap='selectConfirm'>
+      <view class="personSpaceMenuIcon" style="width:60px;height:60px;background:url('{{confirmImg}}');background-size:100% 100%;top:15px;position:relative;left:10px;"></view>
+      <view class="personSpaceMenuContent">
+        <view class="personSpaceMenuContentName1">确定</view>
+        <view class="personSpaceMenuContentName2"></view>
+      </view>
+    </view>
+  </view>
+
+  <scroll-view class="createRankPlugItems" bindscrolltolower="searchScrollLower" scroll-y>
+    <block wx:for="{{subjects}}" wx:for-item="subject">
+      <view class="createRankPlugItem"  id="{{subject.id}}" bindtap='itemClick'>
+        <image src="{{subject.imgUrl}}" class="createRankPlugItemImg"></image>
+        <view style="width:100%;text-align:center;position:absolute;bottom:0px;color:white;background:rgba(28,29,24,0.2);">{{subject.name}}</view>
+
+        <view class="createRankPlugItemHook" style="background:url('{{hookImg}}');background-size:100% 100%;position:absolute;right:5px;top:5px;width:50px;height:50px;" wx:if="{{subject.isSelect}}"></view>
+
+        <view class="createRankPlugItemHook" style="background:url('{{hookImg}}');background-size:100% 100%;position:absolute;right:5px;top:5px;width:50px;height:50px;" style="width:1px;height:1px;" wx:else></view>
+      </view>
+    </block>
+  </scroll-view>
+
+
+</view>
+

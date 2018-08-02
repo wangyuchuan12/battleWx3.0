@@ -1,4 +1,4 @@
-var waitRoomRequest = require("../../../utils/waitRoomRequest.js");
+var waitRoomRequest = null;
 Component({
   /**
    * 组件的属性列表

@@ -72,7 +72,7 @@ Component({
         }
       },10);
   
-      if (interval){
+     /* if (interval){
         clearInterval(interval);
       }
       var outThis= this;
@@ -85,7 +85,7 @@ Component({
             scrollLeft: scrollLeft
           });
         },1000);
-      },5000);
+      },5000);*/
     },
   }
 })

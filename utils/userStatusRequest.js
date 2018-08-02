@@ -7,10 +7,15 @@ function userStatusInfoRequest(callback) {
     success:function(resp){
       if(resp.success){
         var data = resp.data;
-        if (data.isLine==1){
-          callback.isLine();
+        if (data.isLine){
+          callback.isLine(resp.data);
         }else{
           callback.notLine();
+        }
+
+
+        if (data.isProgress){
+          callback.isProgress(data.roomId);
         }
         
       } else if (resp.errorCode==401){

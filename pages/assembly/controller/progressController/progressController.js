@@ -4,6 +4,10 @@ var battleMemberInfoRequest = require("../../../../utils/battleMemberInfoRequest
 var syncPaperDataRequest = require("../../../../utils/battleSyncDataRequest.js");
 
 var battleMembersRequest = require("../../../../utils/battleMembersRequest.js");
+
+var takepartRequest = require("../../../../utils/takepartRequest.js");
+
+var battleRequest = require("../../../../utils/battleRequest.js");
 Component({
   /**
    * 组件的属性列表
@@ -21,20 +25,67 @@ Component({
     battleId:"",
     roomId:"",
     memberInfo:null,
-    isInitPositions: 0
+    isInitPositions: 0,
+    isCool:0,
+    isAd:0
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
-    showLoading: function () {
+    showLoading: function (title) {
+      if(!title){
+        title = "";
+      }
       wx.showLoading({
-        mask: true
+        mask: true,
+        title: title
       });
     },
+
     hideLoading: function () {
       wx.hideLoading();
+    },
+
+    signOut:function(){
+      var outThis = this;
+      var roomId = this.data.roomId;
+      wx.showModal({
+        title: '比赛正在进行中',
+        content: '退出后此轮答题结果计算在内，是否确定退出',
+        success:function(data){
+          if(data.confirm){
+            battleRequest.signOutRequest(roomId, {
+              success: function () {
+                outThis.setData({
+                  mode: 0
+                });
+
+                setTimeout(function(){
+                  var menuController = outThis.selectComponent("#menuController");
+                  menuController.toScene("home");
+                },1000);   
+              },
+              fail: function () {
+
+              }
+            });
+          }
+        }
+      });
+    },
+
+    
+
+    getMode:function(){
+      var menuController = this.selectComponent("#menuController");
+      return memberController.getMode();
+    },
+
+    toScene:function(scene){
+      var menuController = this.selectComponent("#menuController");
+      menuController.toScene(scene);
     },
 
       /**
@@ -47,6 +98,17 @@ Component({
       }
     },
 
+    toScene:function(scene){
+      var menuController = this.selectComponent("#menuController");
+      menuController.toScene(scene);
+    },
+
+    superSuccess:function(){
+      this.setData({
+        isDie:0
+      });
+    },
+
     flushAttr:function(){
       var myEventDetail =
         {} // detail对象，提供给事件监听函数
@@ -57,10 +119,9 @@ Component({
       
       var menuController = this.selectComponent("#menuController");
       menuController.initBackground();
+      menuController.init();
 
-      setTimeout(function () {
-        menuController.toScene("home");
-      }, 2000);
+      menuController.toScene("home");
 
       
     },
@@ -83,22 +144,60 @@ Component({
        
     },
 
-    toStart:function(e){
+    takepartRoomListener:function(e){
+      var roomId = e.detail.roomId;
+      this.takepartRoom(roomId);
+    },
 
-      this.setData({
-        mode:2
+    takepartRoom:function(roomId){
+      var outThis = this;
+      takepartRequest.battleTakepart(roomId,{
+          success:function(room){
+            outThis.doStart(room);
+          },
+          fail:function(){
+            console.log(".......fail");
+          }
       });
-      var battleRoom = e.detail.battleRoom;
+    },
 
+    registerRoomEnd: function () {
+      var outThis = this;
+      socketUtil.registerCallback("publishRoomEnd", {
+        call: function (data) {
+          outThis.hideLoading();
+          var myEventDetail =
+            { rewardBean: data.rewardBean, rewardLove: data.rewardLove, isPass: data.isPass,rank:data.rank} // detail对象，提供给事件监听函数
+          var myEventOption = {} // 触发事件的选项
+          outThis.triggerEvent('showFullAlert', myEventDetail, myEventOption);
+
+          outThis.setData({
+            isDie: 0
+          });
+        }
+      });
+    },
+
+    doStart: function (battleRoom){
+      var outThis = this;
+      setTimeout(function(){
+        outThis.setData({
+          isAd:1
+        });
+      },300000);
+     
+      this.setData({
+        mode: 2
+      });
       var roomId = battleRoom.id;
       var battleId = battleRoom.battleId;
 
       this.setData({
-        roomId:roomId,
-        battleId:battleId,
-        battleRoom:battleRoom,
-        members:battleRoom.members,
-        memberInfo:battleRoom.memberInfo
+        roomId: roomId,
+        battleId: battleId,
+        battleRoom: battleRoom,
+        members: battleRoom.members,
+        memberInfo: battleRoom.memberInfo
       });
 
       var myEventDetail =
@@ -106,20 +205,85 @@ Component({
       var myEventOption = {} // 触发事件的选项
       this.triggerEvent('toProgress', myEventDetail, myEventOption);
 
+      if (battleRoom.members && battleRoom.memberInfo){
+        myEventDetail =
+          { members: battleRoom.members, memberInfo: battleRoom.memberInfo } // detail对象，提供给事件监听函数
+        var myEventOption = {} // 触发事件的选项
+        outThis.triggerEvent('initMembers', myEventDetail, myEventOption);
+        outThis.setData({
+          isInitPositions: 1
+        });
+      }
+
+      this.showLoading("等待开始...");
+
       this.registerPublishShowSubjects();
       this.registerPublishShowSubjectStatus();
       this.registerShowQuestion();
       this.registerShowPlayers();
       this.registerAnswer();
       this.registerRest();
+      this.registerMyInfo();
       this.registerReward();
+      this.registerMembers();
+      this.registerDie();
+      this.registerRoomEnd();
     },
+
+    toStart:function(e){
+
+      
+      var battleRoom = e.detail.battleRoom;
+
+      this.doStart(battleRoom)
+      
+    },
+
+    registerMembers:function(){
+      var outThis = this;
+      socketUtil.registerCallback("publish_members", {
+        call: function (data) {
+          var members = data.members;
+          var memberInfo = data.memberInfo;
+          var myEventDetail =
+            { members: members, memberInfo: memberInfo } // detail对象，提供给事件监听函数
+          var myEventOption = {} // 触发事件的选项
+          outThis.triggerEvent('initMembers', myEventDetail, myEventOption);
+          outThis.setData({
+            isInitPositions: 1
+          });
+        }
+      });
+    },
+
+    registerDie:function () {
+      var outThis = this;
+      socketUtil.registerCallback("publish_die", {
+        call: function (data) {
+          console.log("...........die");
+          outThis.setData({
+            isDie: 1
+          });
+          var diePlug = outThis.selectComponent("#diePlug");
+          if(diePlug){
+            diePlug.init(data.roomId, data.type);
+          }else{
+            setTimeout(function(){
+              var diePlug = outThis.selectComponent("#diePlug");
+              diePlug.init(data.roomId, data.type);
+            },1000);
+          }
+          
+        }
+      });
+    },
+
 
     registerPublishShowSubjectStatus:function(){
       var outThis = this;
       socketUtil.registerCallback("showSubjectStatus", {
         call: function (subject) {
-          console.log("........registerPublishShowSubjectStatus");
+          outThis.hideLoading();
           var questionController = outThis.selectComponent("#questionController");
           questionController.updateSubject(subject);
         }
@@ -131,6 +295,7 @@ Component({
       var outThis = this;
       socketUtil.registerCallback("publishShowQuestion", {
         call: function (question) {
+          outThis.hideLoading();
           outThis.setData({
             mode:1
           });
@@ -140,10 +305,55 @@ Component({
       });
     },
 
+    registerDie: function () {
+      var outThis = this;
+      socketUtil.registerCallback("publish_die", {
+        call: function (data) {
+          outThis.hideLoading();
+          outThis.setData({
+            isDie: 1
+          });
+          var diePlug = outThis.selectComponent("#diePlug");
+          diePlug.init(data.roomId, data.type);
+        }
+      });
+    },
+
+    registerMyInfo:function(){
+      var outThis = this;
+      socketUtil.registerCallback("publishMyInfo", {
+        call: function (data) {
+          
+          outThis.hideLoading();
+          var cool = data.cool;
+
+          console.log(".........cool:"+JSON.stringify(cool));
+         if(cool){
+           outThis.setData({
+             isCool:1
+           });
+           var loveCool = outThis.selectComponent("#loveCool");
+           cool.loveSize = 50;
+           loveCool.init(cool);
+         }
+          
+        }
+      });
+    },
+
+    resurrection:function(){
+      this.setData({
+        isDie:0
+      });
+    },
+
     registerRest: function () {
       var outThis = this;
+      console.log(".....sssssdsdfsf");
       socketUtil.registerCallback("publishRest", {
         call: function (data) {
+          outThis.hideLoading();
+          console.log("publishRest");
           outThis.setData({
             mode:3
           });
@@ -154,7 +364,6 @@ Component({
           stageRest.setMembers(members);
           stageRest.setMember(memberInfo);
           stageRest.setRoom(room);
-
           var isInitPositions = outThis.data.isInitPositions;
           if (!isInitPositions){
             var myEventDetail =
@@ -180,21 +389,28 @@ Component({
       var outThis = this;
       socketUtil.registerCallback("showAnswerPlayers", {
         call: function (players) {
+          outThis.hideLoading();
         }
       });
     },
 
     registerReward:function(){
-
       var outThis = this;
       socketUtil.registerCallback("publish_reward", {
         call: function (reward) {
+          outThis.hideLoading();
           var rewardToast = outThis.selectComponent("#rewardToast");
           if (reward.status==0) {
-            rewardToast.startAnnim(reward.imgUrl, 0, Math.abs(reward.rewardBean));
+            var cnRightCount = reward.cnRightCount;
+            var str = "";
+            str = "答对 × " + cnRightCount
+            rewardToast.startAnnim(reward.imgUrl, 0, Math.abs(reward.rewardBean), str);
 
           } else if (reward.status == 1) {
-            rewardToast.startAnnim(reward.imgUrl, 1, Math.abs(reward.subBean));
+            rewardToast.startAnnim(reward.imgUrl, 1, Math.abs(reward.subBean),"错误");
+          }
+          if (reward.isOwner){
+            outThis.flushAttr();
           }
         }
       });
@@ -205,6 +421,7 @@ Component({
       var outThis = this;
       socketUtil.registerCallback("publishDoAnswer", {
         call: function (answer) {
+          outThis.hideLoading();
           console.log(".......answer:"+JSON.stringify(answer));
           var player = {
             imgUrl: answer.userImg,
@@ -221,6 +438,7 @@ Component({
       var outThis = this;
       socketUtil.registerCallback("showSubjects", {
         call: function (subjectData) {
+          outThis.hideLoading();
           var battleRoom = outThis.data.battleRoom;
           var members = outThis.data.members;
           outThis.setData({
@@ -328,6 +546,7 @@ Component({
       var outThis = this;
       socketUtil.registerCallback("battleEndCode", {
         call: function (ranks) {
+          outThis.hideLoading();
           outThis.setData({
             mode:1
           });
@@ -357,6 +576,7 @@ Component({
       var outThis = this;
       socketUtil.registerCallback("progressCode", {
         call: function (callbackMembers) {
+          outThis.hideLoading();
           var memberInfo = outThis.data.memberInfo;
           var myEventDetail =
             {memberInfo:memberInfo,members:callbackMembers} // detail对象，提供给事件监听函数
@@ -384,6 +604,7 @@ Component({
       var outThis = this;
       socketUtil.registerCallback("takepartCode", {
         call: function (memberInfo) {
+          outThis.hideLoading();
           console.log("memberInfo:"+JSON.stringify(memberInfo));
         }
       });
@@ -393,6 +614,7 @@ Component({
       var outThis = this;
       socketUtil.registerCallback("roomStartCode", {
         call: function (room) {
+          outThis.hideLoading();
           console.log("room:"+JSON.stringify(room));
         }
       });
@@ -473,6 +695,11 @@ Component({
       });
     },
 
+    toWaitRoom:function(id){
+      var menuController = this.selectComponent("#menuController");
+      menuController.toWaitRoom(id);
+    },
+
     toPkInto:function(id){
       var menuController = this.selectComponent("#menuController");
       menuController.toPkInto(id);
@@ -481,6 +708,11 @@ Component({
     onShareAppMessage: function () {
       var menuController = this.selectComponent("#menuController");
       return menuController.onShareAppMessage();
+    },
+
+    toRank:function(rankId){
+      var menuController = this.selectComponent("#menuController");
+      menuController.toRankInfo(rankId);
     },
     
     initMembers: function () {

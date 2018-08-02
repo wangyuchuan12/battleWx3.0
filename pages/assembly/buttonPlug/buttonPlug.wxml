@@ -1,0 +1,23 @@
+<view class="buttonPlug">
+  <view class="buttonPlugItems">
+
+    <block wx:for="{{buttons}}" wx:for-item="button">
+    <view class="buttonPlugItem" style="background:url('{{buttonImg}}');background-size:100% 700px;background-position:0px -20px" bindtap="buttonClick" wx:if="{{index==0&&!button.isShare}}" id="{{button.id}}">{{button.name}}</view>
+
+    <button class="buttonPlugItem" style="background:url('{{buttonImg}}');background-size:100% 700px;background-position:0px -20px;top:30px;border:0.1px solid white;" bindtap="buttonClick" wx:if="{{index==0&&button.isShare}}" open-type='share' id="{{button.id}}">{{button.name}}</button>
+
+        <view class="buttonPlugItem" style="background:url('{{buttonImg}}');background-size:100% 700px;background-position:0px -120px" bindtap="buttonClick" wx:if="{{index==1&&!button.isShare}}" id="{{button.id}}">{{button.name}}</view>
+
+        <button class="buttonPlugItem" style="background:url('{{buttonImg}}');background-size:100% 700px;background-position:0px -120px;top:30px;" bindtap="buttonClick" wx:if="{{index==1&&button.isShare}}" open-type="share" id="{{button.id}}">{{button.name}}</button>
+
+        <view class="buttonPlugItem" style="background:url('{{buttonImg}}');background-size:100% 700px;background-position:0px -220px" bindtap="buttonClick" wx:if="{{index==2&&!button.isShare}}" id="{{button.id}}">{{button.name}}</view>
+
+        <button class="buttonPlugItem" style="background:url('{{buttonImg}}');background-size:100% 700px;background-position:0px -220px;top:20px;" bindtap="buttonClick" wx:if="{{index==2&&button.isShare}}" open-type='share' id="{{button.id}}">{{button.name}}</button>
+
+        <view class="buttonPlugItem" style="background:url('{{buttonImg}}');background-size:100% 700px;background-position:0px -320px;top:-10px;position:relative;" bindtap="buttonClick" wx:if="{{index==3&&!button.isShare}}" id="{{button.id}}">{{button.name}}</view>
+
+        <button class="buttonPlugItem" style="background:url('{{buttonImg}}');background-size:100% 700px;background-position:0px -320px;top:20px;" bindtap="buttonClick" wx:if="{{index==3&&button.isShare}}" open-type="share" id="{{button.id}}">{{button.name}}</button>
+    </block>
+    
+  </view>
+</view>

@@ -1,27 +1,24 @@
 <view class="waitRoomPlug">
   <view class="waitRoomPlugHeader">
-    <view class="waitRoomPlugHeaderButton" style='top:60px;'> + 邀请好友</view>
-    <view class="waitRoomPlugHeaderButton" style="top:80px;"> - 踢出房员</view>
-    <view class="waitRoomPlugHeaderText" style="top:100px;" bindtap='attrSelectClick' wx:if="{{member.isOwner}}">{{room.processGogal}}米 {{room.name}}<span style="padding-left:20px;font-weight:bolder;color:white;">＞</span></view>
-
-    <view class="waitRoomPlugHeaderText" style="top:100px;" wx:else>{{room.processGogal}}米 {{room.name}}<span style="padding-left:20px;font-weight:bolder;color:white;"></span></view>
-
+    <button class="waitRoomPlugHeaderButton" style='top:60px;' open-type='share'> + 邀请好友</button>
+   <!-- <view class="waitRoomPlugHeaderButton" style="top:80px;"> - 踢出房员</view>-->
   </view>
   <view class="waitRoomPlugContent">
     <view class="waitRoomPlugContentMembers">
-      <block wx:for="{{members}}" wx:for-item="member">
-        <view class="waitRoomPlugContentMember"  style="background:url('{{member.imgUrl}}');background-size:100% 100%;" wx:if="{{member.imgUrl}}">
-          <view class="waitRoomPlugContentMemberHeader" wx:if="{{member.isOwner}}">房主</view>
-          <view class="waitRoomPlugContentMemberStatus" wx:if="{{member.status==2}}">准备</view>
+      <block wx:for="{{members}}" wx:for-item="thisMember" wx:if="{{thisMember.status==0||thisMember.status==1||thisMember.status==2||thisMember.status==3||thisMember.status==4}}">
+        <view class="waitRoomPlugContentMember"  style="background:url('{{thisMember.imgUrl}}');background-size:100% 100%;" wx:if="{{thisMember.imgUrl}}">
+          <view class="waitRoomPlugContentMemberHeader" wx:if="{{thisMember.isOwner}}">房主</view>
+          <view class="waitRoomPlugContentMemberStatus" wx:if="{{thisMember.status==2}}">准备</view>
+        <view class="waitRoomPlugCotentMemberBrokenNet" wx:if="{{thisMember.status==4}}" style="background:url('{{brokenNetImg}}');background-size:100% 100%;"></view>
+        <view class="waitRoomPlugCotentMemberDel" wx:if="{{!thisMember.isOwner&&member.isOwner}}" style="background:url('{{delImg}}');background-size:100% 100%;" bindtap='delClick' id="{{thisMember.id}}"></view>
         </view>
-
-        <view class="waitRoomPlugContentMember" wx:if="{{!member.imgUrl}}" >
-          <view class="waitRoomPlugContentMemberHeader" wx:if="{{member.isOwner}}">房主</view>
-          <view class="waitRoomPlugContentMemberStatus" wx:if="{{member.status==2}}">准备</view>
+        <view class="waitRoomPlugContentMember" wx:if="{{!thisMember.imgUrl}}" >
+          <view class="waitRoomPlugContentMemberHeader" wx:if="{{thisMember.isOwner}}">房主</view>
+          <view class="waitRoomPlugContentMemberStatus" wx:if="{{thisMember.status==2}}">准备</view>
         </view>
       </block>
     </view>
-    <view class="waitRoomButton" wx:if="{{member.isOwner}}" bindtap='startClick'>开始</view>
+    <view class="waitRoomButton"  bindtap='startClick' wx:if="{{member.isOwner&&!isStart}}">开始</view>
 
     <view class="waitRoomButton" bindtap='readyClick' wx:if="{{!member.isOwner&&member.status==1}}">准备</view>
 
@@ -30,3 +27,5 @@
 </view>
 
 <waitRoomOptionSelect id="waitRoomOptionSelect" wx:if="{{isSelectShow==1}}" bind:optionSelect="optionSelect"></waitRoomOptionSelect>
+
+<loginPlug id="loginPlug"></loginPlug>

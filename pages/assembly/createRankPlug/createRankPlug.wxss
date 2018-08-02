@@ -1,0 +1,24 @@
+@import '../personSpace/personSpace.wxss';
+
+.personSpaceMenus{
+  height: 20vh;
+}
+
+.createRankPlugItems{
+  text-align: left;
+  height:70vh;
+}
+
+.createRankPlugItem{
+  width:45%;
+  height: 150px;
+  display: inline-block;
+  margin: 2%;
+  position: relative;
+}
+
+
+.createRankPlugItemImg{
+  width:100%;
+  height: 100%;
+}

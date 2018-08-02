@@ -18,7 +18,11 @@ var battleGiftRequest = require("../../utils/battleGiftRequest.js");
 
 var socketUtil = require("../../utils/socketUtil.js");
 
+var shareUtil = require("../../utils/shareUtil.js");
+
 var takepartRequest = require("../../utils/takepartRequest.js");
+
+var frendRequest = require("../../utils/frendRequest.js");
 
 var outThis;
 
@@ -28,6 +32,8 @@ var questionSelector;
 
 var receiveMemberNoticeCallback;
 var receiveRoomNoticeCallback;
+
+var interval;
 
 //自定义组件
 var timeSecond;
@@ -48,13 +54,23 @@ var layerout = new baseLayerout.BaseLayerout({
     memberInfo:null,
     members:null,
     isShowMemberInfo:0,
-    loginShow:0
+    loginShow:0,
+    isDie:0,
+    isLogin:0
   },
 
   showMemberInfo:function(){
     this.setData({
       isShowMemberInfo:1
     });
+  },
+
+  roomSignOut:function(){
+    this.setData({
+      mode:0
+    });
+    var progressController = this.selectComponent("#progressController");
+    progressController.toScene("home");
   },
 
   back:function(e){
@@ -105,7 +121,7 @@ var layerout = new baseLayerout.BaseLayerout({
   },
 
   initMemberInfo:function(e){
-    var memberInfo = e.detail.memberInfo;
+    var memberInfo = e.detail.memberInfo
     this.setData({
       memberInfo:memberInfo
     });
@@ -116,7 +132,6 @@ var layerout = new baseLayerout.BaseLayerout({
 
 
   progressStatusChange: function (memberInfo,callbackMembers) {
-    console.log("callbackmembers:"+JSON.stringify(callbackMembers));
     var outThis = this;
     var memberInfo = this.data.memberInfo;
     var members = this.data.members;
@@ -171,59 +186,201 @@ var layerout = new baseLayerout.BaseLayerout({
   },
 
   onShow:function(){
-    var loginPlug = this.selectComponent("#loginPlug");
-    var loginShow = this.data.loginShow;
-    if(loginShow){
-      loginPlug.showOpenSocketType(null, {
-        success: function () {
-
-        }
-      });
+    var callback = new Object();
+    callback.call = function(){
+      console.log("hshshss");
     }
+    shareUtil.registerCallback("haha", callback);
+
+    wx.showShareMenu({
+      withShareTicket: true,
+    });
   },
 
-  registerRoomEnd:function(){
+  superSuccess:function(){
     var outThis = this;
-    socketUtil.registerCallback("publishRoomEnd", {
-      call: function (room) {
-        outThis.showFullAlert("通过", "33", 1, 2, "确定");
+    setTimeout(function(){
+      outThis.setData({
+        isDie: 0
+      });
+    },200);
+  },
+
+  showFullAlert2:function(e){
+    var rank = e.detail.rank;
+    var rewardBean = e.detail.rewardBean;
+    var rewardLove = e.detail.rewardLove;
+    var isPass = e.detail.isPass;
+    if (isPass) {
+      this.showFullAlert("通过", "第" + rank + "名", rewardBean, rewardLove, "确定");
+    } else {
+      this.showFullAlert("失败", "第" + rank + "名", rewardBean, rewardLove, "确定");
+    }
+
+
+    if (rewardBean || rewardLove) {
+      outThis.flushAttr();
+    }
+
+    this.setData({
+      isDie: 0
+    });
+  },
+
+  loginSuccess:function(e){
+    var userId = e.detail.userId;
+    this.setData({
+      userId: userId
+    });
+    console.log(".....userId:"+userId);
+  },
+
+  registerFrend: function (recommendUserId){
+    frendRequest.registerFrend(recommendUserId,{
+      success:function(){
+        console.log("注册朋友成功")
+      },
+      fail:function(){
+        console.log("注册朋友失败")
       }
     });
   },
   
   onLoad: function (options) {
+    var recommendUserId = options.recommendUserId;
+    if (recommendUserId){
+      this.registerFrend(recommendUserId);
+    }
+    var preLoadPlug = this.selectComponent("#preLoadPlug");
+    preLoadPlug.showPreLoad({
+      success: function () {
+
+      }
+    });
     var outThis = this;
     var progressController = this.selectComponent("#progressController");
     progressController.init();
-    this.registerRoomEnd();
+    
 
-    var preLoadPlug = this.selectComponent("#preLoadPlug");
-    preLoadPlug.showPreLoad({
-      success:function(){
-        try{
-          outThis.initAccountInfo();
-          var skipType = options.skipType;
-          var id = options.id;
-          if (skipType == 2) {
+    var outThis = this;
+
+    var skipType = options.skipType;
+    var id = options.id;
+    if (skipType == 2) {
+      setTimeout(function(){
+        progressController.toWaitRoom(id);
+        var loginPlug = outThis.selectComponent("#loginPlug");
+        loginPlug.startOnCheck(null, {
+          success: function (data) {
+            preLoadPlug.hidePreLoad();
             progressController.toPkInto(id);
+            outThis.flushAttr();
+            /*var progressController = outThis.selectComponent("#progressController");
+            var mode = progressController.getMode();
+            if(mode==8){
+              progressController.toScene("home");
+            }*/
           }
-          outThis.setData({
-            loginShow:0
-          });
-          setTimeout(function(){
-            outThis.setData({
-              loginShow:1
+        },{
+          call:function(data){
+            console.log("**************22:"+JSON.stringify(data));
+            preLoadPlug.hidePreLoad();
+            progressController.toPkInto(id);
+            outThis.flushAttr();
+            /*var progressController = outThis.selectComponent("#progressController");
+            var mode = progressController.getMode();
+            if (mode == 8) {
+              progressController.toScene("home");
+            }*/
+          }
+        },{
+          call:function(roomId){
+            preLoadPlug.hidePreLoad();
+            wx.showModal({
+              title: '您还有比赛没有结束',
+              content: "点击进入比赛",
+              success: function (resp) {
+                if (resp.confirm) {
+                  progressController.takepartRoom(roomId);
+                }
+              }
             });
-          },10000);
-        }catch(e){
-          console.error(e);
+          }
+        });
+      },2000);
+    }else if(!skipType){
+      var loginPlug = this.selectComponent("#loginPlug");
+      loginPlug.startOnCheck(null, {
+        success: function (data) {
+          preLoadPlug.hidePreLoad();
+          outThis.flushAttr();
+          /*var progressController = outThis.selectComponent("#progressController");
+          var mode = progressController.getMode();
+          if (mode == 8) {
+            progressController.toScene("home");
+          }*/
         }
-        
-      },
-      fail:function(){
-        console.log("openSocket fail");
-      }
-    });
+      },{
+        call:function(data){
+          outThis.setData({
+            userId:data.userId
+          });
+          
+          preLoadPlug.hidePreLoad();
+          outThis.flushAttr();
+         /* var progressController = outThis.selectComponent("#progressController");
+          var mode = progressController.getMode();
+          if (mode == 8) {
+            progressController.toScene("home");
+          }*/
+        }
+      },{
+        call:function(roomId){
+          preLoadPlug.hidePreLoad();
+          wx.showModal({
+            title: '您还有比赛没有结束',
+            content:"点击进入比赛",
+            success:function(resp){
+              if(resp.confirm){
+                progressController.takepartRoom(roomId);
+              }
+            }
+          });
+        }
+      });
+    }else if(skipType==3){
+      var loginPlug = outThis.selectComponent("#loginPlug");
+      loginPlug.startOnCheck(null, {
+        success: function (data) {
+          var rankId = options.rankId;
+          console.log("rankId:" + rankId);
+          preLoadPlug.hidePreLoad();
+          outThis.flushAttr();
+          progressController.toRank(rankId);
+        }
+      }, {
+          call: function (data) {
+            var rankId = options.rankId;
+            console.log("rankId:"+rankId);
+            preLoadPlug.hidePreLoad();
+            outThis.flushAttr();
+            progressController.toRank(rankId);
+          }
+        }, {
+          call: function (roomId) {
+            preLoadPlug.hidePreLoad();
+            wx.showModal({
+              title: '您还有比赛没有结束',
+              content: "点击进入比赛",
+              success: function (resp) {
+                if (resp.confirm) {
+                  progressController.takepartRoom(roomId);
+                }
+              }
+            });
+          }
+        });
+    }
   },
 
   toProgress:function(e){
@@ -324,19 +481,50 @@ var layerout = new baseLayerout.BaseLayerout({
     progressController.onUnload();
   },
 
-  onShareAppMessage: function () {
+  onShareAppMessage: function (res) {
     var outThis = this;
     var progressController = this.selectComponent("#progressController");
-    /*this.setData({
-      loginShow:0
-    });
-    setTimeout(function(){
-      outThis.setData({
-        loginShow:1
-      });
-    },20000);
-    */
-    return progressController.onShareAppMessage();
+    var onShare = progressController.onShareAppMessage();
+    if(!onShare){
+      var userId = this.data.userId;
+      return {
+        path: "pages/progressScore/progressScore?recommendUserId="+userId,
+        success: function (data) {
+          console.log(JSON.stringify(data));
+          if(res.target){
+            shareUtil.doShare(res.target.id, data.shareTickets);
+          }else{
+            shareUtil.doShare(null, data.shareTickets);
+          }
+        }
+      }
+    }else{
+
+      var path = onShare.path;
+      if(path.indexOf("?")>0){
+        var userId = outThis.data.userId;
+        path = path +"&recommendUserId="+userId
+      }else{
+        path = path + "?recommendUserId=" + userId
+      }
+
+      onShare.path = path;
+      var success = onShare.success;
+
+      onShare.success = function (data) {
+        if(success){
+          success.call();
+        }
+        if (res.target) {
+          shareUtil.doShare(res.target.id, data.shareTickets);
+        } else {
+          shareUtil.doShare(null, data.shareTickets);
+        }
+      }
+    }
+
+    console.log("path:"+onShare.path);
+    return onShare;
   },
 
   initPositions: function (members,memberInfo) {
@@ -361,13 +549,38 @@ var layerout = new baseLayerout.BaseLayerout({
           imgUrl: member.imgUrl,
           animationData: {},
           begin: member.process,
-          end: 0,
+          end: member.process,
           isMy: isMy
         });
       }
 
       setTimeout(function () {
-        outThis.setPositions(positions);
+
+        var isInitPosition = outThis.data.isInitPosition;
+        if (isInitPosition){
+          for (var i = 0; i < positions.length; i++) {
+            var position = positions[i];
+            var oldPosition = outThis.getPosition(position.id);
+            if (oldPosition){
+              outThis.toPosition(position.id, position.end, {
+                success: function () {
+
+                }
+              });
+            }else{
+              outThis.setPosition(position);
+            }
+            
+          }
+        }else{
+          outThis.setPositions(positions);
+          outThis.setData({
+            isInitPosition:1
+          });
+        }
+        
+        
+        
       }, 2000);
       outThis.containerScrollToDom(process);
     } catch (e) {

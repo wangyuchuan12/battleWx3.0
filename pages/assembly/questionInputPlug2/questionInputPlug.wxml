@@ -1,8 +1,4 @@
 <view class="progressScoreInput" style=" z-index: 1000000000;position:fixed;">
-    <view style="position:absolute;width:100%;text-align:center;">
-      <timeSecond id='timeSecond'>
-      </timeSecond>
-    </view>
     <view class="progressScoreInputSubjectHeader" wx:if="{{imgUrl}}">
       <image class="progressScoreInputSubjectHeaderImg" 
       src="{{imgUrl}}"></image>

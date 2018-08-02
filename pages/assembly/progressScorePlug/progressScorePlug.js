@@ -2,11 +2,16 @@ var currentLoveCoolingRequest = require("../../../utils/currentLoveCoolingReques
 var battleMemberInfoRequest = require("../../../utils/battleMemberInfoRequest.js");
 var supperLoveRequest = require("../../../utils/supperLoveRequest.js");
 var imgResource = require("../../../utils/imgResource.js");
+
+var request = require("../../../utils/request.js");
+var domain = request.getDomain();
 var interval;
 var progressScorePlug = {
 data: {
   logs: [],
+ 
   progressScoreData:{
+    backgroundUrl: domain +"/imgs/progressScoreBackground.png",
     //总距离
     distance:0,
     //进度
@@ -28,14 +33,14 @@ data: {
       speedCoolBean:0,
       speedCoolSecond:0
     },
-    positions:[{
+    positions:[/*{
       id:"myDom",
       begin:10,
       end:20,
       animationData: {},
       imgUrl:"http://on3s1z2us.bkt.clouddn.com/target.png",
       isMy:1
-    }],
+    }*/],
     targets: [{
       left: 12.5,
       top: 1900,
@@ -799,6 +804,10 @@ addStep:function(index,type,imgUrl,beanNum,isBig){
   }
 },
 
+initBackground:function(){
+
+},
+
 setTarget:function(target){
   var index = target.index;
   var key = "progressScoreData.targets["+index+"]";
@@ -1321,6 +1330,27 @@ showLoveCooling:function(loveCooling){
   
 },
 
+setPosition:function(position){
+  var positions = this.getPositions();
+
+  var flag = false;
+  for(var i=0;i<positions.length;i++){
+    if(positions[i].id==position.id){
+      position[i] = position;
+      flag = true;
+    }
+  }
+  if(!flag){
+    positions.push(position);
+  }
+  this.setData({
+    "progressScoreData.positions": positions
+  });
+
+  this.location(position.id, position.begin);
+
+},
+
 setPositions:function(positions){
   this.setData({
     "progressScoreData.positions":positions
@@ -1334,6 +1364,17 @@ setPositions:function(positions){
 
 getPositions:function(){
   return this.data.progressScoreData.positions;
+},
+
+getPosition:function(id){
+  var positions = this.getPositions();
+  for(var i=0;i<positions.length;i++){
+    var position = positions[i];
+    if(position.id==id){
+      return position;
+    }
+  }
+  return null;
 },
 
 startTravel:function(id){

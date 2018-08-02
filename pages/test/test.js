@@ -1,5 +1,7 @@
 var baseLayerout = require("../assembly/baseLayerout/baseLayerout.js");
 var socketUtil = require("../../utils/socketUtil.js");
+var shareUtil = require("../../utils/shareUtil.js");
+var interval;
 var layerout = new baseLayerout.BaseLayerout({
 
   /**
@@ -115,20 +117,77 @@ var layerout = new baseLayerout.BaseLayerout({
       }]
     });*/
 
-    setTimeout(function(){
-      var animation = wx.createAnimation({
-        timingFunction: "ease",
-        duration: 5000,
-        delay: 1000
-      });
-
-      animation.width(500).step();
-      outThis.setData({
-        animation: animation.export()
-      });
-    },5000);
+    /*
+    var rewardToast = outThis.selectComponent("#rewardToast");
+    rewardToast.startAnnim("", 0, 10);*/
    
+    /*
+    var danList = outThis.selectComponent("#danList");
+    danList.initBattleDans();*/
+
+
     
+    /*var loginPlug = this.selectComponent("#loginPlug");
+    loginPlug.showOpenSocketType(null, {
+      success: function () {
+        var battleQuickRoom = outThis.selectComponent("#battleQuickRoom");
+
+        battleQuickRoom.list();
+      }
+    });*/
+
+    /*
+    var buttonPlug = this.selectComponent("#buttonPlug");
+   
+    buttonPlug.init([
+      {
+        name:"wyc",
+        isShare:1,
+        call:function(){
+          console.log("hahaha");
+        },
+        share:function(){
+          console.log("huole");
+        }
+      },
+      {
+        name:"haha",
+        isShare:1,
+        call:function(){
+          console.log("huhuu");
+        }
+      },
+      {
+        name: "haha",
+        isShare: 0,
+        call: function () {
+          console.log("huhuu");
+        }
+      },
+      {
+        name: "hahas",
+        isShare:1,
+        call: function () {
+          console.log("huhuu");
+        }
+      }
+    ])*/
+
+    /*
+    var diePlug = this.selectComponent("#diePlug");
+    diePlug.init("",1);
+    */
+
+    /*
+    var rewardGood = this.selectComponent("#rewardGood");
+    rewardGood.showGood("/imgs/lifeLoveSolid.png","haha","huhu",{
+      call:function(){
+        console.log("nihao");
+      }
+    });*/
+
+    var personSpace = this.selectComponent("#personSpace");
+    personSpace.listRequest();
   },
 
 
@@ -156,7 +215,23 @@ var layerout = new baseLayerout.BaseLayerout({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    /*if (interval) {
+      clearInterval(interval);
+    }
+    var loginPlug = this.selectComponent("#loginPlug");
+    loginPlug.showOpenSocketType(null, {
+      success: function () {
+
+        interval = setInterval(function () {
+          console.log("....show");
+          loginPlug.showOpenSocketType(null, {
+            success: function () {
+
+            }
+          });
+        }, 10000);
+      }
+    });*/
   },
 
   bindGetUserInfo:function(e){
@@ -194,9 +269,22 @@ var layerout = new baseLayerout.BaseLayerout({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-  
-  }
+  onShareAppMessage: function (res) {
+    console.log("res:"+JSON.stringify(res));
+    return {
+      path: "pages/progressScore/progressScore",
+      success: function (options) {
+
+        setTimeout(function(){
+          wx.showToast({
+            title: "SS:"+options.shareTickets
+          });
+        },2000);
+        
+        shareUtil.doShare(res.target.id, options.shareTickets);
+      }
+    }
+  },
 });
 
 layerout.addProgressScorePlug();

@@ -4,7 +4,7 @@
   background: rgba(6,49,58,1);
   text-align: center;
   position: fixed;
-  z-index: 10000000000000000000000;
+  z-index: 1000000000;
 }
 
 .preLoadMoon{

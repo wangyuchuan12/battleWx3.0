@@ -26,9 +26,16 @@ Component({
    */
   methods: {
 
+    hidePreLoad:function(){
+      this.setData({
+        isShow:0
+      });
+    },
+
     showPreLoad:function(c){
       var outThis = this;
-      var bgImgUrl = domain+"/imgs/battle_bg.jpg"
+      var bgImgUrl = domain+"/imgs/battle_bg.jpg";
+      bgImgUrl = "";
       //bgImgUrl = "../../imgs/battle_bg.jpg";
       var iconImgUrl = domain +"/imgs/battle_icon.png";
 

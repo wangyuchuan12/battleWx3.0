@@ -39,7 +39,7 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    startAnnim:function(imgUrl,type,num){
+    startAnnim:function(imgUrl,type,num,content){
       var outThis = this;
       var toasts = this.data.toasts;
       var uuid = util.uuid();
@@ -49,7 +49,8 @@ Component({
         id: uuid,
         type:type,
         num:num,
-        imgUrl:imgUrl
+        imgUrl:imgUrl,
+        content: content
       };
       toasts.push(toast);
       this.setData({

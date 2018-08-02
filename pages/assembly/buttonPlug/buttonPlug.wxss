@@ -1,0 +1,13 @@
+.buttonPlugItems{
+  width:100%;
+}
+.buttonPlugItem{
+  width:48%;
+  height:70px;
+  background:red;
+  display: inline-block;
+  text-align: center;
+  line-height: 70px;
+  color: white;
+  font-weight: bolder;
+}

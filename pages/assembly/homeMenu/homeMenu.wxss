@@ -1,7 +1,6 @@
 .battleHome{
-  height: 110vh;
   position: fixed;
-  padding-top:25vh;
+  padding-top:100px;
   z-index: 10000000;
 
 }
@@ -13,41 +12,41 @@
 }
 
 .battleHomeMenu1{
-  width:45%;
+  width:49%;
   height:200px;
   background:rgba(45,154,242,1);
   border-radius: 5px;
   position: absolute;
-  left:3%;
+  left:1%;
 }
 
 .battleHomeMenu2{
-  width:45%;
+  width:49%;
   height:150px;
   background:rgba(8,162,181,1);
   position: absolute;
-  left:53%;
+  left:51%;
   border-radius: 5px;
 }
 
 .battleHomeMenu3{
-  width:45%;
+  width:49%;
   height:120px;
   background:rgba(67,97,182,1);
   position: absolute;
-  left:3%;
+  left:1%;
   border-radius: 5px;
-  top:215px;
+  top:205px;
 }
 
 .battleHomeMenu4{
-  width:45%;
+  width:49%;
   height:170px;
   background:rgba(189,69,128,1);
   position: absolute;
-  left:53%;
+  left:51%;
   border-radius: 5px;
-  top:165px;
+  top:155px;
 }
 
 .battleHomeMenu5{
@@ -94,30 +93,35 @@
   color: white;
   padding-left:20px;
   padding-top:20px;
+  text-shadow: 0 0 20px black;
 }
 
 .battleHomeMenu2Name{
   color: white;
   padding-left:0px;
   padding-top:20px;
+  text-shadow: 0 0 20px black;
 }
 
 .battleHomeMenu3Name{
   color: white;
   padding-left:20px;
   padding-top:10px;
+  text-shadow: 0 0 20px black;
 }
 
 .battleHomeMenu4Name{
   color: white;
   padding-left:20px;
   padding-top:20px;
+  text-shadow: 0 0 20px black;
 }
 
 .battleHomeMenu5Name{
   color: white;
   padding-left:20px;
   padding-top:20px;
+  text-shadow: 0 0 20px black;
 }
 
 .battleHomeMenu6Name{

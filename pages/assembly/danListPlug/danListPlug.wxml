@@ -5,8 +5,9 @@
     <view class="battleHomeHeaderContent">
       <view class="battleHomeHeaderContentItem1">{{nickname}}</view>
       <view class="battleHomeHeaderContentItem3">
-          段位：<block wx:if="{{danName}}">{{danName}}</block>
-               <block wx:else>原始人</block>
+          段位：<block wx:for="{{dans}}" wx:for-item="dan" wx:if="{{dan.level==level}}">
+          {{dan.name}}
+          </block>
       </view>
       <view class="battleHomeHeaderContentItem2" style="display:none;">
         <span>LV.{{level}}</span>
@@ -86,10 +87,10 @@
   bindscrolltoupper="upper" bindscrolltolower="lower"       bindscroll="scroll" scroll-top="{{scrollTop}}" scroll-with-animation="true"
   scroll-into-view="{{currentDanId}}" scroll-y>
     <block wx:for="{{dans}}" wx:for-item="dan">
-      <view id="dan_{{dan.id}}" wx:if="{{level>=index}}">
+      <view id="dan_{{dan.id}}" wx:if="{{level>=index&&level-index<3}}">
         <view class="danItem"  bindtap='danItemClick' id="{{dan.id}}">
           <view class="danLock" wx:if="{{dan.status==0}}">
-            <view class="fa fa-lock danLockContent"></view>
+            <image src="{{lockImgUrl}}" style="width:100px;height:100px;position:relative;top:20px;"></image>
           </view>
 
           <view class="danItemFree" wx:if="{{dan.status==0}}">未开启</view>
@@ -101,5 +102,8 @@
         </view>
       </view>
     </block>
+    <view class="danItem">
+      <image src="{{questionImgUrl}}" class="questionImg"></image>
+    </view>
   </scroll-view>
 </view>

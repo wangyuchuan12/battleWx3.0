@@ -1,10 +1,11 @@
 <view class="preLoad" wx:if="{{isShow}}">
-  <view style="background:url('{{bgImg}}');background-size:100% 100%;height:100vh;width:100%;">
+  <view style="background:url('{{bgImg}}');background-size:100% 100%;height:100vh;width:100%;background-color:black;">
     <view class="preLoadMoon" style="background:url('{{iconImg}}');background-size:100% 100%;" mode="aspectFill">
     </view>
 
+    <!--
     <button class="preButton" bindgetuserinfo='startClick' open-type="getUserInfo">开始游戏</button>
-
+    -->
     <progress class="preLoadProgress" color='red;' percent='{{preProcess}}' style="position:fixed;" wx:if="{{preProcess>0}}"></progress>
 
     <loginPlug id="loginPlug"></loginPlug>

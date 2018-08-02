@@ -1,6 +1,7 @@
 {
   "component": true,
   "usingComponents": {
-    "waitRoomOptionSelect":"../waitRoomOptionSelect/waitRoomOptionSelect"
+    "waitRoomOptionSelect":"../waitRoomOptionSelect/waitRoomOptionSelect",
+    "loginPlug": "../loginPlug/loginPlug"
   }
 }

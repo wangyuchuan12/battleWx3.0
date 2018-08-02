@@ -1,0 +1,69 @@
+.loveCoolPlugLoves{
+  position: relative;
+  width: 100%;
+  text-align: center;
+}
+
+.loveCoolPlugLoveContext{
+  width:20px;
+  height: 20px;
+  position: relative;
+  display: inline-block;
+}
+.loveCoolPlugLove{
+	background: url("http://7xugu1.com1.z0.glb.clouddn.com/lifeLoveSolid.png")no-repeat;
+	background-size:100% 100%;
+	background-position:0px 0px;
+  width:100%;
+  height:100%;
+  display: block;
+  position: relative;
+}
+
+.loveCoolPlugLoveHollow{
+	background: url("http://7xugu1.com1.z0.glb.clouddn.com/lifeLoveHollow.png")no-repeat;
+  background-size:70% 60%;
+	background-position:55% 50%;
+  width:100%;
+  height:100%;
+  display:block;
+  position: relative;
+}
+
+.loveCoolPlug{
+  width:100%;
+  text-align: center;
+}
+
+.loveCoolContainerHeaderCooling{
+  width:90%;
+  height:50px;
+  background:RGBA(114,80,113,0.5);
+  position:relative;
+  margin: 0 auto;
+  border-radius:5px;
+  text-align: center;
+}
+
+.loveCoolContainerHeaderCoolingLabel{
+  height:50px;
+  border-radius:5px;
+  background: RGBA(225,0,40,0.4);
+  position: absolute;
+  z-index:1;
+}
+.loveCoolContainerHeaderCoolingContent{
+  width:100%;
+  height:100%;
+  position: absolute;
+  z-index: 2;
+}
+.loveCoolContainerHeaderCoolingContent1{
+  color: white;
+  font-size:10px;
+}
+
+.loveCoolContainerHeaderCoolingContent2{
+  color:white;
+  font-size:10px;
+}

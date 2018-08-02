@@ -9,6 +9,9 @@
     "questionController":"../questionController/questionController",
     "homeMenu": "../../homeMenu/homeMenu",
     "background": "../../backgroundPlug/backgroundPlug",
-    "mall": "../../mallPlug/mallPlug"
+    "mall": "../../mallPlug/mallPlug",
+    "battleQuickRoom": "../../battleQuickRoom/battleQuickRoom",
+    "battleRank": "../../battleRank/battleRank",
+    "personSpace": "../../personSpace/personSpace"
   }
 }

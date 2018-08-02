@@ -1,7 +1,7 @@
 {
   "pages": [
     "pages/progressScore/progressScore",
-    "pages/test/test",    
+    "pages/test/test",
     "pages/takeoutMoney/takeoutMoney",
     "pages/mall/mall"
   ],

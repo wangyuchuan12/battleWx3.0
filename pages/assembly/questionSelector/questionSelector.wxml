@@ -4,7 +4,6 @@
     <timeSecond id="timeSecond"></timeSecond>
   </view>
  <view class="questionSelector2" wx:if="{{isSelect}}">
-      <timeSecond id="timeSecond"></timeSecond>
       <view class="questionSelectorContent">
           <scroll-view class="questionSelectorContentList" scroll-y="true" scroll-left="10">
             <block  wx:for="{{questionSelectorContentList}}" wx:for-item="questionSelectorContentItem">
@@ -30,8 +29,6 @@
 
 
   <view class="questionSelector"  wx:if="{{!isSelect}}">
-   
-    <view style="margin-top:50px;"></view>
     <view class="questionSelectorHeader">
       <view class="questinSelectorCloseButton fa fa-times-circle" bindtap='questinSelectorClose'></view>
       <scroll-view class="questionSelectorHeaderList" scroll-x="true" scroll-left="10" style="white-space:nowrap;display:flex;" >

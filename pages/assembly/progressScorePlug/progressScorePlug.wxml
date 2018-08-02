@@ -61,7 +61,7 @@
     <scroll-view scroll-y scroll-top="{{containerScrollTop}}" scroll-with-animation="true" scroll-into-view="toDom{{currentDom}}" id = "progressScoreContainer" style="position: relative;height:100vh" bindscroll="scrollEvent"> 
       
       <view class="progressScore" id="progressScore">
-            <view class="progressScoreBar">
+            <view class="progressScoreBar" style="background:url('{{backgroundUrl}}');background-size:104% 104%;background-position:-5px -70px;">
                 <view class="trajectory">
                   <block wx:for="{{targets}}" wx:for-item="target">
 

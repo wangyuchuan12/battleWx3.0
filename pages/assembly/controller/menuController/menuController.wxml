@@ -1,14 +1,23 @@
+<view style="position:fixed;bottom:0px;z-index:100000000;width:100%;" wx:if="{{isAd}}">
+  <ad unit-id="adunit-d8aafdc858444de9" ></ad>
+</view>
 <background id="background"></background>
-<homeMenu id="homeMenu" wx:if="{{mode==0}}" bind:toDanList="toDanList" bind:toPk="toHomePk" bind:toPlay="toPlay" bind:toMall="toMall"></homeMenu>
+<homeMenu id="homeMenu" wx:if="{{mode==0}}" bind:toDanList="toDanList" bind:toPk="toHomePk" bind:toPlay="toPlay" bind:toMall="toMall" bind:toQuick="toQuick" bind:toRank="toRank" bind:toSpace="toSpace"></homeMenu>
 
 <mall id="mall" wx:if="{{mode==6}}" bind:paySuccess="paySuccess" bind:toBack="toBack"></mall>
 <pk id="pk" wx:if="{{mode==1}}" bind:pkRoomStart="pkRoomStart" style="display:none;"></pk>
-<waitRoom id="waitRoom" wx:if="{{mode==1}}" bind:waitRoomStart="waitRoom" bind:waitEnd="waitEnd"></waitRoom>
+<waitRoom id="waitRoom" wx:if="{{mode==1}}" bind:waitRoomStart="waitRoom" bind:waitEnd="waitEnd" bind:toBack="toBack"></waitRoom>
 <danList id="danList" wx:if="{{mode==2}}" bind:danTakepart="danTakepart" bind:toMall="toMall"></danList>
 <memberWait id="memberWait" wx:if="{{mode==3}}" bind:waitEnd="waitEnd"></memberWait>
 <questionController id="questionController" 
   wx:if="{{mode==4}}"></questionController>
 <luckDraw id="luckDraw" wx:if="{{mode==5}}" bind:initDraws="initDraws" bind:drawStop="drawStop"></luckDraw>
-<view style="background:url('http://p7z4mg4io.bkt.clouddn.com/back2.png');width:100px;height:100px;position:absolute;z-index:30000000001;background-size:100% 100%;top:40px;" wx:if="{{mode==1||mode==2||mode==3||mode==4||mode==5||mode==6}}" bindtap='toBack'>
+<battleRank id="battleRank" wx:if="{{mode==9}}" bind:rankStart="rankStart"></battleRank>
+<battleQuickRoom id="battleQuickRoom" wx:if="{{mode==8}}" bind:toQuickRoom="toQuickRoom" bind:flushAttr="flushAttr"></battleQuickRoom>
+
+<view wx:if="{{mode==10}}" style="position:fixed;z-index:10000;width:100%;height:100vh;background:white;">
+  <personSpace id="personSpace" bind:spaceItemSelect="spaceItemSelect" ></personSpace>
+</view>
+<view style="background:url('http://p7z4mg4io.bkt.clouddn.com/back2.png');width:50px;height:50px;position:absolute;z-index:30000000001;background-size:100% 100%;top:40px;" wx:if="{{mode==1||mode==2||mode==3||mode==4||mode==5||mode==6||mode==8||mode==9||mode==10}}" bindtap='toBack'>
 </view>
 

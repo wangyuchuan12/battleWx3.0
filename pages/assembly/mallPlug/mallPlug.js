@@ -50,6 +50,7 @@ Component({
 
     goodPay: function (good) {
       var outThis = this;
+      outThis.hideLoading();
       accountRequest.payGood(good, {
         success: function () {
           if (good.type == 1) {
