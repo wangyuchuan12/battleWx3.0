@@ -1,0 +1,155 @@
+.battleRankInfo{
+  width:100%;
+  height: 99vh;
+}
+.battleRankInfoHeadImg{
+  width:100%;
+  height:40vh;
+}
+
+.battleRankInfoName{
+  padding-left:20px;
+  padding-top:10px;
+  color: black;
+  font-weight: bolder;
+  font-size: 20px;
+}
+
+.battleRankInfoRankItem{
+  display: inline-block;
+  text-align: center;
+  position: relative;
+  margin: 5px;
+}
+
+.battleRankInfoRankImgs{
+  width:100%;
+  height:100px;
+}
+
+.battleRankInfoRankImg{
+  display: inline-block;
+  width:50px;
+  height: 50px;
+  border-radius: 50px;
+  border:2px solid white;
+}
+
+.battleRankInfoRankName{
+  width:30px;
+  padding-top:1px;
+  padding-bottom:1px;
+  bottom:10px;
+  position: absolute;
+  font-size: 10px;
+  color: white;
+  margin: 0 auto;
+  text-align: center;
+  background:rgba(25,31,112,0.5);
+  left:50%;
+  margin-left:-15px;
+  border-radius: 5px;
+}
+
+.battleRankInfoRankProcess{
+  width:30px;
+  padding-top:1px;
+  position: absolute;
+  font-size: 10px;
+  color: black;
+  margin: 0 auto;
+  text-align: center;
+  left:50%;
+  margin-left:-15px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.bttleRankInfoButtons{
+  width:100%;
+  text-align: center;
+}
+
+.bttleRankInfoButton1{
+  width:70px;
+  padding-top:10px;
+  padding-bottom: 10px;
+  background:rgba(231,126,94,0.5);
+  color: white;
+  text-align: center;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+.bttleRankInfoButton2{
+  display: inline-block;
+}
+
+.bttleRankInfoContent{
+  border-bottom: 1px solid rgba(236,236,236,1);
+}
+
+.bttleRankInfoContentTitle{
+  padding-left:10px;
+  padding-top:10px;
+  font-weight: bolder;
+}
+
+
+
+.personSpaceMenus{
+  border-bottom: 1px solid rgba(236,236,236,1);
+}
+.personSpaceMenu{
+  display: inline-block;
+  width:45%;
+  height:100px;
+  border-radius:10px;
+  position: relative;
+}
+
+.personSpaceMenuIcon{
+  display: inline-block;
+}
+
+.personSpaceMenuContent{
+  display: inline-block;
+  padding-left:20px;
+  font-size: 15px;
+  color: white;
+  vertical-align: top;
+  padding-top:20px;
+}
+
+.bttleRankInfoContentImgs{
+  padding-top:10px;
+}
+
+.battleRankInfoSubjectImgs{
+  width:100%;
+  height: 100px;
+  padding-left:10px;
+}
+
+.battleRankInfoSubjectImg{
+  width:100px;
+  height: 100px;
+}
+
+.battleRankInfoSubjectItem{
+  position: relative;
+  width:100px;
+  height: 100px;
+  display: inline-block;
+}
+
+.battleRankInfoSubjectName{
+  width:100%;
+  padding-top:5px;
+  padding-bottom:5px;
+  background:rgba(25,31,112,0.5);
+  position: absolute;
+  bottom:0px;
+  color: white;
+  text-align: center;
+}

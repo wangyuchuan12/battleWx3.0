@@ -1,0 +1,42 @@
+
+<view class="editQuestion">
+
+  <view class="personSpaceMenus">
+
+    <view class="personSpaceMenu" style="background:rgba(128,102,255,1);margin:1%;" bindtap='toSubjectsClick'>
+      <view class="personSpaceMenuIcon" style="width:30px;height:30px;background:url('{{backImg}}');background-size:100% 100%;top:15px;position:relative;left:10px;"></view>
+      <view class="personSpaceMenuContent" >
+        <view class="personSpaceMenuContentName1">返回</view>
+        <view class="personSpaceMenuContentName2"></view>
+      </view>
+    </view>
+
+    <view class="personSpaceMenu" style="background:rgba(128,102,255,1);margin:1%;" bindtap='subjectSaveClick'>
+      <view class="personSpaceMenuIcon" style="width:30px;height:30px;background:url('{{saveImg}}');background-size:100% 100%;top:15px;position:relative;left:10px;"></view>
+      <view class="personSpaceMenuContent" >
+        <view class="personSpaceMenuContentName1">保存</view>
+        <view class="personSpaceMenuContentName2"></view>
+      </view>
+    </view>
+
+    
+  </view>
+
+  <view class="editSubjectContent">
+    <view class="editSubjectContentImg" bindtap='imgClick'>
+      <view style="background:url('{{cameraImg}}');background-size:100% 100%;width:100px;height:100px;position:relative;left:50%;top:50px;margin-left:-50px;" wx:if="{{!imgUrl}}"></view>
+
+        <image src="{{imgUrl}}" 
+        class="addSubjectImgEl" wx:if="{{imgUrl}}"></image>
+    </view>
+
+
+      <view style="text-align:left;">
+        <view style="padding-left:10px;padding-bottom:10px;padding-top:10px;color:white;font-weight:bolder;">名称:</view>
+        <input id="nameInput" style="width:90%;height:50px;background:white;position:relative;margin:0 auto;" bindinput='nameInput'/>
+      </view>
+  </view>
+
+</view>
+
+

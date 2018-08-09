@@ -17,9 +17,12 @@ Component({
     rankImgUrl: domain+"/imgs/rank.png",
     searchImgUrl: domain + "/imgs/search.png",
     danImgUrl: domain + "/imgs/dan.png",
+    redPackHomeUrl: domain +"/imgs/redPackHome.png",
+    putForwardUrl: domain +"/imgs/putForward.png",
     isCool:0,
     isInfo:0,
-    panelMenusImg: domain +"/imgs/panelMenus.png"
+    panelMenusImg: domain +"/imgs/panelMenus.png",
+    spaceImg: domain + "/imgs/space.png"
   },
 
   /**

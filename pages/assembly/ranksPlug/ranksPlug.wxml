@@ -1,0 +1,15 @@
+<view class="ranksPlug">
+
+  <view class="ranksPlugContent">
+    <view class="ranksPlugContentItem" bindtap='itemCheck' id="{{rank.id}}" wx:for="{{ranks}}" wx:for-item="rank">
+      <view style="top:10px;width:32px;height:30px;background-size:100% 100%;background:url('{{radioImg}}') no-repeat;display:inline-block;position:relative;" wx:if="{{!rank.isCheck}}" ></view>
+      <view style="top:10px;width:32px;height:30px;background-size:100% 100%;background:url('{{radioCImg}}') no-repeat;display:inline-block;position:relative;" wx:else ></view>
+      <image class="ranksPlugContentItemImg" src="{{rank.imgUrl}}"></image>
+
+      <view class="ranksPlugContentItemContent">
+        <view class="ranksPlugContentItemName">{{rank.name}}</view>
+        <view class="ranksPlugContentItemDetail">{{rank.detail}}</view>
+      </view>
+    </view>
+  </view>
+</view>

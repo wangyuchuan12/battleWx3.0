@@ -11,7 +11,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-    //0主页模式 1pk模式 2danList 3等待模式 4答题模式 5抽奖模式 6商城 7放弃页面 8quick 9rank 10 space
+    //0主页模式 1pk模式 2danList 3等待模式 4答题模式 5抽奖模式 6商城 7放弃页面 8quick 9rank 10 space 11spaceinfo 12设计题库 100 放弃页面
     mode:0,
 
     //0表示 danList 1表示pk 2主页
@@ -27,6 +27,20 @@ Component({
     init:function(){
       var homeMenu = this.selectComponent("#homeMenu");
       homeMenu.init();
+    },
+    designQuestion:function(){
+      this.setData({
+        mode:12
+      });
+      var questionManagerController = this.selectComponent("#questionManagerController");
+
+      questionManagerController.init();
+
+    },
+
+    questionClose:function(){
+      var spaceId = this.data.spaceId;
+      this.toSpaceItem(spaceId);
     },
 
     toSpace:function(){
@@ -274,8 +288,17 @@ Component({
 
     spaceItemSelect:function(e){
       var item = e.detail.item;
-      console.log("....item:"+JSON.stringify(item));
-      this.toRankInfo(item.rankId);
+      this.toSpaceItem(item.id);
+    },
+
+    toSpaceItem:function(id){
+      this.setData({
+        mode: 11,
+        isAd: 0,
+        spaceId:id
+      });
+      var personSpaceInfo = this.selectComponent("#personSpaceInfo");
+      personSpaceInfo.init(id);
     },
 
     toRankInfo: function (rankId) {
@@ -286,6 +309,7 @@ Component({
       });
       var battleRank = this.selectComponent("#battleRank");
       battleRank.init(rankId);
+
     },
 
 
@@ -314,7 +338,7 @@ Component({
         outThis.onUnload();
         var background = outThis.selectComponent("#background");
         outThis.setData({
-          mode: 10,
+          mode: 100,
           isAd:1
         });
         background.toScene("home", {
@@ -332,7 +356,7 @@ Component({
         });
       }else{
         outThis.setData({
-          mode: 10,
+          mode: 100,
           isAd:1
         });
         var background = outThis.selectComponent("#background");

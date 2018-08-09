@@ -12,6 +12,9 @@
     "mall": "../../mallPlug/mallPlug",
     "battleQuickRoom": "../../battleQuickRoom/battleQuickRoom",
     "battleRank": "../../battleRank/battleRank",
-    "personSpace": "../../personSpace/personSpace"
+    "battleRankInfo": "../../battleRankInfo/battleRankInfo",
+    "personSpace": "../../personSpace/personSpace",
+    "personSpaceInfo": "../../personSpaceInfo/personSpaceInfo",
+    "questionManagerController":"../questionManagerController/questionManagerController"
   }
 }

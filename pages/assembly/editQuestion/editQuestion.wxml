@@ -1,0 +1,199 @@
+
+<view class="editQuestion">
+
+  <view class="personSpaceMenus">
+
+    <view class="personSpaceMenu" style="background:rgba(128,102,255,1);margin:1%;" bindtap='toQuestions'>
+      <view class="personSpaceMenuIcon" style="width:30px;height:30px;background:url('{{backImg}}');background-size:100% 100%;top:15px;position:relative;left:10px;"></view>
+      <view class="personSpaceMenuContent" >
+        <view class="personSpaceMenuContentName1">返回</view>
+        <view class="personSpaceMenuContentName2"></view>
+      </view>
+    </view>
+
+    <view class="personSpaceMenu" style="background:rgba(128,102,255,1);margin:1%;" bindtap='delQuestionClick' wx:if="{{type==1}}">
+      <view class="personSpaceMenuIcon" style="width:30px;height:30px;background:url('{{delImg}}');background-size:100% 100%;top:15px;position:relative;left:10px;"></view>
+      <view class="personSpaceMenuContent" >
+        <view class="personSpaceMenuContentName1">删除</view>
+        <view class="personSpaceMenuContentName2"></view>
+      </view>
+    </view>
+
+    <view class="personSpaceMenu" style="background:rgba(128,102,255,1);margin:1%;" bindtap='saveQuestionClick'>
+      <view class="personSpaceMenuIcon" style="width:30px;height:30px;background:url('{{saveImg}}');background-size:100% 100%;top:15px;position:relative;left:10px;"></view>
+      <view class="personSpaceMenuContent" >
+        <view class="personSpaceMenuContentName1">保存</view>
+        <view class="personSpaceMenuContentName2"></view>
+      </view>
+    </view>
+
+  </view>
+  
+  <scroll-view class="editQuestionContent" scroll-y>
+    <view class="editQuestionItems">
+      <block wx:for="{{subjects}}" wx:for-item="subject">
+        <view class="editQuestionItem" id="{{subject.id}}" wx:if="{{subject.id==subjectId}}" style="border:1px solid red;">
+          <image class="editQuestionItemImg" src="{{subject.imgUrl}}"></image>
+          <view class="editQuestionItemName">{{subject.name}}</view>
+        </view>
+
+        <view class="editQuestionItem" id="{{subject.id}}" bindtap='subjectClick' wx:else>
+          <image class="editQuestionItemImg" src="{{subject.imgUrl}}"></image>
+          <view class="editQuestionItemName">{{subject.name}}</view>
+        </view>
+      </block>
+    </view>
+    
+
+    <view class="battlePeriodManagerEditTab" style="background:rgba(49,64,93,1);margin-top:20px;">
+        <block wx:if="{{isImg==0}}">
+          <view class="battlePeriodManagerEditTabItem" bindtap="switchSelect" style="background:white;color:black">文字题</view>
+        </block>
+        <block wx:else>
+          <view class="battlePeriodManagerEditTabItem" bindtap="worldTypeClick">文字题</view>
+        </block>
+
+        <block wx:if="{{isImg==1}}">
+          <view class="battlePeriodManagerEditTabItem" bindtap="switchBlank" style="background:white;color:black">图片题</view>
+        </block>
+
+        <block wx:else>
+          <view class="battlePeriodManagerEditTabItem" bindtap="imgTypeClick">图片题</view>
+        </block>
+    </view>
+
+
+
+    <view class="addSubjectImg" bindtap='imgClick' style='background:rgba(49,64,93,1);border-top:1px solid RGBA(33,39,47,1);' wx:if="{{isImg==1}}">
+
+      <view style="background:url('{{cameraImg}}');background-size:100% 100%;width:100px;height:100px;position:relative;left:50%;top:20px;margin-left:-50px;" wx:if="{{!imgUrl}}"></view>
+
+      <image src="{{imgUrl}}" 
+      class="addSubjectImgEl" wx:if="{{imgUrl}}"></image>
+    </view>
+
+    <input class="battlePeriodManagerQuestion" placeholder='请输入问题' bindinput='questionInputChange' 
+    value="{{question}}" style="background:rgba(49,64,93,1);"></input>
+
+    <view class="battlePeriodManagerEditTab" style="background:rgba(49,64,93,1);">
+        <block wx:if="{{questionType==0}}">
+          <view class="battlePeriodManagerEditTabItem" bindtap="switchSelect" style="background:white;color:black">选项卡</view>
+        </block>
+        <block wx:else>
+          <view class="battlePeriodManagerEditTabItem" bindtap="switchSelect">选项卡</view>
+        </block>
+
+        <block wx:if="{{questionType==1}}">
+          <view class="battlePeriodManagerEditTabItem" bindtap="switchBlank" style="background:white;color:black;display:none;">填空</view>
+        </block>
+
+        <block wx:else>
+          <view class="battlePeriodManagerEditTabItem" bindtap="switchBlank" style="display:none;">填空</view>
+        </block>
+
+        <block wx:if="{{questionType==2}}">
+          <view class="battlePeriodManagerEditTabItem" bindtap='switchFillTerms' style="background:white;color:black">填词</view>
+        </block>
+
+        <block wx:else>
+          <view class="battlePeriodManagerEditTabItem" bindtap='switchFillTerms'>填词</view>
+        </block>
+    </view>
+
+
+    <block wx:if="{{questionType==0}}">
+      <view class="battlePeriodManagerEditSelect" style="margin-bottom:50px;">
+          <view class="battlePeriodManagerEditSelectItem" wx:for="{{selectOptions}}" wx:for-item="selectOption" id="{{selectOption.id}}" bindtap='selectRightOptionClick'>
+            <input class="battlePeriodManagerEditSelectItemInput" 
+            placeholder='请输入选项' bindinput="selectOptionInputChange" value="{{selectOption.content}}" id="{{selectOption.id}}"/>
+            <view class="battlePeriodManagerEditSelectItemIcon fa fa-check-circle" wx:if="{{selectOption.isRight==1}}"></view>
+            <view class="battlePeriodManagerEditSelectItemIcon fa fa-times-circle" style='color:red;'  bindtap='selectRightOptionClick' wx:else></view>
+          </view>
+      </view>
+    </block>
+
+    <block wx:if="{{questionType==1}}">
+        <view class="battlePeriodManagerEditBlank" style="margin-bottom:50px;">
+          <view class="battlePeriodManagerEditSelectItem">
+          <input class="battlePeriodManagerEditSelectItemInput" placeholder='请输入答案' bindinput='answerInputChange' value='{{answer}}'/></view>
+        </view>
+    </block>
+
+
+    <block wx:if="{{questionType==2}}">
+        <view class='inputItemFillTerms' style="margin-bottom:50px;">
+        
+          <view class='inputItemFillTermsWorlds'>
+              
+              <block wx:for="{{worlds}}" wx:for-item="world">
+                <view class="inputItemFillTermsWorld"  
+                bindtap="worldClick" id="{{world.id}}">{{world.content}}</view>
+              </block>
+              <view>
+                <view class="inputItemFillTermsWorldPlus" bindtap='worldMinusClick'><span class="fa fa-minus-square"></span></view>
+                <view class="inputItemFillTermsWorldPlus" bindtap='worldPlusClick'><span class="fa fa-plus-square"></span></view>
+              </view>
+          </view>
+
+          <view class='inputItemFillTermsWorldsCheck'>
+            <block wx:for="{{worldChecks}}" wx:for-item="worldCheck" wx:if="{{index<=5}}">
+              <view class="inputItemFillTermsWorldCheckItem" 
+              style='padding-top:0px;color:white;' wx:if="{{worldCheck.status==2}}">
+                <input class="inputItemFillTermsWorldCheckItemInput" 
+                bindblur='worldCheckInputBlur' bindinput='worldCheckInputChange' id="{{worldCheck.id}}" value='{{worldCheck.content}}'/>
+              </view>
+
+              <view class="inputItemFillTermsWorldCheckItem"  id="{{worldCheck.id}}"
+              bindtap="worldCheckClick"  wx:elif="{{worldCheck.status==1}}">
+                  {{worldCheck.content}}
+              </view>
+
+              <view class="inputItemFillTermsWorldCheckItem"  id="{{worldCheck.id}}"
+              bindtap="worldCheckClick2"  wx:elif="{{worldCheck.status==0}}" style='background:green'>
+                  {{worldCheck.content}}
+              </view>
+            </block>
+          </view>
+          <view class='inputItemFillTermsWorldsCheck'>
+            <block wx:for="{{worldChecks}}" wx:for-item="worldCheck" wx:if="{{index<=11&&index>5}}">
+              <view class="inputItemFillTermsWorldCheckItem"
+              style='padding-top:0px;color:white;' wx:if="{{worldCheck.status==2}}">
+                <input class="inputItemFillTermsWorldCheckItemInput" 
+                bindblur='worldCheckInputBlur' bindinput='worldCheckInputChange' id="{{worldCheck.id}}" value='{{worldCheck.content}}'/>
+              </view>
+
+              <view class="inputItemFillTermsWorldCheckItem"  id="{{worldCheck.id}}"
+              bindtap="worldCheckClick"  wx:elif="{{worldCheck.status==1}}">
+                  {{worldCheck.content}}
+              </view>
+
+              <view class="inputItemFillTermsWorldCheckItem"  id="{{worldCheck.id}}"
+              bindtap="worldCheckClick2"  wx:elif="{{worldCheck.status==0}}" style='background:green'>
+                  {{worldCheck.content}}
+              </view>
+            </block>
+          </view>
+          <view class='inputItemFillTermsWorldsCheck'>
+            <block wx:for="{{worldChecks}}" wx:for-item="worldCheck" wx:if="{{index<=17&&index>11}}">
+              <view class="inputItemFillTermsWorldCheckItem" 
+              style='padding-top:0px;color:white;' wx:if="{{worldCheck.status==2}}">
+                <input class="inputItemFillTermsWorldCheckItemInput" 
+                bindblur='worldCheckInputBlur' bindinput='worldCheckInputChange' id="{{worldCheck.id}}" value='{{worldCheck.content}}'/>
+              </view>
+
+              <view class="inputItemFillTermsWorldCheckItem"  id="{{worldCheck.id}}"
+              bindtap="worldCheckClick"  wx:elif="{{worldCheck.status==1}}">
+                  {{worldCheck.content}}
+              </view>
+
+              <view class="inputItemFillTermsWorldCheckItem"  id="{{worldCheck.id}}"
+              bindtap="worldCheckClick2"  wx:elif="{{worldCheck.status==0}}" style='background:green'>
+                  {{worldCheck.content}}
+              </view>
+            </block>
+          </view>
+        </view>
+    </block>
+  </scroll-view>
+</view>
+

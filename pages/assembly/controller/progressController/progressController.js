@@ -228,6 +228,7 @@ Component({
       this.registerMembers();
       this.registerDie();
       this.registerRoomEnd();
+      this.registerGoods();
     },
 
     toStart:function(e){
@@ -237,6 +238,15 @@ Component({
 
       this.doStart(battleRoom)
       
+    },
+
+    registerGoods:function(){
+      var outThis = this;
+      socketUtil.registerCallback("publish_goods", {
+        call: function (data) {
+          console.log(".....goods:"+JSON.stringify(data));
+        }
+      });
     },
 
     registerMembers:function(){
@@ -326,8 +336,6 @@ Component({
           
           outThis.hideLoading();
           var cool = data.cool;
-
-          console.log(".........cool:"+JSON.stringify(cool));
          if(cool){
            outThis.setData({
              isCool:1

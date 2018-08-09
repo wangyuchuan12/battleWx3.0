@@ -1,0 +1,9 @@
+<editQuestions id="editQuestions" bind:toSubjects="toSubjects" bind:toEditQuestion="toEditQuestion" wx:if="{{mode==0}}" bind:initFactory="initFactory" bind:publishRank="publishRank" bind:toBack="editQuestionClose"></editQuestions>
+
+<editQuestion id="editQuestion" wx:if="{{mode==1}}" bind:toQuestions="toQuestions"></editQuestion>
+
+<editSubjects id="editSubjects" bind:toEditSubject="toEditSubject" bind:toQuestions="toQuestions" wx:if="{{mode==2}}"></editSubjects>
+
+<editSubject id="editSubject" bind:toSubjects="toSubjects" wx:if="{{mode==3}}"></editSubject>
+
+<createRankPlug id="createRankPlug" id="createRankPlug" wx:if="{{mode==4}}" bind:toBack="toQuestions"></createRankPlug>

@@ -1,0 +1,72 @@
+@import '../../assembly/selectInput/selectInput.wxss';
+@import '../../manager/battlePeriodManager/battlePeriodManager.wxss';
+.editQuestion{
+  width:100%;
+  height:100vh;
+  background: rgba(49,64,93,1);
+  padding-top:50px;
+  padding-bottom:50px;
+}
+
+.editQuestionContent{
+  width:100%;
+  height:70vh;
+}
+
+.editQuestionItems{
+  width:100%;
+}
+
+.editQuestionItem{
+  position: relative;
+  width:33%;
+  height:120px;
+  display: inline-block;
+}
+
+.editQuestionItemImg{
+  width:100%;
+  height:100%;
+}
+
+.editQuestionItemName{
+  position: absolute;
+  bottom: 0px;
+}
+
+.editQuestionItemName{
+  width:100%;
+  padding-top:5px;
+  padding-bottom:5px;
+  background:rgba(25,31,112,0.5);
+  position: absolute;
+  bottom:0px;
+  color: white;
+  text-align: center;
+}
+
+.personSpaceMenus{
+  border-bottom: 1px solid rgba(236,236,236,1);
+  height: 100px;
+  padding-top:30px;
+}
+.personSpaceMenu{
+  display: inline-block;
+  width:30%;
+  height:60px;
+  border-radius:10px;
+  position: relative;
+}
+
+.personSpaceMenuIcon{
+  display: inline-block;
+}
+
+.personSpaceMenuContent{
+  display: inline-block;
+  padding-left:20px;
+  font-size: 15px;
+  color: white;
+  vertical-align: top;
+  padding-top:20px;
+}

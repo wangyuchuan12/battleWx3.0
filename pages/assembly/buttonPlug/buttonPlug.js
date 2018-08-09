@@ -1,7 +1,6 @@
 var imgResource = require("../../../utils/imgResource.js");
 var util = require("../../../utils/util.js");
 var shareUtil = require("../../../utils/shareUtil.js");
-console.log(imgResource.buttonImg);
 Component({
   /**
    * 组件的属性列表

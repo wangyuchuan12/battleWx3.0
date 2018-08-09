@@ -1,0 +1,106 @@
+<view class="editQuestion">
+
+  <view class="personSpaceMenus">
+
+    <view class="personSpaceMenu" style="background:rgba(128,102,255,1);margin:1%;" bindtap='addQuestionClick'>
+      <view class="personSpaceMenuIcon" style="width:30px;height:30px;background:url('{{addImg}}');background-size:100% 100%;top:15px;position:relative;left:10px;"></view>
+      <view class="personSpaceMenuContent" >
+        <view class="personSpaceMenuContentName1">新增</view>
+        <view class="personSpaceMenuContentName2"></view>
+      </view>
+    </view>
+
+    <view class="personSpaceMenu" style="background:rgba(128,102,255,1);margin:1%;" bindtap='subjectsClick'>
+      <view class="personSpaceMenuIcon" style="width:30px;height:30px;background:url('{{menuImg}}');background-size:100% 100%;top:15px;position:relative;left:10px;"></view>
+      <view class="personSpaceMenuContent" >
+        <view class="personSpaceMenuContentName1">类型</view>
+        <view class="personSpaceMenuContentName2"></view>
+      </view>
+    </view>
+
+    <view class="personSpaceMenu" style="background:rgba(128,102,255,1);margin:1%;" bindtap='publishClick'>
+      <view class="personSpaceMenuIcon" style="width:30px;height:30px;background:url('{{submitImg}}');background-size:100% 100%;top:15px;position:relative;left:10px;"></view>
+      <view class="personSpaceMenuContent" >
+        <view class="personSpaceMenuContentName1">发布</view>
+        <view class="personSpaceMenuContentName2"></view>
+      </view>
+    </view>
+
+
+
+    <view class="personSpaceMenu" style="background:rgba(128,102,255,1);margin:1%;" bindtap='toBackClick'>
+      <view class="personSpaceMenuIcon" style="width:30px;height:30px;background:url('{{backImg}}');background-size:100% 100%;top:15px;position:relative;left:10px;"></view>
+      <view class="personSpaceMenuContent" >
+        <view class="personSpaceMenuContentName1">返回</view>
+        <view class="personSpaceMenuContentName2"></view>
+      </view>
+    </view>
+
+  </view> 
+
+  <scroll-view class="editQuestionContent" scroll-y>
+
+
+    <view class="editQuestionItems">
+      <block wx:for="{{subjects}}" wx:for-item="subject" >
+        <view class="editQuestionItem" id="{{subject.id}}" wx:if="{{subject.id==selectSubjectId}}" style="border:1px solid red;">
+          <image class="editQuestionItemImg" src="{{subject.imgUrl}}"></image>
+          <view class="editQuestionItemName">{{subject.name}}</view>
+        </view>
+
+        <view class="editQuestionItem" bindtap='subjectClick' id="{{subject.id}}" wx:else >
+          <image class="editQuestionItemImg" src="{{subject.imgUrl}}"></image>
+          <view class="editQuestionItemName">{{subject.name}}</view>
+        </view>
+      </block>
+    </view>
+
+    <view scroll-y="true" class="battlePeriodManagerResults">
+      <view class="questionResultItem" wx:for="{{items}}" wx:for-item="item" id="{{item.id}}" bindtap='itemInfoClick'>
+        <image src="{{item.imgUrl}}" class="questionResultItemImg" wx:if="{{item.imgUrl}}"></image>
+        <image src="http://7xlw44.com1.z0.glb.clouddn.com/noimg.png" class="questionResultItemImg" wx:else></image>
+
+        <view class="questionResultItemContent" scroll-y>
+          <view class="questionResultItemContentItem">
+            <span>{{item.question}}</span>
+          </view>
+          <!--
+          <view class="questionResultItemContentItem">
+            <span style="color:green;" wx:if="{{item.answer==item.rightAnswer}}">{{item.answer}}(正确)</span>
+            <span style="color:red;" wx:else>{{item.answer}}(错误)</span>
+          </view>
+          -->
+          <block wx:if="{{item.type==0}}">
+            <view class="questionResultItemContentItem" >
+              
+              <block wx:for="{{item.options}}" wx:for-item="option">
+                <view class="questionResultItemContentItemOption"   style="background-color:green;color:white;" wx:if="{{item.rightAnswer==option}}">{{option}}</view>
+                <view class="questionResultItemContentItemOption"  wx:else>{{option}}</view>
+              </block>
+            </view >
+
+          </block>
+
+          <block wx:elif="{{item.type==1}}">
+            <view class="questionResultItemContentItem">
+              <view class="questionResultItemContentItemAnswer">
+                <span>{{item.answer}}</span>
+              </view>
+            </view >
+          </block>
+
+          <block wx:elif="{{item.type==2}}">
+            <view class="questionResultItemContentItem">
+              <view class="questionResultItemContentItemFills">
+                <view class="questionResultItemContentItemFill" wx:for="{{item.answer}}" wx:for-item="answer">{{answer}}</view>
+              </view>
+            </view >
+          </block>
+          
+        </view>
+      </view>
+
+    </view>
+  </scroll-view>
+</view>
+

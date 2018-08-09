@@ -4,7 +4,7 @@
     <block wx:for="{{buttons}}" wx:for-item="button">
     <view class="buttonPlugItem" style="background:url('{{buttonImg}}');background-size:100% 700px;background-position:0px -20px" bindtap="buttonClick" wx:if="{{index==0&&!button.isShare}}" id="{{button.id}}">{{button.name}}</view>
 
-    <button class="buttonPlugItem" style="background:url('{{buttonImg}}');background-size:100% 700px;background-position:0px -20px;top:30px;border:0.1px solid white;" bindtap="buttonClick" wx:if="{{index==0&&button.isShare}}" open-type='share' id="{{button.id}}">{{button.name}}</button>
+    <button class="buttonPlugItem" style="background:url('{{buttonImg}}');background-size:100% 700px;background-position:0px -20px;top:30px;border:0.1px solid white;vertical-align: middle" bindtap="buttonClick" wx:if="{{index==0&&button.isShare}}" open-type='share' id="{{button.id}}">{{button.name}}</button>
 
         <view class="buttonPlugItem" style="background:url('{{buttonImg}}');background-size:100% 700px;background-position:0px -120px" bindtap="buttonClick" wx:if="{{index==1&&!button.isShare}}" id="{{button.id}}">{{button.name}}</view>
 

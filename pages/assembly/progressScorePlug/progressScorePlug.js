@@ -11,7 +11,9 @@ data: {
   logs: [],
  
   progressScoreData:{
+    redPackImgUrl: domain +"/imgs/redPack.png",
     backgroundUrl: domain +"/imgs/progressScoreBackground.png",
+    stepCallback:null,
     //总距离
     distance:0,
     //进度
@@ -47,7 +49,7 @@ data: {
       bgUrl: "",
       index: 0,
       isBig: 0,
-      //type:0,
+      type:0,
       beanNum:1
     }, {
       left: 21,
@@ -55,7 +57,7 @@ data: {
       bgUrl: "",
       index: 1,
       isBig: 1,
-      //type: 0,
+      type: 7,
       beanNum: 2
     }, {
       left: 30,
@@ -1093,6 +1095,12 @@ containerScrollToDom: function(index) {
   });
 },
 
+init:function(){
+  this.setData({
+    "progressScoreData.positions":[]
+  });
+},
+
 
 /*
 initDomRes:function(){
@@ -1388,6 +1396,12 @@ startTravel:function(id){
   this.trendBetween(id,position.begin,position.end);
 },
 
+setStepCallback:function(callback){
+  this.setData({
+    "progressScoreData.stepCallback":callback
+  })
+},
+
 trendBetween: function(id,begin, end,callback,flag) {
   var outThis = this;
   if (begin <= end) {
@@ -1406,9 +1420,13 @@ trendBetween: function(id,begin, end,callback,flag) {
         if(begin>=end){
           callback.success();
         }else{
-          console.log(callback.step);
+          var stepCallback = outThis.data.progressScoreData.stepCallback;
+          if (stepCallback) {
+            stepCallback.step(id,index);
+          }
           if(callback.step){
             callback.step(index);
+            
           }
         }
       }

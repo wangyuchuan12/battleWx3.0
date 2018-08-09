@@ -505,6 +505,20 @@ Component({
         var outThis = this;
         battleWaitRoomRequest.intoRequest(id,{
           success: function (data) {
+            if(data.room.status==2){
+              wx.showModal({
+                title: '比赛已经结束',
+                content: '返回到主页',
+                success:function(){
+                  var myEventDetail =
+                    {} // detail对象，提供给事件监听函数
+                  var myEventOption = {} // 触发事件的选项
+                  outThis.triggerEvent('toBack', myEventDetail, myEventOption);
+                  
+                }
+              });
+              return;
+            }
             var member = data.member;
             var members = data.members;
             outThis.setData({

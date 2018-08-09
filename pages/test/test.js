@@ -186,8 +186,33 @@ var layerout = new baseLayerout.BaseLayerout({
       }
     });*/
 
-    var personSpace = this.selectComponent("#personSpace");
-    personSpace.listRequest();
+    /*var personSpace = this.selectComponent("#personSpace");
+    personSpace.listRequest();*/
+
+    /*
+    var editQuestion = this.selectComponent("#editQuestion");
+    editQuestion.init();*/
+
+
+    
+    var loginPlug = outThis.selectComponent("#loginPlug");
+    loginPlug.startOnCheck(null, {
+      success: function (data) {
+        var ranksPlug = outThis.selectComponent("#ranksPlug");
+        ranksPlug.init();
+      }
+    }, {
+        call: function (data) {
+          
+        }
+      }, {
+        call: function (roomId) {
+         
+        }
+      });
+
+    
+    
   },
 
 

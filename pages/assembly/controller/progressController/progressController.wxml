@@ -11,11 +11,11 @@
 
 <loginPlug id="loginPlug"></loginPlug>
 
-<view style="position:fixed;z-index: 1000000000;;width:100%;top:10vh;display:{{mode==3||isDie&&mode!=0 ? 'block':'none'}}" wx:if="{{isCool}}">
-  <loveCool id="loveCool" bind:resurrection="resurrection"></loveCool>
-</view>
-
-
 <diePlug id="diePlug" wx:if="{{isDie&&(mode==1||mode==2||mode==3)}}" bind:superSuccess="superSuccess" bind:flushAttr="flushAttr" bind:signOut="signOut"></diePlug>
 <view style="background:url('http://p7z4mg4io.bkt.clouddn.com/back2.png');width:50px;height:50px;position:absolute;z-index:30000000001;background-size:100% 100%;top:40px;" wx:if="{{mode==1||mode==2||mode==3}}" bindtap='signOut'>
 </view>
+
+<view style="position:fixed;z-index: 30000000002;;width:100%;top:10vh;display:{{mode==3||isDie&&mode!=0 ? 'block':'none'}}" wx:if="{{isCool}}">
+  <loveCool id="loveCool" bind:resurrection="resurrection"></loveCool>
+</view>
+

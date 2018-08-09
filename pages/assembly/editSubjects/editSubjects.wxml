@@ -1,0 +1,33 @@
+
+<view class="editQuestion">
+
+  <view class="personSpaceMenus">
+
+
+    <view class="personSpaceMenu" style="background:rgba(128,102,255,1);margin:1%;" bindtap='toQuestionsClick'>
+      <view class="personSpaceMenuIcon" style="width:30px;height:30px;background:url('{{backImg}}');background-size:100% 100%;top:15px;position:relative;left:10px;"></view>
+      <view class="personSpaceMenuContent" >
+        <view class="personSpaceMenuContentName1">返回</view>
+        <view class="personSpaceMenuContentName2"></view>
+      </view>
+    </view>
+    <view class="personSpaceMenu" style="background:rgba(128,102,255,1);margin:1%;" bindtap='addSubjectClick'>
+      <view class="personSpaceMenuIcon" style="width:30px;height:30px;background:url('{{addImg}}');background-size:100% 100%;top:15px;position:relative;left:10px;"></view>
+      <view class="personSpaceMenuContent" >
+        <view class="personSpaceMenuContentName1">新增</view>
+        <view class="personSpaceMenuContentName2"></view>
+      </view>
+    </view>
+  </view>
+
+  <scroll-view class="editMenuItems" scroll-y>
+    <view class="editMenuItem" wx:for="{{subjects}}" wx:for-item="subject">
+      <image class="editMenuItemImg" src="{{subject.imgUrl}}"></image>
+      <view class="editMenuItemName">{{subject.name}}</view>
+      <view style="width:40px;height:40px;background:url('{{delImg}}');position:absolute;right:0px;top:0px;background-size:100% 100%;" bindtap='delSubjectClick' id="{{subject.id}}"></view>
+    </view>
+  </scroll-view>
+
+</view>
+
+

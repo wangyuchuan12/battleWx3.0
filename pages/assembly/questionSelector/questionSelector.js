@@ -293,6 +293,12 @@ Component({
 
     },
 
+    setUnSelect:function(){
+      this.setData({
+        isSelect: 0
+      });
+    },
+
     subjectStatusUpdate(subject){
       var outThis = this;
       var subjects = this.data.questionSelectorContentList;

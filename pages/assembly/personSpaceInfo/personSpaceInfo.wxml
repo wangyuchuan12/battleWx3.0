@@ -1,0 +1,57 @@
+<battleRank id="battleRank" wx:if="{{mode==1}}"></battleRank>
+<scroll-view class="battleRankInfo" scroll-y>
+  <view class="battleRankInfoHead">
+    <image class="battleRankInfoHeadImg" src="{{img1}}"></image>
+  </view>
+
+  <view class="bttleRankInfoButtons">
+    <view class="bttleRankInfoButton2" bindtap='rankStartClick' style="width:100px;height:100px;background:url('{{buttomImg}}');background-size:100% 100%;line-height:100px;text-align:center;">开始</view>
+  </view>
+
+  <view class="personSpaceMenus">
+
+    <view class="personSpaceMenu" style="background:rgba(128,102,255,1);margin:2.5%;" bindtap='rankClick'>
+      <view class="personSpaceMenuIcon" style="width:60px;height:60px;background:url('{{rankImgUrl}}');background-size:100% 100%;top:15px;position:relative;left:10px;"></view>
+      <view class="personSpaceMenuContent" >
+        <view class="personSpaceMenuContentName1">排行榜</view>
+        <view class="personSpaceMenuContentName2"></view>
+      </view>
+    </view>
+
+     <view class="personSpaceMenu" style="background:rgba(128,102,255,1);margin:2.5%;" bindtap='designQuestionClick'>
+      <view class="personSpaceMenuIcon" style="width:50px;height:60px;background:url('{{paperImgUrl}}');background-size:100% 100%;top:15px;position:relative;left:10px;"></view>
+      <view class="personSpaceMenuContent" >
+        <view class="personSpaceMenuContentName1">设计题库</view>
+        <view class="personSpaceMenuContentName2"></view>
+      </view>
+    </view>
+  </view>
+
+
+  <view class="bttleRankInfoContent">
+    <view class="bttleRankInfoContentTitle">排行榜</view>
+    <scroll-view class="battleRankInfoRankImgs" style="white-space:nowrap;display:flex;" scroll-x>
+        <view wx:for="{{rankMembers}}" wx:for-item="rankMember" class="battleRankInfoRankItem">
+          <image class="battleRankInfoRankImg" src="{{rankMember.headImg}}"></image>
+          <view class="battleRankInfoRankName">在线</view>
+          <view class="battleRankInfoRankProcess">{{rankMember.process}}米</view>
+        </view>
+    </scroll-view>
+  </view>
+
+
+  <view class="bttleRankInfoContent">
+    <view class="bttleRankInfoContentTitle">题目主题</view>
+    <view class="bttleRankInfoContentImgs">
+      <scroll-view class="battleRankInfoSubjectImgs" style="white-space:nowrap;display:flex;" scroll-x>
+        <view wx:for="{{subjects}}" wx:for-item="subject" class="battleRankInfoSubjectItem">
+
+          <image class="battleRankInfoSubjectImg" src="{{subject.imgUrl}}"></image>
+          <view class="battleRankInfoSubjectName">{{subject.name}}</view>
+        </view>
+    </scroll-view>
+    </view>
+  </view>
+  
+</scroll-view>
+

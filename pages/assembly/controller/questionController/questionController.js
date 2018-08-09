@@ -144,6 +144,7 @@ Component({
       var selectCount = subjectData.selectCount;
       var timeLong = subjectData.timeLong;
       var questionSelector = this.selectComponent("#questionSelector");
+      questionSelector.setUnSelect();
       questionSelector.setBattleSubjects(subjects, selectCount, 0);
       questionSelector.startCountDown(timeLong);
     },

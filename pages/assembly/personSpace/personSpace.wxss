@@ -33,7 +33,7 @@
 }
 
 .personSpaceItem{
-  height: 80px;
+  height: 150px;
   width:90%;
   border-bottom: 1px solid rgba(236,236,236,1);
   left:5%;
@@ -67,5 +67,18 @@
   position: relative;
   top:15px;
   color: rgba(144,144,144,1);
-  
+}
+
+.personSpaceItemToolItems{
+  padding-top:15px;
+}
+
+.personSpaceItemToolItem{
+  display: inline-block;
+  width:32%;
+  text-align: center;
+  border-left: 1px snow black;
+  padding-top:10px;
+  padding-bottom:10px;
+  color: white;
 }

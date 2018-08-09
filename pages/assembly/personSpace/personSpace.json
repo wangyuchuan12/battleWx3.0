@@ -1,6 +1,7 @@
 {
   "component": true,
   "usingComponents": {
-    "createRank": "../createRankPlug/createRankPlug"
+    "createRank": "../createRankPlug/createRankPlug",
+    "questionManagerController": "../controller/questionManagerController/questionManagerController"
   }
 }

@@ -23,6 +23,8 @@ var shareUtil = require("../../utils/shareUtil.js");
 var takepartRequest = require("../../utils/takepartRequest.js");
 
 var frendRequest = require("../../utils/frendRequest.js");
+var request = require("../../utils/request.js");
+var domain = request.getDomain();
 
 var outThis;
 
@@ -88,6 +90,7 @@ var layerout = new baseLayerout.BaseLayerout({
   initMembers:function(e){
     var members = e.detail.members;
     var memberInfo = e.detail.memberInfo;
+    console.log(".......memberInfo:"+JSON.stringify(memberInfo));
     this.initPositions(members, memberInfo);
     this.setData({
       memberInfo:memberInfo,
@@ -247,6 +250,7 @@ var layerout = new baseLayerout.BaseLayerout({
   },
   
   onLoad: function (options) {
+    console.log(wx.setUserCloudStorage);
     var recommendUserId = options.recommendUserId;
     if (recommendUserId){
       this.registerFrend(recommendUserId);
@@ -384,9 +388,20 @@ var layerout = new baseLayerout.BaseLayerout({
   },
 
   toProgress:function(e){
+    var outThis = this;
     this.setData({
       mode:1
     });
+    this.init();
+
+    this.setStepCallback({
+      step:function(id,index){
+        var memberInfo = outThis.data.memberInfo;
+       if(memberInfo.id==id){
+         console.log(".........lskjlsdjflsdfjlsdfjlsdfjlsdfjl");
+       }
+      }
+    })
   },
 
   stageRest:function(e){
@@ -489,6 +504,7 @@ var layerout = new baseLayerout.BaseLayerout({
       var userId = this.data.userId;
       return {
         path: "pages/progressScore/progressScore?recommendUserId="+userId,
+        imageUrl:domain+"/imgs/share.jpg",
         success: function (data) {
           console.log(JSON.stringify(data));
           if(res.target){
@@ -509,6 +525,7 @@ var layerout = new baseLayerout.BaseLayerout({
       }
 
       onShare.path = path;
+      onShare.imageUrl = domain + "/imgs/share.jpg";
       var success = onShare.success;
 
       onShare.success = function (data) {

@@ -44,8 +44,8 @@ Component({
         mode:1
       });
       
-      var createRank = this.selectComponent("#createRank");
-      createRank.selectSubjects();
+      var questionManagerController = this.selectComponent("#questionManagerController");
+      questionManagerController.init();
     },
 
 
@@ -69,9 +69,12 @@ Component({
               });
               wx.showModal({
                 title: '正在生成空间',
-                content: '生成空间需要经过较长时间等待，请勿离开本页面，以免生成失败'
+                content: '生成空间需要经过较长时间等待，请勿离开本页面，以免生成失败',
+                success:function(){
+                  outThis.showLoading();
+                }
               });
-              outThis.showLoading();
+              
               battleManagerRequest.createRankRequest(subjectIds,{
                 success:function(){
                   outThis.listRequest();
@@ -104,10 +107,18 @@ Component({
       }
     },
 
-    toBack:function(){
+    questionClose:function(){
       this.setData({
-        mode: 0
+        mode:0
       });
+      this.listRequest();
+    },
+
+    toBack:function(){
+      var myEventDetail =
+        {} // detail对象，提供给事件监听函数
+      var myEventOption = {} // 触发事件的选项
+      this.triggerEvent('toBack', myEventDetail, myEventOption);
     },
 
     itemClick:function(e){

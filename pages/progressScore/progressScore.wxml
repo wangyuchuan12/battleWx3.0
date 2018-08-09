@@ -10,6 +10,7 @@
 <import src="../assembly/aircraftPlug/aircraftPlug.wxml"/>
 <import src="../assembly/toastOutPlug/toastOutPlug.wxml"/>
 <import src="../assembly/questionInputPlug/questionInputPlug.wxml"/>
+<preLoadPlug id="preLoadPlug"></preLoadPlug>
 <view style="position:fixed;z-index:90000000000;background:green;">
   <template is="baseLayerout" data="{{...baseData}}"/>
 </view>
@@ -38,6 +39,5 @@ bind:battleEnd="battleEnd" bind:stageRest="stageRest" bind:flushAttr="flushAttr"
 <loginPlug id="loginPlug" bind:loginSuccess="loginSuccess"></loginPlug>
 <progressMemberInfo id="progressMemberInfo" wx:if="{{isShowMemberInfo==1}}"></progressMemberInfo>
 
-<preLoadPlug id="preLoadPlug"></preLoadPlug>
 
 

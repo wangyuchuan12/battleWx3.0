@@ -1,0 +1,10 @@
+{
+  "component": true,
+  "usingComponents": {
+    "editQuestion": "../../editQuestion/editQuestion",
+    "editSubjects": "../../editSubjects/editSubjects",
+    "editSubject": "../../editSubject/editSubject",
+    "editQuestions": "../../editQuestions/editQuestions",
+    "createRankPlug": "../../createRankPlug/createRankPlug"
+  }
+}

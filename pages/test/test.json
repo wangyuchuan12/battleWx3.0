@@ -24,6 +24,13 @@
     "personSpace": "../assembly/personSpace/personSpace",
     "battleList": "../assembly/battleListPlug/battleListPlug",
     "battleSubjectList": "../assembly/battleSubjectListPlug/battleSubjectListPlug",
-    "createRankPlug": "../assembly/createRankPlug/createRankPlug"
+    "createRankPlug": "../assembly/createRankPlug/createRankPlug",
+    "battleRankInfo": "../assembly/battleRankInfo/battleRankInfo",
+    "editQuestion": "../assembly/editQuestion/editQuestion",
+    "editSubjects": "../assembly/editSubjects/editSubjects",
+    "editSubject": "../assembly/editSubject/editSubject",
+    "editQuestions": "../assembly/editQuestions/editQuestions",
+    "questionManagerController": "../assembly/controller/questionManagerController/questionManagerController",
+    "ranksPlug": "../assembly/ranksPlug/ranksPlug"
   }
 }

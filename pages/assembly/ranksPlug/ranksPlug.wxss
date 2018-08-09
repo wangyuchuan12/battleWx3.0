@@ -1,0 +1,37 @@
+.ranksPlug{
+  padding-top:50px;
+}
+
+.ranksPlugContentItem{
+  padding-left:20px;
+}
+
+.ranksPlugContentItemImg{
+  width:70px;
+  height:70px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 10px;
+  border-radius: 10px;
+}
+
+.ranksPlugContentItemContent{
+  display: inline-block;
+  vertical-align: top;
+}
+
+.ranksPlugContentItemName{
+  color: black;
+  font-weight: bolder;
+  padding-left:20px;
+  font-size: 20px;
+  width:150px;
+  
+}
+
+.ranksPlugContentItemDetail{
+  color: black;
+  font-size: 10px;
+  padding-left:20px;
+  width:150px;
+}
