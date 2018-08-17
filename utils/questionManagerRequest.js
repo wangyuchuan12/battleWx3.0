@@ -1,6 +1,7 @@
 var request = require("request.js");
 var domain = request.getDomain();
 var battleFactoryUrl = domain +"/api/battle/manager/question/battleFactory";
+var battleFactorysUrl = domain + "/api/battle/manager/question/battleFactorys";
 var subjectsUrl = domain + "/api/battle/manager/question/subjects";
 var addSubjectsUrl = domain + "/api/battle/manager/question/addSubject";
 var questionsUrl = domain + "/api/battle/manager/question/questions";
@@ -109,8 +110,8 @@ function addQuestion(params,callback){
   });
 }
 
-function addSubject(imgUrl,name,callback) {
-  request.requestWithLogin(addSubjectsUrl, { imgUrl: imgUrl,name:name}, {
+function addSubject(factoryId,imgUrl,name,callback) {
+  request.requestWithLogin(addSubjectsUrl, { imgUrl: imgUrl, name: name, factoryId: factoryId}, {
     success:function(resp){
       console.log("....resp:"+JSON.stringify(resp));
       if (resp.success) {
@@ -124,8 +125,24 @@ function addSubject(imgUrl,name,callback) {
     }
   });
 }
-function battleFactory(callback){
-  request.requestWithLogin(battleFactoryUrl, {}, {
+
+function battleFactorys(callback) {
+  request.requestWithLogin(battleFactorysUrl, {}, {
+    success:function(resp){
+      if(resp.success){
+        callback.success(resp.data);
+      }else{
+        callback.fail();
+      }
+    },
+    fail:function(){
+      callback.fail();
+    }
+  });
+}
+
+function battleFactory(id,callback){
+  request.requestWithLogin(battleFactoryUrl, {factoryId:id}, {
     success: function (resp) {
       console.log("....resp:"+JSON.stringify(resp));
       if (resp.success) {
@@ -157,6 +174,7 @@ function subjects(battleId,callback) {
 
 module.exports = {
   battleFactory: battleFactory,
+  battleFactorys: battleFactorys,
   subjects: subjects,
   addSubject: addSubject,
   questions: questions,

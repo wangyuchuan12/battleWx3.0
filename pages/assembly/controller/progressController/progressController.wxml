@@ -1,6 +1,8 @@
+<!--
 <view style="position:fixed;bottom:0px;z-index:100000000;width:100%;" wx:if="{{isAd}}">
   <ad unit-id="adunit-d8aafdc858444de9" ></ad>
 </view>
+-->
 <menuController id="menuController" bind:toStart="toStart" style="display:{{mode==0? 'block':'none'}}"bind:flushAttr="flushAttr" bind:takepartRoomListener="takepartRoomListener"></menuController>
 <questionController id="questionController"  style="display:{{mode==1? 'block':'none'}}"  bind:questionComplete="questionComplete" bind:answerResultHandle="answerResultHandle"></questionController>
 <stageRest id="stageRest" style="display:{{mode==3? 'block':'none'}}"bind:stageRestReady="stageRestReady"></stageRest>
@@ -11,11 +13,13 @@
 
 <loginPlug id="loginPlug"></loginPlug>
 
-<diePlug id="diePlug" wx:if="{{isDie&&(mode==1||mode==2||mode==3)}}" bind:superSuccess="superSuccess" bind:flushAttr="flushAttr" bind:signOut="signOut"></diePlug>
-<view style="background:url('http://p7z4mg4io.bkt.clouddn.com/back2.png');width:50px;height:50px;position:absolute;z-index:30000000001;background-size:100% 100%;top:40px;" wx:if="{{mode==1||mode==2||mode==3}}" bindtap='signOut'>
+<diePlug id="diePlug" wx:if="{{isDie&&(mode==1||mode==2||mode==3)}}" bind:superSuccess="superSuccess" bind:flushAttr="flushAttr" bind:signOut="signOutAlert"></diePlug>
+<view style="background:url('http://p7z4mg4io.bkt.clouddn.com/back2.png');width:50px;height:50px;position:absolute;z-index:30000000001;background-size:100% 100%;top:40px;" wx:if="{{mode==1||mode==2||mode==3}}" bindtap='signOutAlert'>
 </view>
 
 <view style="position:fixed;z-index: 30000000002;;width:100%;top:10vh;display:{{mode==3||isDie&&mode!=0 ? 'block':'none'}}" wx:if="{{isCool}}">
   <loveCool id="loveCool" bind:resurrection="resurrection"></loveCool>
 </view>
+
+<tipsPlug id="tipsPlug" bind:taskSuccess="taskSuccess"></tipsPlug>
 

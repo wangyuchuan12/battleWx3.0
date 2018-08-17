@@ -20,13 +20,19 @@ Component({
     menuImg: domain + "/imgs/menu.png",
     submitImg: domain + "/imgs/submit.png",
     cameraImg: domain + "/imgs/camera.png",
-    backImg:domain+"/imgs/back.png"
+    backImg:domain+"/imgs/back.png",
+    factoryId:""
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
+    init: function (factoryId){
+      this.setData({
+        factoryId: factoryId
+      });
+    },
     toSubjectsClick:function(){
       var myEventDetail =
         {} // detail对象，提供给事件监听函数
@@ -49,7 +55,8 @@ Component({
         });
         return;
       }
-      questionManagerRequest.addSubject(imgUrl,name,{
+      var factoryId = this.data.factoryId;
+      questionManagerRequest.addSubject(factoryId,imgUrl,name,{
         success:function(){
           var myEventDetail =
             {} // detail对象，提供给事件监听函数

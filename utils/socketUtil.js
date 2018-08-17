@@ -29,6 +29,8 @@ function registerCallback(code,callback){
   obj.code = code;
   obj.callback = callback;
   callbacks.push(obj);
+
+  console.log("..............code:"+code);
 }
 
 function removeCallback(code){
@@ -58,6 +60,10 @@ wx.onSocketMessage(function (resp) {
       callback.callback.call(data.data);
       if (callback.code == "publishRest") {
         console.log("啦啦啦啦啦啦啦啦啦");
+      }
+
+      if (callback.code == "taskComplete") {
+        console.log("啦啦啦啦啦啦啦啦啦2");
       }
     }
   }

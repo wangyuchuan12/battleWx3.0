@@ -1,0 +1,82 @@
+.redpackEdit{
+  background: rgba(238,238,238,1);
+  height: 100vh;
+  padding-top:100px;
+  position: relative;
+}
+
+.redpackEditItem{
+  background: white;
+  width:90%;
+  height: 70px;
+  position: relative;
+  margin: 0 auto;
+  border-radius: 5px;
+}
+
+.redpackEditItemLabel{
+  height: 100%;
+  font-weight: bolder;
+  font-size: 20px;
+  line-height: 70px;
+  display: inline-block;
+  padding-left: 10px;
+  padding-right: 5px;
+  width:150px;
+}
+
+.redpackEditItemInput{
+  top:25px;
+  font-weight: bolder;
+  position: relative;
+  text-align: right;
+  float: right;
+  width:100px;
+  right:35px;
+}
+
+.redpackEditItemFoot{
+  position: absolute;
+  top:0px;
+  right: 5px;
+  height: 100%;
+  color: black;
+  font-size: 20px;
+  font-weight: bolder;
+  text-align: right;
+  line-height: 70px;
+  padding-right: 5px;
+}
+
+.redpackSelectItem{
+  background: white;
+  width:90%;
+  height: 50px;
+  position: relative;
+  margin: 0 auto;
+  border-radius: 5px;
+}
+
+.redpackSelectItemContent{
+  width:100%;
+  height: 50px;
+  line-height: 50px;
+  font-weight: bolder;
+  font-size: 20px;
+  text-align: center;
+}
+
+.redpackEditButton{
+  width:80%;
+  padding-top:10px;
+  padding-bottom:10px;
+  color: white;
+  text-align: center;
+  position: fixed;
+  bottom:25px;
+  background: rgba(234,95,57,1);
+  border-radius: 5px;
+  left:50%;
+  margin-left: -40%;
+  font-weight: bolder;
+}

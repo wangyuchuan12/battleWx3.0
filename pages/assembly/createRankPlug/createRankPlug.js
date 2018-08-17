@@ -19,7 +19,7 @@ Component({
     subjects:[],
     page:0,
     size:10,
-    maxNum:10,
+    maxNum:20,
     minNum:5
   },
 
@@ -38,11 +38,18 @@ Component({
       wx.hideLoading();
     },
 
-    selectSubjects:function(){
+    init:function(factoryId){
+      this.setData({
+        factoryId:factoryId
+      });
+    },
+
+    selectSubjects: function (){
       var outThis = this;
       var page = this.data.page;
       var size = this.data.size;
-      personalSpaceRequest.selectSubjectsRequest(page,size,{
+      var factoryId = this.data.factoryId;
+      personalSpaceRequest.selectSubjectsRequest(factoryId,page,size,{
         success:function(data){
           outThis.setData({
             subjects:data
@@ -59,7 +66,8 @@ Component({
       page++;
       var subjects = this.data.subjects;
       this.showLoading();
-      personalSpaceRequest.selectSubjectsRequest(page, size, {
+      var factoryId = this.data.factoryId;
+      personalSpaceRequest.selectSubjectsRequest(factoryId,page, size, {
         success: function (array) {
           for(var i=0;i<array.length;i++){
             subjects.push(array[i]);

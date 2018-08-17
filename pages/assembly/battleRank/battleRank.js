@@ -85,12 +85,6 @@ Component({
         }
       });
      
-    },
-    onShareAppMessage:function(){
-      var rankId = this.data.rankId;
-      return {
-        path: "pages/progressScore/progressScore?skipType=3&rankId=" + rankId
-      }
     }
   }
 })

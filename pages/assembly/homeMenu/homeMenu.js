@@ -22,7 +22,7 @@ Component({
     isCool:0,
     isInfo:0,
     panelMenusImg: domain +"/imgs/panelMenus.png",
-    spaceImg: domain + "/imgs/space.png"
+    spaceImg: domain + "/imgs/questionBank.gif"
   },
 
   /**
@@ -97,15 +97,21 @@ Component({
     },
 
     takeoutClick: function () {
-      wx.navigateTo({
-        url: '../takeoutMoney/takeoutMoney'
-      });
+      var myEventDetail = {} // detail对象，提供给事件监听函数
+      var myEventOption = {} // 触发事件的选项
+      this.triggerEvent('takeoutMoney', myEventDetail, myEventOption);
     },
 
     toSpace:function(){
       var myEventDetail = {} // detail对象，提供给事件监听函数
       var myEventOption = {} // 触发事件的选项
       this.triggerEvent('toSpace', myEventDetail, myEventOption);
+    },
+
+    toRedPackList:function(){
+      var myEventDetail = {} // detail对象，提供给事件监听函数
+      var myEventOption = {} // 触发事件的选项
+      this.triggerEvent('toRedPackList', myEventDetail, myEventOption);
     },
 
     toRank:function(){

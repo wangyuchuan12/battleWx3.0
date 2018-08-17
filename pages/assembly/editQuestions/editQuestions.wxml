@@ -28,10 +28,10 @@
 
 
 
-    <view class="personSpaceMenu" style="background:rgba(128,102,255,1);margin:1%;" bindtap='toBackClick'>
-      <view class="personSpaceMenuIcon" style="width:30px;height:30px;background:url('{{backImg}}');background-size:100% 100%;top:15px;position:relative;left:10px;"></view>
+    <view class="personSpaceMenu" style="background:rgba(128,102,255,1);margin:1%;" bindtap='factorysClick'>
+      <view class="personSpaceMenuIcon" style="width:30px;height:30px;background:url('{{factoryImg}}');background-size:100% 100%;top:15px;position:relative;left:10px;"></view>
       <view class="personSpaceMenuContent" >
-        <view class="personSpaceMenuContentName1">返回</view>
+        <view class="personSpaceMenuContentName1">工厂</view>
         <view class="personSpaceMenuContentName2"></view>
       </view>
     </view>

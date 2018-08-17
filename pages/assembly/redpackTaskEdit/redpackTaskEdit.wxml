@@ -1,0 +1,27 @@
+<view style="width:100%;height:100vh;position:fixed;" wx:if="{{mode==1}}">
+  <ranksPlug id="ranksPlug" bind:rankCheck="rankCheck"></ranksPlug>
+</view>
+<view class="redpackEdit" wx:if="{{mode==0}}">
+    <view class="redpackEditItems">
+      <view class="redpackEditItem">
+        <view class="redpackEditItemLabel">智慧豆</view>
+        <input class="redpackEditItemInput" placeholder='0' type='number' value="{{beanNum}}" bindinput='beanInput'></input>
+        <view class="redpackEditItemFoot">颗</view>
+      </view>
+
+      <view class="redpackEditItem" style="margin-top:20px;">
+        <view class="redpackEditItemLabel">距离</view>
+        <input class="redpackEditItemInput" placeholder='填写个数' type='number' value="{{process}}" bindinput='processInput'></input>
+        <view class="redpackEditItemFoot">米</view>
+      </view>
+
+      <view class="redpackSelectItem" style="margin-top:20px;" wx:if="{{ranks&&ranks.length}}" bindtap='redpackSelectItemClick'>
+        <view class="redpackSelectItemContent" style="color:rgba(105,109,105,1);">{{rank.name}}<span style="color:rgba(196,196,196,1);"> > </span> </view>
+      </view>
+
+    </view>
+
+    
+
+    <view class="redpackEditButton" bindtap='submitTask'>确定</view>
+  </view>

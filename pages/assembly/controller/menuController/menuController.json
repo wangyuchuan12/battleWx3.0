@@ -15,6 +15,9 @@
     "battleRankInfo": "../../battleRankInfo/battleRankInfo",
     "personSpace": "../../personSpace/personSpace",
     "personSpaceInfo": "../../personSpaceInfo/personSpaceInfo",
-    "questionManagerController":"../questionManagerController/questionManagerController"
+    "questionManagerController":"../questionManagerController/questionManagerController",
+    "redpackEdit": "../../redpackEdit/redpackEdit",
+    "redPackListPlug": "../../redPackListPlug/redPackListPlug",
+    "redPackInfoPlug": "../../redPackInfoPlug/redPackInfoPlug"
   }
 }

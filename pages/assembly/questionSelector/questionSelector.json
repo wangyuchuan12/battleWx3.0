@@ -1,6 +1,6 @@
 {
   "component": true,
   "usingComponents": {
-    "timeSecond": "../roundProgress/roundProgress"
+    "timeSecond": "../clockProgress/clockProgress"
   }
 }

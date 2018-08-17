@@ -8,6 +8,7 @@
     "rewardToast": "../../rewardToastPlug/rewardToastPlug",
     "loginPlug": "../../loginPlug/loginPlug",
     "loveCool": "../../loveCoolPlug/loveCoolPlug",
-    "diePlug": "../../diePlug/diePlug"
+    "diePlug": "../../diePlug/diePlug",
+    "tipsPlug": "../../tipsPlug/tipsPlug"
   }
 }

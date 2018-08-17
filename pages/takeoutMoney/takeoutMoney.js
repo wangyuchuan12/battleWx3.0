@@ -47,16 +47,12 @@ var layerout = new baseLayerout.BaseLayerout({
 
   initAccountInfo:function(){
     var outThis = this;
-    var memberInfo = battleMemberInfoRequest.getBattleMemberInfoFromCache();
-
-    this.setData({
-      headImg:memberInfo.headImg
-    });
 
     accountRequest.accountInfo({
       success:function(account){
         outThis.setData({
-          account:account
+          account:account,
+          headImg:account.imgUrl
         });
       },
       fail:function(){
@@ -107,12 +103,11 @@ var layerout = new baseLayerout.BaseLayerout({
     amountRequest.takeoutRequest(id,{
       success:function(){
         outThis.hideLoading();
-        outThis.showConfirm("提现成功", "金额已转到零钱，如未到账，可能有延迟", {
-          confirm:function(){
+        wx.showModal({
+          title: '提现成功',
+          content: '金额已转到零钱，如未到账，可能有延迟',
+          success:function(){
 
-          },
-          cancel:function(){
-            
           }
         });
         outThis.initAccountInfo();

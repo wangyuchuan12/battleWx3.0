@@ -1,0 +1,58 @@
+<view style="background:url('{{backImg}}');width:50px;height:50px;position:absolute;z-index:30000000003;background-size:100% 100%;top:40px;"  bindtap='toBack'>
+</view>
+<scroll-view class="redPackInfoPlug" scroll-y>
+  <view class="redPackInfoPlugHeader">
+    <image class="redPackInfoPlugHeaderImg" src="{{redPack.imgUrl}}"></image>
+    <view class="redPackInfoPlugHeaderName">{{redPack.name}}</view>
+    <view class="redPackInfoPlugHeaderMoney" ><span style="font-size:50px;font-weight:bolder;"><span style="font-size:10px;"></span>{{redPack.amount}}</span>元</view>
+
+    <view class="redPackInfoPlugHeaderButton" bindtap='redpackOpenClick' wx:if="{{redPack.isReceive==0}}">開</view>
+
+    <view class="redPackInfoPlugHeaderButton" style="line-height: 70px;" wx:else>
+      <span style="font-size:20px;">{{redPack.receiveAmount}}</span><span style="font-size:10px;">元</span>
+    </view>
+  </view>
+
+  <view class="redPackInfoPlugContent">
+    <view class="redPackInfoPlugContentTasks">
+      <view class="redPackInfoPlugContentTask" wx:for="{{tasks}}" wx:for-item="task">
+        <view class="redPackInfoPlugContentTaskTitle">
+          <view class="redPackInfoPlugContentTaskTitleName">{{task.name}}</view>
+        </view>
+
+        <view class="redPackInfoPlugContentTaskList">
+          <view class="redPackInfoPlugContentTaskItem">
+            <scroll-view class="redPackInfoPlugContentTaskItemGoods" style="white-space:nowrap;display:flex;" scroll-x>
+              <view class="redPackInfoPlugContentTaskItemGood">
+                <image src="{{beanImg}}" class="redPackInfoPlugContentTaskItemGoodImg"></image>
+                <view class="redPackInfoPlugContentTaskItemGoodName">智慧豆x{{task.beanNum}}</view>
+              </view>
+
+            </scroll-view>
+
+            <view class="redPackInfoPlugContentTaskItemButton" id="{{task.id}}" wx:if="{{task.status==1}}" bindtap='taskItemClick' style="background:rgba(73,147,243,1);">前往</view>
+            <view class="redPackInfoPlugContentTaskItemButton" wx:elif="{{task.status==2}}" style="background:rgba(148,148,148,1);" id="{{task.id}}">完成</view>
+          </view>
+        </view>
+      </view>
+
+    </view>
+
+    <view class="redPackInfoPlugContentRecords">
+      <view class="redPackInfoPlugContentRecordsTitle">{{redPack.num}}个红包共{{redPack.amount}}元，还剩{{redPack.remainNum}}个红包，{{redPack.remainAmount}}元</view>
+      <view class="redPackInfoPlugContentRecordsList">
+        <view class="redPackInfoPlugContentRecordsItem" wx:for="{{distributions}}" wx:for-item="distribution">
+          <image class="redPackInfoPlugContentRecordsItemImg" src="{{distribution.userImg}}"></image>
+          <view class="redPackInfoPlugContentRecordsItemDetail">
+            <view class="redPackInfoPlugContentRecordsItemDetailName">{{distribution.nickname}}</view>
+
+            <view class="redPackInfoPlugContentRecordsItemDetailTime">{{distribution.receiveAt}}</view>
+          </view>
+
+          <view class="redPackInfoPlugContentRecordsItemAmount">{{distribution.amount}}元</view>
+        </view>
+      </view>
+    
+    </view>
+  </view>
+</scroll-view>

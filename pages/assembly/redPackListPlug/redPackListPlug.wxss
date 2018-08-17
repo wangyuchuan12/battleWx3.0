@@ -1,0 +1,77 @@
+.redPackListPlug{
+  padding-top:60px;
+  background: rgba(238,238,238,1);
+  height: 100vh;
+}
+
+.redPackItem{
+  position: relative;
+  background:white;
+  margin-top:5px;
+}
+
+.redPackItemImg{
+  display: inline-block;
+  width:100px;
+  height:100px;
+}
+
+.redPackItemContent{
+  display: inline-block;
+  vertical-align: top;
+  padding-left:10px;
+}
+
+.redPackItemContentName{
+  padding-top:20px;
+  font-size: 20px;
+  font-weight: bolder;
+  color: black;
+}
+
+.redPackItemContentDetail{
+  color: rgba(147,147,147,1);
+  padding-top:10px;
+}
+
+.redPackItemButton{
+  position: absolute;
+  right: 10px;
+  top:20px;
+  width:70px;
+  height:70px;
+  border-radius: 100px;
+  background:rgba(217,89,64,1);
+  color: white;
+  text-align: center;
+  font-weight: bolder;
+  line-height: 70px;
+  font-size: 40px;
+}
+
+.personSpaceMenus{
+  border-bottom: 1px solid rgba(236,236,236,1);
+  height: 100px;
+  padding-top:30px;
+}
+.personSpaceMenu{
+  width:120px;
+  height:60px;
+  border-radius:10px;
+  position: relative;
+  float: right;
+  right: 20px;
+}
+
+.personSpaceMenuIcon{
+  display: inline-block;
+}
+
+.personSpaceMenuContent{
+  display: inline-block;
+  padding-left:20px;
+  font-size: 15px;
+  color: white;
+  vertical-align: top;
+  padding-top:20px;
+}

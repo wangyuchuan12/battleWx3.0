@@ -1,0 +1,100 @@
+.redpackRewardManager{
+  padding-top:70px;
+}
+.redPackInfoPlugContentTasks{
+  width:100%;
+  position: relative;
+  padding-top:10px;
+}
+
+.redPackInfoPlugContentTask{
+  width:99%;
+  background: rgba(243,229,192,1);
+  margin: 0 auto;
+  position: relative;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.redPackInfoPlugContentTaskTitle{
+  width:100%;
+  padding-top:5px;
+  padding-bottom:5px;
+  background:rgba(231,209,170,1);
+  border-radius: 10px 10px 0px 0px;
+  position: relative;
+  display: block;
+  
+}
+
+.redPackInfoPlugContentTaskTitleName{
+  color: rgba(170,145,115,1);
+  padding-left:10px;
+}
+
+.redPackInfoPlugContentTaskList{
+  padding-left:10px;
+  padding-top:10px;
+  padding-bottom: 10px;
+  padding-right: 10px;
+}
+
+.redPackInfoPlugContentTaskItem{
+  position: relative;
+}
+
+.redPackInfoPlugContentTaskItemGoods{
+  width:70%;
+}
+
+.redPackInfoPlugContentTaskItemGood{
+  width:100px;
+  height: 100px;
+  background:rgba(212,181,137,1);
+  border-radius: 10px;
+  text-align: center;
+  display: inline-block;
+  margin-left:5px;
+}
+
+
+.redPackInfoPlugContentTaskItemGoodImg{
+  width:80px;
+  height: 80px;
+}
+
+.redPackInfoPlugContentTaskItemGoodName{
+  width:100%;
+  text-align: center;
+  background:rgba(200,130,79,1);
+  font-size: 10px;
+  color: white;
+  padding-top:2px;
+  padding-bottom: 2px;
+  border-radius: 0px 0px 10px 10px;
+  font-weight: bolder;
+}
+
+.personSpaceMenus{
+  border-bottom: 1px solid rgba(236,236,236,1);
+}
+.personSpaceMenu{
+  display: inline-block;
+  width:45%;
+  height:70px;
+  border-radius:10px;
+  position: relative;
+}
+
+.personSpaceMenuIcon{
+  display: inline-block;
+}
+
+.personSpaceMenuContent{
+  display: inline-block;
+  padding-left:20px;
+  font-size: 15px;
+  color: white;
+  vertical-align: top;
+  padding-top:20px;
+}

@@ -31,6 +31,13 @@
     "editSubject": "../assembly/editSubject/editSubject",
     "editQuestions": "../assembly/editQuestions/editQuestions",
     "questionManagerController": "../assembly/controller/questionManagerController/questionManagerController",
-    "ranksPlug": "../assembly/ranksPlug/ranksPlug"
+    "ranksPlug": "../assembly/ranksPlug/ranksPlug",
+    "redPackListPlug": "../assembly/redPackListPlug/redPackListPlug",
+    "redPackInfoPlug": "../assembly/redPackInfoPlug/redPackInfoPlug",
+    "redpackEdit": "../assembly/redpackEdit/redpackEdit",
+    "editFactorys": "../assembly/editFactorys/editFactorys",
+    "tipsPlug":"../assembly/tipsPlug/tipsPlug",
+    "clockProgress": "../assembly/clockProgress/clockProgress",
+    "takeoutMoney": "../assembly/takeoutMoney/takeoutMoney"
   }
 }

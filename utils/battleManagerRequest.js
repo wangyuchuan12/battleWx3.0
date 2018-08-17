@@ -2,7 +2,7 @@ var request = require("request.js");
 
 var domain = request.getDomain();
 var createRankUrl = domain + "/api/battle/manager/createRank";
-var ranksUrl = domain +"/api/battle/manager/ranks";
+var ranksUrl = domain +"/api/battle/manager/redpack/publicRanks";
 
 
 function ranksRequest(callback) {
@@ -25,8 +25,8 @@ function ranksRequest(callback) {
     }
   });
 }
-function createRankRequest(subjectIds,callback) {
-  request.requestWithLogin(createRankUrl, { subjectIds: subjectIds}, {
+function createRankRequest(factoryId,subjectIds,callback) {
+  request.requestWithLogin(createRankUrl, { subjectIds: subjectIds, factoryId: factoryId}, {
     success: function (resp) {
       if (resp.success) {
         callback.success(resp.data);

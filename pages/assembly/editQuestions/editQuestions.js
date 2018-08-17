@@ -21,6 +21,7 @@ Component({
     submitImg: domain + "/imgs/submit.png",
     cameraImg: domain + "/imgs/camera.png",
     backImg: domain + "/imgs/back.png",
+    factoryImg:domain + "/imgs/factory.png",
     items:[],
     subjects:[]
   },
@@ -41,6 +42,13 @@ Component({
         {} // detail对象，提供给事件监听函数
       var myEventOption = {} // 触发事件的选项
       this.triggerEvent('publishRank', myEventDetail, myEventOption);
+    },
+
+    factorysClick:function(){
+      var myEventDetail =
+        {} // detail对象，提供给事件监听函数
+      var myEventOption = {} // 触发事件的选项
+      this.triggerEvent('toFactorys', myEventDetail, myEventOption);
     },
 
     addQuestionClick:function(){
@@ -69,6 +77,7 @@ Component({
       var battleId = this.data.battleId;
       questionManagerRequest.subjects(battleId,{
         success:function(subjects){
+          console.log(".......subjects:"+JSON.stringify(subjects));
           outThis.setData({
             subjects:subjects
           });
@@ -130,28 +139,16 @@ Component({
       this.selectSubject(id);
     },
 
-    init:function(subjectId){
+    init:function(battleId,subjectId){
       var outThis = this;
-      questionManagerRequest.battleFactory({
-        success:function(data){
-          outThis.setData({
-            battleId:data.battleId
-          });
-          outThis.initSubjects({
-            success:function(){
-              if(subjectId){
-                outThis.selectSubject(subjectId);
-              }
-            }
-          });
-
-          var myEventDetail =
-            {battleId:data.battleId} // detail对象，提供给事件监听函数
-          var myEventOption = {} // 触发事件的选项
-          outThis.triggerEvent('initFactory', myEventDetail, myEventOption);
-        },
-        fail:function(){
-          console.log("..........fail");
+      this.setData({
+        battleId:battleId
+      });
+      this.initSubjects({
+        success: function () {
+          if (subjectId) {
+            outThis.selectSubject(subjectId);
+          }
         }
       });
     }

@@ -46,8 +46,8 @@
     -->
 
     <view class="battleHomeMenu1" bindtap='toSpace'>
-      <view class="battleHomeMenu1Background" style="background:url('{{spaceImg}}') no-repeat;background-size: 80% 70%;background-position: 20px 50px;"></view>
-      <view class="battleHomeMenu1Name">空间</view>
+      <view class="battleHomeMenu1Background" style="background:url('{{spaceImg}}') no-repeat;background-size: 130px 130px;background-position: 20px 50px;"></view>
+      <view class="battleHomeMenu1Name">题库</view>
     </view>
 
     <view class="battleHomeMenu2" bindtap='toPk'>
@@ -61,7 +61,7 @@
       <view class="battleHomeMenu3Name">搜索</view>
     </view>
     -->
-    <view class="battleHomeMenu3" bindtap='toQuick'>
+    <view class="battleHomeMenu3" bindtap='takeoutClick'>
       <view class="battleHomeMenu16Background" style="background:url('{{putForwardUrl}}') no-repeat;background-size: 100% 120%;background-position: 10px 0px;"></view>
       <view class="battleHomeMenu3Name">提现</view>
     </view>
@@ -74,9 +74,9 @@
 
     -->
 
-  <view class="battleHomeMenu4" bindtap='toDanList'>
+  <view class="battleHomeMenu4" bindtap='toRedPackList'>
       <view class="battleHomeMenu15Background" style="background:url('{{redPackHomeUrl}}') no-repeat;background-size: 70% 70%;background-position: 30px 40px;"></view>
-      <view class="battleHomeMenu4Name">我的红包</view>
+      <view class="battleHomeMenu4Name">抢红包</view>
     </view>
 
   <!--

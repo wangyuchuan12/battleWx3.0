@@ -22,6 +22,7 @@ Component({
     createImg: domain + "/imgs/create.png",
     rankImgUrl: domain + "/imgs/rank.png",
     paperImgUrl: domain + "/imgs/paper.png",
+    redPackImgUrl: domain + "/imgs/redPack.png",
     //0表示正常状态 1表示排名 2题库设计
     mode: 0
   },
@@ -44,8 +45,33 @@ Component({
       wx.hideLoading();
     },
 
+    redpackClick:function(){
+      var isRoot = this.data.isRoot;
+      if (!isRoot) {
+        
+      }
+
+      wx.showModal({
+        title: '对不起，您不是管理员,不能发红包'
+      });
+      return;
+      var rankId = this.data.rankId;
+      var myEventDetail = { rankId: rankId} // detail对象，提供给事件监听函数
+      var myEventOption = {} // 触发事件的选项
+      this.triggerEvent('redPackEdit', myEventDetail, myEventOption);
+    },
+
     designQuestionClick: function () {
-      var myEventDetail ={} // detail对象，提供给事件监听函数
+      var isRoot = this.data.isRoot;
+      if (!isRoot){
+        wx.showModal({
+          title: '对不起，您不是提出人',
+          content: '如果你要自己设计题库，请自己创建'
+        });
+        return;
+      }
+      var factoryId = this.data.factoryId;
+      var myEventDetail = { factoryId: factoryId} // detail对象，提供给事件监听函数
       var myEventOption = {} // 触发事件的选项
       this.triggerEvent('designQuestion', myEventDetail, myEventOption);
     },
@@ -105,6 +131,38 @@ Component({
       }
     },
 
+    initByRankId:function(rankId){
+      var outThis = this;
+      personalSpaceRequest.infoByRankId(rankId, {
+        success: function (data) {
+          outThis.setData({
+            id: data.id,
+            name: data.name,
+            imgNum: data.imgNum,
+            img1: data.img1,
+            img2: data.img2,
+            img3: data.img3,
+            img4: data.img4,
+            img5: data.img5,
+            img6: data.img6,
+            img7: data.img7,
+            img8: data.img8,
+            img9: data.img9,
+            detail: data.detail,
+            type: data.type,
+            rankId: data.rankId,
+            subjects: data.subjects,
+            rankMembers: data.rankMembers,
+            isRoot: data.isRoot,
+            factoryId:data.factoryId
+          });
+        },
+        fail: function () {
+
+        }
+      });
+    },
+
     init: function (id) {
       var outThis = this;
       personalSpaceRequest.info(id,{
@@ -128,7 +186,9 @@ Component({
             type: data.type,
             rankId: data.rankId,
             subjects: data.subjects,
-            rankMembers: data.rankMembers
+            rankMembers: data.rankMembers,
+            isRoot: data.isRoot,
+            factoryId: data.factoryId
           });
         },
         fail:function(){
@@ -136,6 +196,12 @@ Component({
         }
       });
       
+    },
+    onShareAppMessage: function () {
+      var rankId = this.data.rankId;
+      return {
+        path: "pages/progressScore/progressScore?skipType=3&rankId=" + rankId
+      }
     }
   }
 })

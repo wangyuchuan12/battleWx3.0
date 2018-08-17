@@ -194,12 +194,12 @@ var layerout = new baseLayerout.BaseLayerout({
     editQuestion.init();*/
 
 
-    
+    var takeoutMoney = outThis.selectComponent("#takeoutMoney");
+    takeoutMoney.init();
     var loginPlug = outThis.selectComponent("#loginPlug");
     loginPlug.startOnCheck(null, {
       success: function (data) {
-        var ranksPlug = outThis.selectComponent("#ranksPlug");
-        ranksPlug.init();
+        
       }
     }, {
         call: function (data) {

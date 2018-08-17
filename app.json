@@ -1,12 +1,14 @@
 {
   "pages": [
     "pages/progressScore/progressScore",
+    "pages/redPackList/redPackList",
+    "pages/takeoutMoney/takeoutMoney",
     "pages/test/test",
     "pages/questionFactory/questionList/questionList",
     "pages/questionFactory/questionFactoryInfo/questionFactoryInfo",
     "pages/questionFactory/questionFactoryMain/questionFactoryMain",
     "pages/questionFactory/questionFactoryAudit/questionFactoryAudit",
-    "pages/takeoutMoney/takeoutMoney",
+    
     "pages/mall/mall"
   ],
   "window": {

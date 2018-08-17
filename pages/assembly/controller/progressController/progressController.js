@@ -48,30 +48,44 @@ Component({
       wx.hideLoading();
     },
 
-    signOut:function(){
+
+    signOutAlert:function(){
       var outThis = this;
       var roomId = this.data.roomId;
       wx.showModal({
         title: '比赛正在进行中',
         content: '退出后此轮答题结果计算在内，是否确定退出',
-        success:function(data){
-          if(data.confirm){
+        success: function (data) {
+          if (data.confirm) {
             battleRequest.signOutRequest(roomId, {
               success: function () {
                 outThis.setData({
-                  mode: 0
+                  mode: 0,
+                  isDie: 0
                 });
 
-                setTimeout(function(){
+                setTimeout(function () {
                   var menuController = outThis.selectComponent("#menuController");
                   menuController.toScene("home");
-                },1000);   
+                }, 1000);
               },
               fail: function () {
 
               }
             });
           }
+        }
+      });
+    },
+    signOut:function(){
+      var outThis = this;
+      var roomId = this.data.roomId;
+      battleRequest.signOutRequest(roomId, {
+        success: function () {
+
+        },
+        fail: function () {
+
         }
       });
     },
@@ -229,6 +243,9 @@ Component({
       this.registerDie();
       this.registerRoomEnd();
       this.registerGoods();
+
+      var tipsPlug = this.selectComponent("#tipsPlug");
+      tipsPlug.init();
     },
 
     toStart:function(e){
@@ -236,7 +253,8 @@ Component({
       
       var battleRoom = e.detail.battleRoom;
 
-      this.doStart(battleRoom)
+      this.doStart(battleRoom);
+
       
     },
 
@@ -266,11 +284,24 @@ Component({
       });
     },
 
+    taskSuccess:function(e){
+      var redpackId = e.detail.redpackId;
+      this.setData({
+        mode:0
+      });
+      this.signOut(true);
+      var menuController = this.selectComponent("#menuController");
+
+      console.log("...........redpackId:" + redpackId);
+      menuController.doToRedPackInfo(redpackId);
+      this.flushAttr();
+
+    },
+
     registerDie:function () {
       var outThis = this;
       socketUtil.registerCallback("publish_die", {
         call: function (data) {
-          console.log("...........die");
           outThis.setData({
             isDie: 1
           });

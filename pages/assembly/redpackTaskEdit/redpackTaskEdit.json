@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "ranksPlug": "../ranksPlug/ranksPlug"
+  }
+}

@@ -1,0 +1,29 @@
+<view style="background:url('{{backImg}}');width:50px;height:50px;position:absolute;z-index:30000000003;background-size:100% 100%;top:40px;" bindtap='toBack'>
+</view>
+
+<view class="redPackListPlug">
+
+  <view class="personSpaceMenus">
+
+    <view class="personSpaceMenu" style="background:rgba(128,102,255,1);margin:1%;" bindtap='editRedpackClick'>
+      <view class="personSpaceMenuIcon" style="width:30px;height:30px;background:url('{{redpackImg}}');background-size:100% 100%;top:15px;position:relative;left:10px;"></view>
+      <view class="personSpaceMenuContent" >
+        <view class="personSpaceMenuContentName1">发红包</view>
+        <view class="personSpaceMenuContentName2"></view>
+      </view>
+    </view>
+  </view>
+
+  <block wx:for="{{redPacks}}" wx:for-item="redPack">
+    <view class="redPackItem" bindtap='redPackItemClick' id="{{redPack.id}}">
+      <image class="redPackItemImg" src="{{moneyImg}}"></image>
+
+      <view class="redPackItemContent">
+        <view class="redPackItemContentName">{{redPack.name}}</view>
+        <view class="redPackItemContentDetail">{{redPack.detail}}</view>
+      </view>
+
+      <view class="redPackItemButton">抢</view>
+    </view>
+  </block>
+</view>

@@ -58,9 +58,10 @@ Component({
       });
     },
 
-    init:function(battleId){
+    init:function(factoryId,battleId){
       this.setData({
-        battleId:battleId
+        battleId:battleId,
+        factoryId:factoryId
       });
       this.initSubjects();
     },
@@ -74,6 +75,7 @@ Component({
     initSubjects: function () {
       var outThis = this;
       var battleId = this.data.battleId;
+      var factoryId = this.data.factoryId;
       questionManagerRequest.subjects(battleId, {
         success: function (subjects) {
           outThis.setData({

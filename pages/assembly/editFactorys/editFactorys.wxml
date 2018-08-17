@@ -1,0 +1,8 @@
+<view class="editFactorys">
+    <scroll-view class="editFactoryItems" scroll-y>
+      <view class="editFactoryItem" wx:for="{{factorys}}" wx:for-item="factory" id="{{factory.id}}" bindtap='factoryClick'>
+        <image class="editFactoryItemImg" src="{{factory.imgUrl}}"></image>
+        <view class="editFactoryItemName">{{factory.name}}</view>
+      </view>
+    </scroll-view>
+</view>

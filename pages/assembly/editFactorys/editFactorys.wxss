@@ -1,0 +1,25 @@
+.editFactorys{
+  padding-top:50px;
+}
+
+.editFactoryItems{
+  height: 90vh;
+  width:100%;
+}
+.editFactoryItem{
+  padding-left:20px;
+}
+
+.editFactoryItemImg{
+  width:100px;
+  height: 100px;
+  display: inline-block;
+}
+
+.editFactoryItemName{
+  display: inline-block;
+  vertical-align: top;
+  padding-top:20px;
+  font-size: 20px;
+  padding-left:20px;
+}

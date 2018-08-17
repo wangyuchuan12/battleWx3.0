@@ -11,20 +11,49 @@
   <view class="personSpaceMenus">
 
     <view class="personSpaceMenu" style="background:rgba(128,102,255,1);margin:2.5%;" bindtap='rankClick'>
-      <view class="personSpaceMenuIcon" style="width:60px;height:60px;background:url('{{rankImgUrl}}');background-size:100% 100%;top:15px;position:relative;left:10px;"></view>
+      <view class="personSpaceMenuIcon" style="width:60px;height:60px;background:url('{{rankImgUrl}}');background-size:100% 100%;top:5px;position:relative;left:10px;"></view>
       <view class="personSpaceMenuContent" >
         <view class="personSpaceMenuContentName1">排行榜</view>
         <view class="personSpaceMenuContentName2"></view>
       </view>
     </view>
 
-     <view class="personSpaceMenu" style="background:rgba(128,102,255,1);margin:2.5%;" bindtap='designQuestionClick'>
-      <view class="personSpaceMenuIcon" style="width:50px;height:60px;background:url('{{paperImgUrl}}');background-size:100% 100%;top:15px;position:relative;left:10px;"></view>
+     <view class="personSpaceMenu" style="background:rgba(128,102,255,1);margin:2.5%;" bindtap='designQuestionClick' wx:if="{{isRoot}}">
+      <view class="personSpaceMenuIcon" style="width:50px;height:60px;background:url('{{paperImgUrl}}');background-size:100% 100%;top:5px;position:relative;left:10px;"></view>
       <view class="personSpaceMenuContent" >
         <view class="personSpaceMenuContentName1">设计题库</view>
         <view class="personSpaceMenuContentName2"></view>
       </view>
     </view>
+
+    <view class="personSpaceMenu" style="background:rgba(128,102,255,1);margin:2.5%;filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);-webkit-filter: grayscale(100%);" bindtap='designQuestionClick' wx:else>
+      <view class="personSpaceMenuIcon" style="width:50px;height:60px;background:url('{{paperImgUrl}}');background-size:100% 100%;top:5px;position:relative;left:10px;"></view>
+      <view class="personSpaceMenuContent" >
+        <view class="personSpaceMenuContentName1">设计题库</view>
+        <view class="personSpaceMenuContentName2"></view>
+      </view>
+    </view>
+
+
+    <button class="personSpaceMenu" style="background:rgba(128,102,255,1);text-align:left;vertical-align:middle;margin:2.5%;top:-20px;" open-type='share'>
+      <view class="personSpaceMenuIcon" style="width:60px;height:60px;background:url('{{invitationImg}}');background-size:100% 100%;position:relative;top:10px;"></view>
+      <view class="personSpaceMenuContent">
+        <view class="personSpaceMenuContentName1" style="padding-left:0px;">邀请好友</view>
+        <view class="personSpaceMenuContentName2"></view>
+      </view>
+        
+    </button>
+
+
+    <view class="personSpaceMenu" style="background:rgba(128,102,255,1);margin:2.5%;" bindtap='redpackClick'>
+      <view class="personSpaceMenuIcon" style="width:50px;height:60px;background:url('{{redPackImgUrl}}');background-size:100% 100%;top:7px;position:relative;left:10px;filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);-webkit-filter: grayscale(100%);"></view>
+      <view class="personSpaceMenuContent" >
+        <view class="personSpaceMenuContentName1">红包管理</view>
+        <view class="personSpaceMenuContentName2"></view>
+      </view>
+    </view>
+
+    
   </view>
 
 
@@ -33,7 +62,7 @@
     <scroll-view class="battleRankInfoRankImgs" style="white-space:nowrap;display:flex;" scroll-x>
         <view wx:for="{{rankMembers}}" wx:for-item="rankMember" class="battleRankInfoRankItem">
           <image class="battleRankInfoRankImg" src="{{rankMember.headImg}}"></image>
-          <view class="battleRankInfoRankName">在线</view>
+          <view class="battleRankInfoRankName" style="display:none;">在线</view>
           <view class="battleRankInfoRankProcess">{{rankMember.process}}米</view>
         </view>
     </scroll-view>

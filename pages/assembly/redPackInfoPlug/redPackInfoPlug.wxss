@@ -1,0 +1,189 @@
+.redPackInfoPlug{
+  background: rgba(238,238,238,1);
+  height: 100vh;
+}
+.redPackInfoPlugHeader{
+  width:100%;
+  height: 250px;
+  background:rgba(217,89,64,1);
+  position: relative;
+  text-align: center;
+  padding-top:50px;
+}
+
+.redPackInfoPlugHeaderButton{
+  width:80px;
+  height: 80px;
+  background: rgba(235,205,154,1);
+  color: black;
+  text-align: center;
+  line-height: 80px;
+  font-size: 40px;
+  border-radius: 100px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.redPackInfoPlugHeaderName{
+  font-size: 15px;
+  font-weight: bolder;
+}
+
+.redPackInfoPlugHeaderImg{
+  margin: 0 auto;
+  width:50px;
+  height:50px;
+  border-radius: 100px;
+}
+
+.redPackInfoPlugContentTasks{
+  width:100%;
+  position: relative;
+}
+
+.redPackInfoPlugContentTask{
+  width:99%;
+  background: rgba(243,229,192,1);
+  margin: 0 auto;
+  position: relative;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.redPackInfoPlugContentTaskTitle{
+  width:100%;
+  padding-top:5px;
+  padding-bottom:5px;
+  background:rgba(231,209,170,1);
+  border-radius: 10px 10px 0px 0px;
+  position: relative;
+  display: block;
+  
+}
+
+.redPackInfoPlugContentTaskTitleName{
+  color: rgba(170,145,115,1);
+  padding-left:10px;
+}
+
+.redPackInfoPlugContentTaskList{
+  padding-left:10px;
+  padding-top:10px;
+  padding-bottom: 10px;
+  padding-right: 10px;
+}
+
+.redPackInfoPlugContentTaskItem{
+  position: relative;
+  margin-bottom:5px;
+}
+
+.redPackInfoPlugContentTaskItemGoods{
+  width:70%;
+}
+
+.redPackInfoPlugContentTaskItemGood{
+  width:100px;
+  height: 100px;
+  background:rgba(212,181,137,1);
+  border-radius: 10px;
+  text-align: center;
+  display: inline-block;
+  margin-left:5px;
+}
+
+
+.redPackInfoPlugContentTaskItemGoodImg{
+  width:80px;
+  height: 80px;
+}
+
+.redPackInfoPlugContentTaskItemGoodName{
+  width:100%;
+  text-align: center;
+  background:rgba(200,130,79,1);
+  font-size: 10px;
+  color: white;
+  padding-top:2px;
+  padding-bottom: 2px;
+  border-radius: 0px 0px 10px 10px;
+  font-weight: bolder;
+}
+
+.redPackInfoPlugContentTaskItemButton{
+  padding-top:20px;
+  padding-bottom: 20px;
+  padding-left:30px;
+  padding-right: 30px;
+  position: absolute;
+  text-align: center;
+  right: 5px;
+  top:20px;
+  background:rgba(97,171,255,1);
+  color: white;
+  border-radius: 10px;
+}
+
+.redPackInfoPlugContentRecords{
+  margin-top:-10px;
+}
+
+.redPackInfoPlugContentRecordsTitle{
+  font-size: 15px;
+  padding-left:15px;
+  padding-bottom: 10px;
+  padding-top:10px;
+  font-weight: bolder;
+  color: rgba(126,126,126,1);
+  background: white;
+}
+
+.redPackInfoPlugContentRecordsList{
+  margin-top: 1px;
+}
+
+
+.redPackInfoPlugContentRecordsItemImg{
+  width:70px;
+  height:70px;
+  display: inline-block;
+  border-radius: 100px;
+}
+
+.redPackInfoPlugContentRecordsItem{
+  position: relative;
+  width: 100%;
+  padding-left:5px;
+}
+
+.redPackInfoPlugContentRecordsItemDetail{
+  display: inline-block;
+  vertical-align: top;
+  padding-left:10px;
+}
+
+.redPackInfoPlugContentRecordsItemDetailName{
+  padding-top:10px;
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+.redPackInfoPlugContentRecordsItemDetailTime{
+  color: rgba(169,169,169,1);
+  font-size: 15px;
+
+}
+
+.redPackInfoPlugContentRecordsItem{
+  margin-bottom: 5px;
+  background: white;
+}
+
+.redPackInfoPlugContentRecordsItemAmount{
+  position: absolute;
+  right: 10px;
+  top:20px;
+  font-size: 20px;
+  font-weight: bolder;
+  color: black;
+}

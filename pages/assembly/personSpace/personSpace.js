@@ -20,7 +20,8 @@ Component({
     createImg: domain + "/imgs/create.png",
     items:[],
     //0表示主页模式 1表示新增模式
-    mode:0
+    mode:0,
+    qiyeImg:domain +"/imgs/qiye.png"
   },
 
   /**
@@ -37,6 +38,13 @@ Component({
 
     hideLoading: function () {
       wx.hideLoading();
+    },
+
+    accountRegisterClick:function(){
+      var myEventDetail =
+        {} // detail对象，提供给事件监听函数
+      var myEventOption = {} // 触发事件的选项
+      this.triggerEvent('accountRegister', myEventDetail, myEventOption);
     },
 
     createSpaceClick:function(){
@@ -114,9 +122,9 @@ Component({
       this.listRequest();
     },
 
-    toBack:function(){
+    toHome:function(){
       var myEventDetail =
-        {} // detail对象，提供给事件监听函数
+        { } // detail对象，提供给事件监听函数
       var myEventOption = {} // 触发事件的选项
       this.triggerEvent('toBack', myEventDetail, myEventOption);
     },

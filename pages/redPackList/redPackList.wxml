@@ -1,0 +1,5 @@
+<redPackListPlug id="redPackListPlug" bind:editRedpack="editRedpack" wx:if="{{mode==0}}"></redPackListPlug>
+
+<redpackEdit id="redpackEdit" bind:toBack="toRedPackList" wx:if="{{mode==1}}"></redpackEdit>
+
+<loginPlug id="loginPlug"></loginPlug>

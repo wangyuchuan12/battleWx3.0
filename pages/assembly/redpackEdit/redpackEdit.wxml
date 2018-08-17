@@ -1,0 +1,33 @@
+<view style="width:100%;height:100vh;" wx:if="{{mode==1}}">
+  <redpackTaskManager id="redpackTaskManager" bind:toBack="toBack"></redpackTaskManager>
+</view>
+<view style="width:100%;height:100vh;" wx:if="{{mode==0}}">
+  <view class="redpackEdit">
+    <view class="redpackEditItems">
+      <view class="redpackEditItem">
+        <view class="redpackEditItemLabel">金额</view>
+        <input class="redpackEditItemInput" placeholder='0' type='number' value="{{amount}}" bindinput='amountInput'></input>
+        <view class="redpackEditItemFoot">元</view>
+      </view>
+
+      <view class="redpackEditItem" style="margin-top:20px;">
+        <view class="redpackEditItemLabel">红包个数</view>
+        <input class="redpackEditItemInput" placeholder='填写个数' type='number' value="{{count}}" bindinput='countInput'></input>
+        <view class="redpackEditItemFoot">个</view>
+      </view>
+
+      <view class="redpackEditItem" style="margin-top:20px;">
+        <view class="redpackEditItemLabel">名称</view>
+        <input class="redpackEditItemInput" placeholder='红包的名称' value="{{name}}" bindinput='nameInput'></input>
+      </view>
+
+      <view class="redpackSelectItem" style="margin-top:20px;display:none;" wx:if="{{ranks&&ranks.length}}">
+        <view class="redpackSelectItemContent" style="color:rgba(105,109,105,1);">{{rank.name}}<span style="color:rgba(196,196,196,1);"> > </span> </view>
+      </view>
+    </view>
+
+    
+
+    <view class="redpackEditButton" bindtap='submitRedpack'>塞钱进红包</view>
+  </view>
+</view>

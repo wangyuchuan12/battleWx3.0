@@ -1,4 +1,7 @@
-// pages/assembly/controller/menuController/menuController.js
+var personalSpaceRequest = require("../../../../utils/personalSpaceRequest.js");
+var request = require("../../../../utils/request.js");
+var accountRequest = require("../../../../utils/accountRequest.js");
+var domain = request.getDomain();
 Component({
   /**
    * 组件的属性列表
@@ -11,12 +14,13 @@ Component({
    * 组件的初始数据
    */
   data: {
-    //0主页模式 1pk模式 2danList 3等待模式 4答题模式 5抽奖模式 6商城 7放弃页面 8quick 9rank 10 space 11spaceinfo 12设计题库 100 放弃页面
+    //0主页模式 1pk模式 2danList 3等待模式 4答题模式 5抽奖模式 6商城 7放弃页面 8quick 9rank 10 space 11spaceinfo 12设计题库 13发红包 14红包列表 15红包详情页 100 放弃页面
     mode:0,
 
     //0表示 danList 1表示pk 2主页
     type:2,
-    isAd:1
+    isAd:1,
+    backImg: domain+"/imgs/back2.png"
   },
 
   /**
@@ -28,19 +32,35 @@ Component({
       var homeMenu = this.selectComponent("#homeMenu");
       homeMenu.init();
     },
-    designQuestion:function(){
+    redPackEdit:function(e){
+      var rankId = e.detail.rankId;
+      this.setData({
+        mode:13
+      });
+      var redpackEdit = this.selectComponent("#redpackEdit");
+      redpackEdit.init(rankId);
+    },
+
+    designQuestion:function(e){
       this.setData({
         mode:12
       });
       var questionManagerController = this.selectComponent("#questionManagerController");
-
-      questionManagerController.init();
+      var factoryId = e.detail.factoryId;
+      questionManagerController.init(factoryId);
 
     },
 
     questionClose:function(){
-      var spaceId = this.data.spaceId;
-      this.toSpaceItem(spaceId);
+      this.toSpace();
+    },
+
+    toRedPackList:function(){
+      this.setData({
+        mode:15
+      });
+      var redPackInfoPlug = this.selectComponent("#redPackInfoPlug");
+      redPackInfoPlug.initRandom();
     },
 
     toSpace:function(){
@@ -67,7 +87,34 @@ Component({
       battleRank.init();
     },
 
+    accountRegister:function(){
+      wx.showModal({
+        content: '请添加微信【wangyuchuan12】为您注册账户'
+      });
+    },
+
+    takeoutMoney:function(){
+      accountRequest.accountInfo({
+        success:function(account){
+          var amountBalance = account.amountBalance;
+          if (!amountBalance){
+            wx.showModal({
+              content: '您没有领取红包，不能提现'
+            });
+          }else{
+            wx.showModal({
+              content: '请关注公众号【疯狂题库】提现'
+            });
+          }
+        }
+      });
+      
+    },
+
     rankStart:function(e){
+      this.setData({
+        mode:7
+      });
       var roomId = e.detail.roomId;
       var myEventDetail =
         { roomId: roomId } // detail对象，提供给事件监听函数
@@ -105,6 +152,19 @@ Component({
           }
         }
       });
+    },
+
+    toRedPackInfo:function(e){
+      var id = e.detail.id;
+      this.doToRedPackInfo(id);
+    },
+
+    doToRedPackInfo:function(id){
+      this.setData({
+        mode: 15
+      });
+      var redPackInfoPlug = this.selectComponent("#redPackInfoPlug");
+      redPackInfoPlug.init(id);
     },
 
     toDanList:function(e){
@@ -291,6 +351,7 @@ Component({
       this.toSpaceItem(item.id);
     },
 
+
     toSpaceItem:function(id){
       this.setData({
         mode: 11,
@@ -301,15 +362,29 @@ Component({
       personSpaceInfo.init(id);
     },
 
+    toRankInfoClick:function(e){
+      var rankId = e.detail.rankId;
+      this.toRankInfo(rankId);
+    },
+
     toRankInfo: function (rankId) {
-      console.log("............rankId:"+rankId);
+      
+      /*
       this.setData({
         mode: 9,
         isAd: 0
       });
       var battleRank = this.selectComponent("#battleRank");
-      battleRank.init(rankId);
+      battleRank.init(rankId);*/
 
+      this.setData({
+        mode: 11,
+        isAd: 0
+      });
+
+      var personSpaceInfo = this.selectComponent("#personSpaceInfo");
+      personSpaceInfo.initByRankId(rankId);
+      
     },
 
 
@@ -323,10 +398,12 @@ Component({
       luckDraw.initDraws();
     },
     toBack:function(e){
+      console.log("............toBack");
       //0主页模式 1pk模式 2danList 3等待模式 4答题模式 5抽奖模式 6商城 7放弃页面
       var outThis = this;
       var mode = this.data.mode;
       if(mode==1||mode==3||mode==4||mode==7){
+        console.log("............1");
         /*wx.showModal({
           title: '是否确定退出',
           success:function(resp){
@@ -355,6 +432,7 @@ Component({
           }
         });
       }else{
+        
         outThis.setData({
           mode: 100,
           isAd:1
@@ -442,6 +520,10 @@ Component({
         
         var battleRank = this.selectComponent("#battleRank");
         var returnValue = battleRank.onShareAppMessage();
+        return returnValue;
+      }else if(mode==11){
+        var personSpaceInfo = this.selectComponent("#personSpaceInfo");
+        var returnValue = personSpaceInfo.onShareAppMessage();
         return returnValue;
       }
     }

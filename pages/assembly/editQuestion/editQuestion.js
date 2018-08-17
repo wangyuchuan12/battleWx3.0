@@ -22,7 +22,8 @@ Component({
     menuImg: domain + "/imgs/menu.png",
     submitImg: domain + "/imgs/submit.png",
     cameraImg: domain + "/imgs/camera.png",
-    backImg: domain + "/imgs/back.png"
+    backImg: domain + "/imgs/back.png",
+    rwImg:domain+"/imgs/rw.png"
   },
 
   /**
@@ -200,6 +201,7 @@ Component({
         success:function(question){
           
 
+        console.log(".....question:"+JSON.stringify(question));
         var isImg = 0;
 
         if(question.imgUrl){
@@ -248,13 +250,21 @@ Component({
         }
         var options = question.options;
         var selectOptions = new Array();
+        options = util.getRandomArrayElements(options,options.length);
         if(options){
           for (var i = 0; i < options.length; i++) {
             var option = options[i];
+            var isRight = 0;
+            var rightAnswer = question.answer;
+            if (option.content == rightAnswer){
+              isRight = 1;
+            }else{
+              isRight = 0;
+            }
             selectOptions.push({
               id: option.id,
               content: option.content,
-              isRight: option.isRight
+              isRight: isRight
             });
           }
         }
@@ -439,8 +449,12 @@ Component({
           obj.id = selectOptions[i].id;;
           array.push(obj);
         }
+        array = util.getRandomArrayElements(array, array.length);
         options = JSON.stringify(array);
       }
+      
+      console.log("........options:" + JSON.stringify(options));
+      
 
       var params = new Object();
       params.question = question;
@@ -449,13 +463,11 @@ Component({
       params.fillWords = fillWords;
       params.battleId = this.data.battleId;
       params.subjectId = this.data.subjectId;
-      params.peroidId = this.data.periodId;
+      params.periodId = this.data.periodId;
       params.questionType = questionType;
       params.options = options;
       params.battleQuestionId = this.data.questionId;
       var type = this.data.type;
-
-      console.log("......type:"+type);
 
       if(!type){
         questionManagerRequest.addQuestion(params, {

@@ -25,6 +25,8 @@
 
 <mall id="mall" wx:if="{{isMall}}" bind:paySuccess="paySuccess"></mall>
 
+<!--
 <view style="position:fixed;bottom:0px;z-index:30000000003;width:100%;" wx:if="{{isAd}}">
-  <ad unit-id="adunit-d8aafdc858444de9" ></ad>
+  <ad unit-id="adunit-d8aafdc858444de9"></ad>
 </view>
+-->

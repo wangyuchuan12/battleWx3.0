@@ -1,7 +1,7 @@
 {
   "component": true,
   "usingComponents": {
-    "timeSecond": "../../roundProgress/roundProgress",
+    "timeSecond": "../../clockProgress/clockProgress",
     "questionInput":"../../questionInputPlug2/questionInputPlug",
     "questionSelector": "../../questionSelector/questionSelector",
     "questionAnswerResult": "../../questionAnswerResult/questionAnswerResult",

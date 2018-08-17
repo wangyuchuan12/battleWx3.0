@@ -90,6 +90,8 @@ function request(url, params, callback, data) {
   //token = "229bb9d5-eda5-4af5-8914-823203341afc";
   //token = "73d0fd6f-2d23-4e4f-85eb-773b70ee1474";
   //token = "6513c982-f411-4bb9-b1d8-c781a622d60e";
+  //token = "79aa7073-2a4d-4e76-b305-f5af7f418bc2";
+  //token = "04f6eadf-7616-4cf4-b38c-2be27379e470";
   params.token = token;
   wx.request({
     url: url,

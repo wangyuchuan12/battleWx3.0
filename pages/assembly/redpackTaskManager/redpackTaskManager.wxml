@@ -1,0 +1,45 @@
+<view style="width:100%;height:100vh;" wx:if="{{mode==1}}">
+  <redpackTaskEdit id="redpackTaskEdit" bind:toBack="toBack"></redpackTaskEdit>
+</view>
+<view class="redpackRewardManager" wx:if="{{mode==0}}">
+  <view class="personSpaceMenus">
+
+    <view class="personSpaceMenu" style="background:rgba(128,102,255,1);margin:2.5%;" bindtap='taskClick'>
+      <view class="personSpaceMenuIcon" style="width:60px;height:60px;background:url('{{addImg}}');background-size:100% 100%;top:5px;position:relative;left:10px;"></view>
+      <view class="personSpaceMenuContent" >
+        <view class="personSpaceMenuContentName1">添加任务</view>
+        <view class="personSpaceMenuContentName2"></view>
+      </view>
+    </view>
+
+
+    <view class="personSpaceMenu" style="background:rgba(128,102,255,1);margin:2.5%;" bindtap='submitClick'>
+      <view class="personSpaceMenuIcon" style="width:60px;height:60px;background:url('{{submitImg}}');background-size:100% 100%;top:5px;position:relative;left:10px;"></view>
+      <view class="personSpaceMenuContent" >
+        <view class="personSpaceMenuContentName1">提交</view>
+        <view class="personSpaceMenuContentName2"></view>
+      </view>
+    </view>
+  </view>
+
+  <view class="redPackInfoPlugContentTasks">
+        <view class="redPackInfoPlugContentTask" wx:for="{{tasks}}" wx:for-item="task">
+          <view class="redPackInfoPlugContentTaskTitle">
+            <view class="redPackInfoPlugContentTaskTitleName">{{task.name}}</view>
+          </view>
+
+          <view class="redPackInfoPlugContentTaskList">
+            <view class="redPackInfoPlugContentTaskItem">
+              <scroll-view class="redPackInfoPlugContentTaskItemGoods" style="white-space:nowrap;display:flex;" scroll-x>
+                <view class="redPackInfoPlugContentTaskItemGood">
+                  <image src="{{moneyImg}}" class="redPackInfoPlugContentTaskItemGoodImg"></image>
+                  <view class="redPackInfoPlugContentTaskItemGoodName">智慧豆x{{task.beanNum}}</view>
+                </view>
+
+              </scroll-view>
+            </view>
+          </view>
+        </view>
+
+  </view>
+</view>
